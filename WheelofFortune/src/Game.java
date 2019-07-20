@@ -4,7 +4,7 @@ public class Game
 {
 	private String puzzle;
 	private String answer;
-	private static ArrayList<Boolean> turns = new ArrayList<Boolean>();
+	private int whosTurn;
 	private static ArrayList<String> wheel = new ArrayList<String>();
 	public void bankrupt(Player p) 
 	{
@@ -26,9 +26,17 @@ public class Game
 	{
 		return true;
 	}
-	public void input(char a) 
+	public void inputChar(char a) 
 	{
 		
+	}
+	public boolean win() 
+	{
+		return false;
+	}
+	public String board() 
+	{
+		return "this will include which chars have been guessed out of the answer so far";
 	}
 	public static void main(String[]args) throws IOException 
 	{

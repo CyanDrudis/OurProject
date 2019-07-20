@@ -15,6 +15,7 @@ private String puzzle;
 private String answer;
 private ArrayList<String> wheel = new ArrayList <String>();
 
+
 public String getPuzzle() 
 {
 	return puzzle;	
