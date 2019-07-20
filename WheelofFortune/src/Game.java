@@ -1,10 +1,11 @@
+import java.io.IOException;
 import java.util.ArrayList;
 public class Game 
 {
 	private String puzzle;
 	private String answer;
-	private ArrayList<Boolean> turns = new ArrayList<Boolean>();
-	private ArrayList<String> wheel = new ArrayList<String>();
+	private static ArrayList<Boolean> turns = new ArrayList<Boolean>();
+	private static ArrayList<String> wheel = new ArrayList<String>();
 	public void bankrupt(Player p) 
 	{
 		//p.setMoney(0.00);
@@ -28,5 +29,15 @@ public class Game
 	public void input(char a) 
 	{
 		
+	}
+	public static void main(String[]args) throws IOException 
+	{
+		Puzzle p = new Puzzle();
+		wheel = p.getWheel();
+		//(below)tests for wheel being imported
+		for(int i = 0; i < wheel.size(); i++) 
+		{
+			System.out.println(wheel.get(i));
+		}
 	}
 }
