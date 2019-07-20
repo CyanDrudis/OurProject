@@ -4,5 +4,6 @@ Event
 Food And Drink
 Movies
 On The Map
+Sports
 Superheroes
 TV Show Title
