@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 public class Puzzle extends Game
 {
 	/*
@@ -11,19 +12,35 @@ public class Puzzle extends Game
 	 */
 	
 	
-private String puzzle;
-private String answer;
+private ArrayList<String> answers = new ArrayList <String>();
+private ArrayList<String> puzzle = new ArrayList <String>();
 private ArrayList<String> wheel = new ArrayList <String>();
-
-
-public String getPuzzle() 
+private int randomInt;
+Random rand = new Random();
+public void newPuzzle() 
 {
-	return puzzle;	
+	randomInt = rand.nextInt(puzzle.size());
+}
+public String getPuzzle() throws IOException 
+{
+	File f = new File(Puzzle.class.getProtectionDomain().getCodeSource().getLocation().getPath() + "//puzzle");
+	BufferedReader br = new BufferedReader(new FileReader(f));
+	String line = "";
+	line = br.readLine();
+    while (line != null) 
+    {
+        puzzle.add(line);
+        line = br.readLine();
+    }
+    br.close();
+	return puzzle.get(randomInt);	
 }
 
 public String getAnswer () 
 {
-	return answer;
+	ArrayList<String> ansList = new ArrayList<String>();
+	
+	return "";
 }
 
 public ArrayList<String> getWheel () throws IOException
