@@ -99,7 +99,7 @@ public class Game
 				numOfVowels++;
 			}
 		}
-		players.get(whosTurn).pricePerVowel(numOfVowels, 0);
+		players.get(whosTurn).pricePerVowel(numOfVowels);
 	}
 	public void spin() 
 	{
