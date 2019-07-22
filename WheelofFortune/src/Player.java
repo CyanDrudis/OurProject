@@ -7,7 +7,7 @@ import java.util.Collections;
  * PURPOSE: To pass, set and modify relevant information about the player as the game goes on. 
  *          This is represented as a players 'account' (the amount of money they have), their name and the prize list attached to them.
  * 
- * PRIVATE VARIABLES: -name: a String 
+ * PRIVATE VARIABLES: -name: a String, the player's name
  *                    -money: a double, the player's 'account' so to say  
  *                    -bonus:   
  *                    -vowelCost:
