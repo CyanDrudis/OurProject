@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 public class Game 
 {
 	private String puzzle;
@@ -102,6 +103,8 @@ public class Game
 	}
 	public void spin() 
 	{
+		Random rand = new Random();
+		wheel.get(rand.nextInt(wheel.size())); //get a random index from the arraylist, may have to change later
 		
 	}
 	public boolean checkAns(String a) throws IOException 
@@ -117,7 +120,7 @@ public class Game
 		guessed.add(a+"");
 	}
 	public boolean win() 
-	{
+	{		
 		return false;
 	}
 }
