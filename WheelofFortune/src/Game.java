@@ -115,6 +115,19 @@ public class Game
 		}
 		return false;
 	}
+	
+	public void changeTurn();
+	{
+		if(whosTurn == 2) 
+		{
+			whosTurn = 0;
+		}
+		else
+		{
+			whosTurn += 1;
+		}
+	}
+	
 	public void inputChar(char a) 
 	{
 		guessed.add(a+"");
