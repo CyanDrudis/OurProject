@@ -4,19 +4,32 @@ public class Game
 {
 	private String puzzle;
 	private String answer;
-	private int whosTurn;
+	private String current;
+	private int whosTurn = 0; //0 = player, 1 = AI, 2 = AI
 	private static ArrayList<String> wheel = new ArrayList<String>();
+	Puzzle p = new Puzzle();
 	public void bankrupt(Player p) 
 	{
-		//p.setMoney(0.00);
+		p.setMoney(0.00);
 	}
 	public void loseATurn(Player p)
 	{
-		//p.skipTurn(p)
+		if(whosTurn == 2) 
+		{
+			whosTurn = 0;
+		}
+		else
+		{
+			whosTurn += 1;
+		}
 	}
-	public void freePlay(Player p) 
+	public void setCurrent() throws IOException 
 	{
-		//p.pricePerVowel(0, 1)
+		
+	}
+	public boolean freePlay() 
+	{
+		return true;
 	}
 	public void spin() 
 	{
@@ -26,9 +39,9 @@ public class Game
 	{
 		return true;
 	}
-	public void inputChar(char a) 
+	public int inputChar(char a) 
 	{
-		
+		return 1;
 	}
 	public boolean win() 
 	{
