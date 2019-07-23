@@ -1,6 +1,17 @@
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
+
+/*********************************************************************************************************************
+ * CLASS: Game
+ * 
+ * PURPOSE:
+ * 
+ * PRIVATE VARIABLES: 
+ *                    
+ * NOTES: 
+ *********************************************************************************************************************/
+
 public class Game 
 {
 	private String puzzle;
@@ -14,10 +25,36 @@ public class Game
 	Puzzle p = new Puzzle();
 	
 	ArrayList<Player> players = new ArrayList<Player>();
+	
+	/***************************************************************************************
+	 * FUNCTION: 
+	 * 
+	 * PURPOSE: 
+	 * 
+	 * METHOD: 
+	 * 
+	 * RETURNS: 
+	 *
+	 * INPUT PARAMETERS:  
+	 * 
+	 *********************************************************************************************/
 	public void importWheel() throws IOException 
 	{
 		wheel = p.getWheel();
 	}
+	
+	/***************************************************************************************
+	 * FUNCTION: 
+	 * 
+	 * PURPOSE: 
+	 * 
+	 * METHOD: 
+	 * 
+	 * RETURNS: 
+	 *
+	 * INPUT PARAMETERS:  
+	 * 
+	 *********************************************************************************************/
 	public void refresh() throws IOException 
 	{
 		char[] check;
@@ -38,6 +75,19 @@ public class Game
 			}
 		}
 	}
+	
+	/***************************************************************************************
+	 * FUNCTION: 
+	 * 
+	 * PURPOSE: 
+	 * 
+	 * METHOD: 
+	 * 
+	 * RETURNS: 
+	 *
+	 * INPUT PARAMETERS:  
+	 * 
+	 *********************************************************************************************/
 	public void newGame() throws IOException 
 	{
 		answer = p.getAnswer();
@@ -51,6 +101,19 @@ public class Game
 		players.add(AI2);
 		answers = p.getAnswer().toCharArray();
 	}
+	
+	/***************************************************************************************
+	 * FUNCTION: 
+	 * 
+	 * PURPOSE: 
+	 * 
+	 * METHOD: 
+	 * 
+	 * RETURNS: 
+	 *
+	 * INPUT PARAMETERS:  
+	 * 
+	 *********************************************************************************************/
 	public void newPuzzle() throws IOException 
 	{
 		answers = p.getAnswer().toCharArray();
@@ -58,10 +121,36 @@ public class Game
 		p.newAnswer();
 		p.newPuzzle();
 	}
+	
+	/***************************************************************************************
+	 * FUNCTION: 
+	 * 
+	 * PURPOSE: 
+	 * 
+	 * METHOD: 
+	 * 
+	 * RETURNS: 
+	 *
+	 * INPUT PARAMETERS:  
+	 * 
+	 *********************************************************************************************/
 	public void bankrupt(Player p) 
 	{
 		p.setMoney(0.00);
 	}
+	
+	/***************************************************************************************
+	 * FUNCTION: 
+	 * 
+	 * PURPOSE: 
+	 * 
+	 * METHOD: 
+	 * 
+	 * RETURNS: 
+	 *
+	 * INPUT PARAMETERS:  
+	 * 
+	 *********************************************************************************************/
 	public void loseATurn(Player p)
 	{
 		if(whosTurn == 2) 
@@ -73,6 +162,19 @@ public class Game
 			whosTurn += 1;
 		}
 	}
+	
+	/***************************************************************************************
+	 * FUNCTION: 
+	 * 
+	 * PURPOSE: 
+	 * 
+	 * METHOD: 
+	 * 
+	 * RETURNS: 
+	 *
+	 * INPUT PARAMETERS:  
+	 * 
+	 *********************************************************************************************/
 	public void setCurrent() throws IOException 
 	{
 		char[] check;
@@ -89,6 +191,19 @@ public class Game
 			}
 		}
 	}
+	
+	/***************************************************************************************
+	 * FUNCTION: 
+	 * 
+	 * PURPOSE: 
+	 * 
+	 * METHOD: 
+	 * 
+	 * RETURNS: 
+	 *
+	 * INPUT PARAMETERS:  
+	 * 
+	 *********************************************************************************************/
 	public void freePlay(char a) 
 	{
 		int numOfVowels = 0;
@@ -101,12 +216,38 @@ public class Game
 		}
 		players.get(whosTurn).pricePerVowel(numOfVowels);
 	}
+	
+	/***************************************************************************************
+	 * FUNCTION: 
+	 * 
+	 * PURPOSE: 
+	 * 
+	 * METHOD: 
+	 * 
+	 * RETURNS: 
+	 *
+	 * INPUT PARAMETERS:  
+	 * 
+	 *********************************************************************************************/
 	public void spin() 
 	{
 		Random rand = new Random();
 		wheel.get(rand.nextInt(wheel.size())); //get a random index from the arraylist, may have to change later
 		
 	}
+	
+	/***************************************************************************************
+	 * FUNCTION: 
+	 * 
+	 * PURPOSE: 
+	 * 
+	 * METHOD: 
+	 * 
+	 * RETURNS: 
+	 *
+	 * INPUT PARAMETERS:  
+	 * 
+	 *********************************************************************************************/
 	public boolean checkAns(String a) throws IOException 
 	{
 		if(a.toLowerCase() == p.getAnswer().toLowerCase()) 
@@ -116,7 +257,19 @@ public class Game
 		return false;
 	}
 	
-	public void changeTurn();
+	/***************************************************************************************
+	 * FUNCTION: 
+	 * 
+	 * PURPOSE: 
+	 * 
+	 * METHOD: 
+	 * 
+	 * RETURNS: 
+	 *
+	 * INPUT PARAMETERS:  
+	 * 
+	 *********************************************************************************************/
+	public void changeTurn()
 	{
 		if(whosTurn == 2) 
 		{
@@ -128,10 +281,35 @@ public class Game
 		}
 	}
 	
+	/***************************************************************************************
+	 * FUNCTION: 
+	 * 
+	 * PURPOSE: 
+	 * 
+	 * METHOD: 
+	 * 
+	 * RETURNS: 
+	 *
+	 * INPUT PARAMETERS:  
+	 * 
+	 *********************************************************************************************/
 	public void inputChar(char a) 
 	{
 		guessed.add(a+"");
 	}
+	
+	/***************************************************************************************
+	 * FUNCTION: 
+	 * 
+	 * PURPOSE: 
+	 * 
+	 * METHOD: 
+	 * 
+	 * RETURNS: 
+	 *
+	 * INPUT PARAMETERS:  
+	 * 
+	 *********************************************************************************************/
 	public boolean win() 
 	{		
 		return false;
