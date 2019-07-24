@@ -14,7 +14,9 @@ import java.util.Collections;
  *
  *
  * 
- * PRIVATE VARIABLES: 
+ * PRIVATE VARIABLES: -puzzle: a String, beginning with asterisks (*) that shows the length of the word that the player
+							   will have to guess, and will fill up gradually as they guess characters
+					  -answer: a String, the word that the players will be guestting 
  *
  *
  *					  -name: a String, the player's name
