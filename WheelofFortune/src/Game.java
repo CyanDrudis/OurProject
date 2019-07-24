@@ -44,6 +44,7 @@ public class Game {
 	private static final int bonus =5;
 	private static final double vowelCost = 250;
 	private static final int numberOfPuzzlesToWin = 3;
+	private int numberOfPuzzles;
 	private String name;
 	//private double money; //Player's account balance so to say
 	private ArrayList<Boolean> prizeList = new ArrayList<>(Collections.nCopies(bonus, false));
@@ -182,15 +183,16 @@ public class Game {
 	}
 	
 	/***************************************************************************************
-	 * FUNCTION: 
+	 * FUNCTION: Set the base string to which the user is going to guess characters to fill up the word 
 	 * 
-	 * DESCRIPTION:
+	 * DESCRIPTION: Go through each index of the length of the answer, and adds either blank spaces or
+	 * asterisks 
 	 * 
-	 * METHOD: 
+	 * METHOD: setCurent()
 	 * 
-	 * RETURNS: 
+	 * RETURNS: void
 	 *
-	 * INPUT PARAMETERS:  
+	 * INPUT PARAMETERS:void  
 	 * 
 	 *********************************************************************************************/
 	public void setCurrent() throws IOException {
@@ -206,15 +208,15 @@ public class Game {
 	}
 	
 	/***************************************************************************************
-	 * FUNCTION: 
+	 * FUNCTION: Returns the current string
 	 * 
-	 * DESCRIPTION:
+	 * DESCRIPTION: Returns the current string by converting the stirng array to string
 	 * 
-	 * METHOD: 
+	 * METHOD: getCurrent
 	 * 
-	 * RETURNS: 
+	 * RETURNS: String of the already guessed word
 	 *
-	 * INPUT PARAMETERS:  
+	 * INPUT PARAMETERS: none
 	 * 
 	 *********************************************************************************************/
 	public String getCurrent() throws IOException {
@@ -226,15 +228,16 @@ public class Game {
 	}
 	
 	/***************************************************************************************
-	 * FUNCTION: 
+	 * FUNCTION: Allows user to guess vowels and withdraws money from their bank account according
+	 * to the number of vowels that they guess
 	 * 
-	 * DESCRIPTION:
+	 * DESCRIPTION: Compares guessed vowel to the answer character array
 	 * 
-	 * METHOD: 
+	 * METHOD: freePlay()
 	 * 
-	 * RETURNS: 
+	 * RETURNS: void
 	 *
-	 * INPUT PARAMETERS:  
+	 * INPUT PARAMETERS: void  
 	 * 
 	 *********************************************************************************************/
 	public void freePlay(char a) {
@@ -248,15 +251,17 @@ public class Game {
 	}
 	
 	/***************************************************************************************
-	 * FUNCTION: 
+	 * FUNCTION: gets a random index of the wheel
 	 * 
-	 * DESCRIPTION:
+	 * DESCRIPTION: gets a random index of the wheel, which is the 'prize' that the user will be
+	 * gaining money from if they guess characters correctly, or if it's a special type of prize
+	 * such as bankrupt/1/2car, they will be receiving that 
 	 * 
-	 * METHOD: 
+	 * METHOD: spin()
 	 * 
-	 * RETURNS: 
+	 * RETURNS: String
 	 *
-	 * INPUT PARAMETERS:  
+	 * INPUT PARAMETERS: none
 	 * 
 	 *********************************************************************************************/
 	public String spin() {
@@ -268,15 +273,16 @@ public class Game {
 	}
 	
 	/***************************************************************************************
-	 * FUNCTION: 
+	 * FUNCTION: checks string guessed to answer
 	 * 
-	 * DESCRIPTION:
+	 * DESCRIPTION: when the user is ready to guess the entire word, they will input an answer 
+	 * of type string which will be compared to the actual answer
 	 * 
-	 * METHOD: 
+	 * METHOD: checkAns()
 	 * 
-	 * RETURNS: 
+	 * RETURNS: Boolean
 	 *
-	 * INPUT PARAMETERS:  
+	 * INPUT PARAMETERS: String
 	 * 
 	 *********************************************************************************************/
 	public boolean checkAns(String a) throws IOException {
@@ -287,15 +293,15 @@ public class Game {
 	}
 	
 	/***************************************************************************************
-	 * FUNCTION: 
+	 * FUNCTION: Changes who's turn it is
 	 * 
-	 * DESCRIPTION:
+	 * DESCRIPTION: Changes who's turn it is
 	 * 
-	 * METHOD: 
+	 * METHOD: changeTurn()
 	 * 
-	 * RETURNS: 
+	 * RETURNS: void
 	 *
-	 * INPUT PARAMETERS:  
+	 * INPUT PARAMETERS: none
 	 * 
 	 *********************************************************************************************/
 	public void changeTurn(){
@@ -307,30 +313,31 @@ public class Game {
 	}
 	
 	/***************************************************************************************
-	 * FUNCTION: 
+	 * FUNCTION: Lets user know who's turn it is
 	 * 
-	 * DESCRIPTION:
+	 * DESCRIPTION: Returns which user's turn it is
 	 * 
-	 * METHOD: 
+	 * METHOD: whosTurn();
 	 * 
-	 * RETURNS: 
+	 * RETURNS: Int
 	 *
-	 * INPUT PARAMETERS:  
+	 * INPUT PARAMETERS: none 
 	 * 
 	 *********************************************************************************************/
 	public int whosTurn()	{
 		return whosTurn();
 	}
 	/***************************************************************************************
-	 * FUNCTION: 
+	 * FUNCTION: checks inputted character with the guessed array and answer
 	 * 
-	 * DESCRIPTION:
+	 * DESCRIPTION: first compared inputted character to the guessed array to see if it's already
+	 * been guessed, then is compared it to the answer, and added to the guessed array, or if it
 	 * 
-	 * METHOD: 
+	 * METHOD: inputChar()
 	 * 
-	 * RETURNS: 
+	 * RETURNS: Boolean
 	 *
-	 * INPUT PARAMETERS:  
+	 * INPUT PARAMETERS:  char
 	 * 
 	 *********************************************************************************************/
 	public Boolean inputChar(char a) {
@@ -343,26 +350,27 @@ public class Game {
 			if (a == answers.get(i)) {
 				return true;
 				guessed.add(a+"");
-			} 
-		} else {
-			return false;
+			}
 		}
 	}
 	
 	/***************************************************************************************
-	 * FUNCTION: 
+	 * FUNCTION: The win scenario
 	 * 
-	 * DESCRIPTION:
+	 * DESCRIPTION: when the number of puzzles to win has been reached, the method will return
+	 * true 
 	 * 
-	 * METHOD: 
+	 * METHOD: win()
 	 * 
-	 * RETURNS: 
+	 * RETURNS: Boolean		
 	 *
-	 * INPUT PARAMETERS:  
+	 * INPUT PARAMETERS: none
 	 * 
 	 *********************************************************************************************/
-	public boolean win() {		
-		return false;
+	public boolean win() {	
+		if (numberOfPuzzles == numberOfPuzzlesToWin) {
+			return true;
+		}
 	}
 	
 	
