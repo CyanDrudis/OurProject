@@ -35,17 +35,18 @@ public class Game
 	private static ArrayList<String> current = new ArrayList<String>();
 	private static ArrayList<String> guessed = new ArrayList<String>();
 	private char[] answers;
-	
+	private double money;
 	private static final int bonus =5;
 	private static final double vowelCost = 250;
 	private String name;
-	private double money; //Player's account balance so to say
+	//private double money; //Player's account balance so to say
 	private ArrayList<Boolean> prizeList = new ArrayList<>(Collections.nCopies(bonus, false));
 	
 	Puzzle p = new Puzzle();
-	
+	Player p1 = new Player();
+	Player p2 = new Player();
+	Player p3 = new Player();
 	ArrayList<Player> players = new ArrayList<Player>();
-	
 	/***************************************************************************************
 	 * FUNCTION: 
 	 * 
@@ -113,13 +114,14 @@ public class Game
 		answer = p.getAnswer();
 		p.newAnswer();
 		p.newPuzzle();
-		Player main = new Player();
-		Player AI1 = new Player();
-		Player AI2 = new Player();
-		players.add(main);
-		players.add(AI1);
-		players.add(AI2);
 		answers = p.getAnswer().toCharArray();
+		p1 = new Player();
+		p2 = new Player();
+		p3 = new Player();
+		players = new ArrayList<Player>();
+		players.add(p1);
+		players.add(p2);
+		players.add(p3);
 	}
 	
 	/***************************************************************************************
@@ -154,9 +156,9 @@ public class Game
 	 * INPUT PARAMETERS:  
 	 * 
 	 *********************************************************************************************/
-	public void bankrupt(Player p) 
+	public void bankrupt() 
 	{
-		p.setMoney(0.00);
+		players.get(whosTurn).setMoney(0.0);
 	}
 	
 	/***************************************************************************************
@@ -171,7 +173,7 @@ public class Game
 	 * INPUT PARAMETERS:  
 	 * 
 	 *********************************************************************************************/
-	public void loseATurn(Player p)
+	public void loseATurn()
 	{
 		if(whosTurn == 2) 
 		{
@@ -249,11 +251,11 @@ public class Game
 	 * INPUT PARAMETERS:  
 	 * 
 	 *********************************************************************************************/
-	public void spin() 
+	public String spin() 
 	{
 		Random rand = new Random();
-		wheel.get(rand.nextInt(wheel.size())); //get a random index from the arraylist, may have to change later
 		
+		return wheel.get(rand.nextInt(wheel.size())); //get a random index from the arraylist, may have to change later
 	}
 	
 	/***************************************************************************************
@@ -301,6 +303,22 @@ public class Game
 		}
 	}
 	
+	/***************************************************************************************
+	 * FUNCTION: 
+	 * 
+	 * PURPOSE: 
+	 * 
+	 * METHOD: 
+	 * 
+	 * RETURNS: 
+	 *
+	 * INPUT PARAMETERS:  
+	 * 
+	 *********************************************************************************************/
+	public int whosTurn()
+	{
+		return whosTurn();
+	}
 	/***************************************************************************************
 	 * FUNCTION: 
 	 * 
