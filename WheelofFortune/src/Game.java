@@ -2,7 +2,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Collections;
-//test
+
 /*********************************************************************************************************************
  * CLASS: Game
  * 
@@ -43,6 +43,7 @@ public class Game {
 	private double[] money;
 	private static final int bonus =5;
 	private static final double vowelCost = 250;
+	private static final int numberOfPuzzlesToWin = 3;
 	private String name;
 	//private double money; //Player's account balance so to say
 	private ArrayList<Boolean> prizeList = new ArrayList<>(Collections.nCopies(bonus, false));
@@ -53,15 +54,16 @@ public class Game {
 	Player p3 = new Player();
 	ArrayList<Player> players = new ArrayList<Player>();
 	/***************************************************************************************
-	 * FUNCTION: 
+	 * FUNCTION: Importing the wheel
 	 * 
-	 * PURPOSE: 
+	 * DESCRIPTION: importing the wheel from a text file containing all the wheel's 
+	 * options using the function in the puzzle class
 	 * 
-	 * METHOD: 
+	 * METHOD: importWheel()
 	 * 
-	 * RETURNS: 
+	 * RETURNS: void
 	 *
-	 * INPUT PARAMETERS:  
+	 * INPUT PARAMETERS: void
 	 * 
 	 *********************************************************************************************/
 	public void importWheel() throws IOException {
@@ -69,15 +71,18 @@ public class Game {
 	}
 	
 	/***************************************************************************************
-	 * FUNCTION: 
+	 * FUNCTION: Refresh the current string array to display to the user what they've guessed/what is
+	 * left to guess
 	 * 
-	 * PURPOSE: 
+	 * DESCRIPTION: This method takes the answer and creates a character array to which it checks the 
+	 * with the guessed string array, and fills in the index where the guess matches the answer and
+	 * the rest with asterisks
 	 * 
-	 * METHOD: 
+	 * METHOD: refresh()
 	 * 
-	 * RETURNS: 
+	 * RETURNS: void
 	 *
-	 * INPUT PARAMETERS:  
+	 * INPUT PARAMETERS: void
 	 * 
 	 *********************************************************************************************/
 	public void refresh() throws IOException {
@@ -95,15 +100,16 @@ public class Game {
 	}
 	
 	/***************************************************************************************
-	 * FUNCTION: 
+	 * FUNCTION: creating a brand new game (puzzle and answer)
 	 * 
-	 * PURPOSE: 
+	 * DESCRIPTION: creates a brand new game for the player to try and win, chooses a puzzle,
+	 * then chooses an answer from that puzzle category, creates three player accounts
 	 * 
-	 * METHOD: 
+	 * METHOD: newGame()
 	 * 
-	 * RETURNS: 
+	 * RETURNS: void
 	 *
-	 * INPUT PARAMETERS:  
+	 * INPUT PARAMETERS: void  
 	 * 
 	 *********************************************************************************************/
 	public void newGame() throws IOException {
@@ -121,15 +127,15 @@ public class Game {
 	}
 	
 	/***************************************************************************************
-	 * FUNCTION: 
+	 * FUNCTION: Create a new puzzle and obtain an answer from that puzzle
 	 * 
-	 * PURPOSE: 
+	 * DESCRIPTION: transfer answer to character array, create new answer and puzzle
 	 * 
-	 * METHOD: 
+	 * METHOD: newPuzzle()
 	 * 
-	 * RETURNS: 
+	 * RETURNS: void
 	 *
-	 * INPUT PARAMETERS:  
+	 * INPUT PARAMETERS: void
 	 * 
 	 *********************************************************************************************/
 	public void newPuzzle() throws IOException {
@@ -142,13 +148,13 @@ public class Game {
 	/***************************************************************************************
 	 * FUNCTION: 
 	 * 
-	 * PURPOSE: 
+	 * DESCRIPTION:
 	 * 
-	 * METHOD: 
+	 * METHOD: bankrupt()
 	 * 
-	 * RETURNS: 
+	 * RETURNS: void
 	 *
-	 * INPUT PARAMETERS:  
+	 * INPUT PARAMETERS: void
 	 * 
 	 *********************************************************************************************/
 	public void bankrupt() {
@@ -158,7 +164,7 @@ public class Game {
 	/***************************************************************************************
 	 * FUNCTION: 
 	 * 
-	 * PURPOSE: 
+	 * DESCRIPTION:
 	 * 
 	 * METHOD: 
 	 * 
@@ -178,7 +184,7 @@ public class Game {
 	/***************************************************************************************
 	 * FUNCTION: 
 	 * 
-	 * PURPOSE: 
+	 * DESCRIPTION:
 	 * 
 	 * METHOD: 
 	 * 
@@ -202,7 +208,7 @@ public class Game {
 	/***************************************************************************************
 	 * FUNCTION: 
 	 * 
-	 * PURPOSE: 
+	 * DESCRIPTION:
 	 * 
 	 * METHOD: 
 	 * 
@@ -222,7 +228,7 @@ public class Game {
 	/***************************************************************************************
 	 * FUNCTION: 
 	 * 
-	 * PURPOSE: 
+	 * DESCRIPTION:
 	 * 
 	 * METHOD: 
 	 * 
@@ -244,7 +250,7 @@ public class Game {
 	/***************************************************************************************
 	 * FUNCTION: 
 	 * 
-	 * PURPOSE: 
+	 * DESCRIPTION:
 	 * 
 	 * METHOD: 
 	 * 
@@ -264,7 +270,7 @@ public class Game {
 	/***************************************************************************************
 	 * FUNCTION: 
 	 * 
-	 * PURPOSE: 
+	 * DESCRIPTION:
 	 * 
 	 * METHOD: 
 	 * 
@@ -283,7 +289,7 @@ public class Game {
 	/***************************************************************************************
 	 * FUNCTION: 
 	 * 
-	 * PURPOSE: 
+	 * DESCRIPTION:
 	 * 
 	 * METHOD: 
 	 * 
@@ -303,7 +309,7 @@ public class Game {
 	/***************************************************************************************
 	 * FUNCTION: 
 	 * 
-	 * PURPOSE: 
+	 * DESCRIPTION:
 	 * 
 	 * METHOD: 
 	 * 
@@ -318,7 +324,7 @@ public class Game {
 	/***************************************************************************************
 	 * FUNCTION: 
 	 * 
-	 * PURPOSE: 
+	 * DESCRIPTION:
 	 * 
 	 * METHOD: 
 	 * 
@@ -346,7 +352,7 @@ public class Game {
 	/***************************************************************************************
 	 * FUNCTION: 
 	 * 
-	 * PURPOSE: 
+	 * DESCRIPTION:
 	 * 
 	 * METHOD: 
 	 * 
@@ -366,7 +372,7 @@ public class Game {
 	/************************************************************************
 	 * FUNCTION: getMoney
 	 * 
-	 * PURPOSE: returns the amount of money in a player's account
+	 * DESCRIPTION: returns the amount of money in a player's account
 	 * 
 	 * METHOD: return instance variable money
 	 * 
@@ -379,7 +385,7 @@ public class Game {
     /************************************************************************
 	 * FUNCTION: getName
 	 * 
-	 * PURPOSE: return the given name of the player
+	 * DESCRIPTION: return the given name of the player
 	 * 
 	 * METHOD: return instance variable name
 	 * 
@@ -392,7 +398,7 @@ public class Game {
 	/************************************************************************
 	 * FUNCTION: setMoney
 	 * 
-	 * PURPOSE: set the amount of money for the invoking object/instance
+	 * DESCRIPTION: set the amount of money for the invoking object/instance
 	 * 
 	 * METHOD: make the instances' money variable equal to what is passed in
 	 * 
@@ -405,61 +411,61 @@ public class Game {
 	}
 	
 	/************************************************************************
-	 * Function: setName 
+	 * FUNCTION: setName 
 	 * 
-	 * Purpose: set the given name for the invoking object/instance
+	 * DESCRIPTION: set the given name for the invoking object/instance
 	 * 
-	 * Method: makes the object's name variable equal to what is passed in
+	 * METHOD: makes the object's name variable equal to what is passed in
 	 * 
-	 * Returns: nothing
+	 * RETURNS: nothing
 	 * 
-	 * Input Parameters: a String
+	 * INPUT PARAMETERS: a String
 	 ************************************************************************/
 	public void setName(String name) {
 		this.name = name;
 	}
 	
 	/*************************************************************************
-	 * Function: deposit
+	 * FUNCTION: deposit
 	 * 
-	 * Purpose:  deposit a certain amount into the player's money, a placeholder for some type of account
+	 * DESCRIPTION:  deposit a certain amount into the player's money, a placeholder for some type of account
 	 * 
-	 * Method: add the players money by the amount passed in
+	 * METHOD: add the players money by the amount passed in
 	 * 
-	 * Returns: nothing
+	 * RETURNS: nothing
 	 * 
-	 * Input Parameters: a double 
+	 * INPUT PARAMETERS: a double 
 	 *************************************************************************/
 	public void deposit(double amount) {
 		this.money[whosTurn] = this.money[whosTurn] + amount;
 	}
 	
 	/*************************************************************************
-	 * Function: withdraw 
+	 * FUNCTION: withdraw 
 	 * 
-	 * Purpose: take out a certain amount of money from the players account.
+	 * DESCRIPTION: take out a certain amount of money from the players account.
 	 * 
-	 * Method: subtract the money in a player's account by the value passed in.
+	 * METHOD: subtract the money in a player's account by the value passed in.
 	 * 		   note: It is possible to have a negative balance in Wheel of Fortune so this is not accounted for here.	
 	 * 
-	 * Returns: nothing
+	 * RETURNS: nothing
 	 * 
-	 * Input Parameters: a double 
+	 * INPUT PARAMETERS: a double 
 	 **************************************************************************/
 	public void withdraw(double amount) {
 		this.money[whosTurn] = this.money[whosTurn] - amount;
 	}
 	
 	/****************************************************************************
-	 * Function: pricePerVowel
+	 * FUNCTION: pricePerVowel
 	 * 
-	 * Purpose: the player has to pay in order to use a vowel //Better description later 
+	 * DESCRIPTION: the player has to pay in order to use a vowel //Better description later 
 	 * 
-	 * Method: the player's account is subtracted by the number of vowels used multiples by the cost which is 250.
+	 * METHOD: the player's account is subtracted by the number of vowels used multiples by the cost which is 250.
 	 * 
-	 * Returns: nothing
+	 * RETURNS: nothing
 	 * 
-	 * Input Parameters: an integer 
+	 * INPUT PARAMETERS: an integer 
 	 ******************************************************************************/
 	public void pricePerVowel(int numberOfVowels) {
 		this.money[whosTurn] = this.money[whosTurn] - numberOfVowels*vowelCost; //Do we need to subtract this.money as well? This will always result in a negative num
