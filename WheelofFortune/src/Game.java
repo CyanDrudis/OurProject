@@ -15,8 +15,11 @@ import java.util.Collections;
  *
  * 
  * PRIVATE VARIABLES: -puzzle: a String, beginning with asterisks (*) that shows the length of the word that the player
-							   will have to guess, and will fill up gradually as they guess characters
-					  -answer: a String, the word that the players will be guestting 
+ *							will have to guess, and will fill up gradually as they guess characters
+ *					  -answer: a String, the word that the players will be guessing
+ *					  -whosTurn: keeps track of who's turn it is, used to skip turns as well			
+ *					  -ArrayList<String> wheel = array list of the wheel which has all the available "prizes"
+ *					  -ArrayList<String> current = array list of the current 
  *
  *
  *					  -name: a String, the player's name
@@ -31,13 +34,14 @@ import java.util.Collections;
 public class Game 
 {
 	private String puzzle;
+	private int currentSpokeValue;
 	private String answer;
-	private int whosTurn = 0; //0 = player, 1 = AI, 2 = AI
+	private int whosTurn = 0; //0 = player, 1 = player 2, 2 = player 3
 	private static ArrayList<String> wheel = new ArrayList<String>();
 	private static ArrayList<String> current = new ArrayList<String>();
 	private static ArrayList<String> guessed = new ArrayList<String>();
 	private char[] answers;
-	private double money;
+	private double[] money;
 	private static final int bonus =5;
 	private static final double vowelCost = 250;
 	private String name;
@@ -228,6 +232,23 @@ public class Game
 	 * INPUT PARAMETERS:  
 	 * 
 	 *********************************************************************************************/
+	public getCurrent() throws IOException 
+	{
+		
+	}
+	
+	/***************************************************************************************
+	 * FUNCTION: 
+	 * 
+	 * PURPOSE: 
+	 * 
+	 * METHOD: 
+	 * 
+	 * RETURNS: 
+	 *
+	 * INPUT PARAMETERS:  
+	 * 
+	 *********************************************************************************************/
 	public void freePlay(char a) 
 	{
 		int numOfVowels = 0;
@@ -256,6 +277,8 @@ public class Game
 	public String spin() 
 	{
 		Random rand = new Random();
+		
+		currentSpokeValue = (int) wheel.get(rand.nextInt(wheel.size()));
 		
 		return wheel.get(rand.nextInt(wheel.size())); //get a random index from the arraylist, may have to change later
 	}
@@ -333,9 +356,20 @@ public class Game
 	 * INPUT PARAMETERS:  
 	 * 
 	 *********************************************************************************************/
-	public void inputChar(char a) 
-	{
-		guessed.add(a+"");
+	public Boolean inputChar(char a) {
+		for (i=0;i<guessed.size();i++){
+			if ((a+"") == guessed.get(i)) {
+				return false;
+			} 
+		}
+		for (i=0;i<answers.size();i++) {
+			if (a == answers.get(i)) {
+				return true;
+				guessed.add(a+"");
+			} 
+		} else {
+			return false;
+		}
 	}
 	
 	/***************************************************************************************
@@ -354,22 +388,6 @@ public class Game
 	{		
 		return false;
 	}
-	//[0] = cruise, [1] = wildcard, [2] = 1/2 car (1st half) [3] = 1/2 car (2nd half)
-	//[4] = 1 million dollar prize
-	
-	/* FUNCTION: getPrizeListBoolean
-	 * 
-	 * PURPOSE: 
-	 * 
-	 * METHOD: 
-	 * 
-	 * RETURNS: a Boolean
-	 *
-	 * INPUT PARAMETERS:  an integer
-	 */
-	public Boolean getPrizeListBoolean(int index) {
-		return prizeList.get(index);
-	}
 	
 	
 	/************************************************************************
@@ -385,7 +403,7 @@ public class Game
 	 * RETURNS: a double
 	 ************************************************************************/
 	public double getMoney() {
-		return money;
+		return money[whosTurn];
 	}
 	
     /************************************************************************
@@ -413,7 +431,7 @@ public class Game
 	 * INPUT PARAMETERS:  a double
 	 ************************************************************************/
 	public void setMoney(double money) {
-		this.money = money;
+		this.money[whosTurn] = money;
 	}
 	
 	/************************************************************************
@@ -443,7 +461,7 @@ public class Game
 	 * Input Parameters: a double 
 	 *************************************************************************/
 	public void deposit(double amount) {
-		this.money = this.money + amount;
+		this.money[whosTurn] = this.money[whosTurn] + amount;
 	}
 	
 	/*************************************************************************
@@ -459,7 +477,7 @@ public class Game
 	 * Input Parameters: a double 
 	 **************************************************************************/
 	public void withdraw(double amount) {
-		this.money = this.money - amount;
+		this.money[whosTurn] = this.money[whosTurn] - amount;
 	}
 	
 	/****************************************************************************
@@ -474,6 +492,6 @@ public class Game
 	 * Input Parameters: an integer 
 	 ******************************************************************************/
 	public void pricePerVowel(int numberOfVowels) {
-		this.money = this.money - numberOfVowels*vowelCost; //Do we need to subtract this.money as well? This will always result in a negative num
+		this.money[whosTurn] = this.money[whosTurn] - numberOfVowels*vowelCost; //Do we need to subtract this.money as well? This will always result in a negative num
 	}
 }
