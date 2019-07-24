@@ -146,9 +146,9 @@ public class Game {
 	}
 	
 	/***************************************************************************************
-	 * FUNCTION: 
+	 * FUNCTION: Reset users money upon landing on bankrupt section of the wheel
 	 * 
-	 * DESCRIPTION:
+	 * DESCRIPTION: sets player who lands on the bankrupt section's money to 0
 	 * 
 	 * METHOD: bankrupt()
 	 * 
@@ -162,15 +162,15 @@ public class Game {
 	}
 	
 	/***************************************************************************************
-	 * FUNCTION: 
+	 * FUNCTION: Cycle through players turn	
 	 * 
-	 * DESCRIPTION:
+	 * DESCRIPTION: Cycle through players turn 	
 	 * 
-	 * METHOD: 
+	 * METHOD: loseATurn()
 	 * 
-	 * RETURNS: 
+	 * RETURNS: void
 	 *
-	 * INPUT PARAMETERS:  
+	 * INPUT PARAMETERS: void
 	 * 
 	 *********************************************************************************************/
 	public void loseATurn(){
