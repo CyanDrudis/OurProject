@@ -31,8 +31,7 @@ import java.util.Collections;
  * NOTES: Negative balance is possible and allowed in Wheel of Fortune, therefore it is not accounted for here.
  *********************************************************************************************************************/
 
-public class Game 
-{
+public class Game {
 	private String puzzle;
 	private int currentSpokeValue;
 	private String answer;
@@ -65,8 +64,7 @@ public class Game
 	 * INPUT PARAMETERS:  
 	 * 
 	 *********************************************************************************************/
-	public void importWheel() throws IOException 
-	{
+	public void importWheel() throws IOException {
 		wheel = p.getWheel();
 	}
 	
@@ -82,22 +80,15 @@ public class Game
 	 * INPUT PARAMETERS:  
 	 * 
 	 *********************************************************************************************/
-	public void refresh() throws IOException 
-	{
+	public void refresh() throws IOException {
 		char[] check;
 		check = p.getAnswer().toCharArray();
-		for(int i = 0; i < check.length; i++) 
-		{
-			if(check[i] == ' ') 
-			{
+		for(int i = 0; i < check.length; i++) {
+			if(check[i] == ' ') {
 				current.add(" ");	
-			}
-			else if(guessed.contains(check[i]))
-			{
+			} else if(guessed.contains(check[i])){
 				current.set(i, check[i]+"");
-			}
-			else
-			{
+			} else {
 				current.add("*");
 			}
 		}
@@ -115,8 +106,7 @@ public class Game
 	 * INPUT PARAMETERS:  
 	 * 
 	 *********************************************************************************************/
-	public void newGame() throws IOException 
-	{
+	public void newGame() throws IOException {
 		answer = p.getAnswer();
 		p.newAnswer();
 		p.newPuzzle();
@@ -142,8 +132,7 @@ public class Game
 	 * INPUT PARAMETERS:  
 	 * 
 	 *********************************************************************************************/
-	public void newPuzzle() throws IOException 
-	{
+	public void newPuzzle() throws IOException {
 		answers = p.getAnswer().toCharArray();
 		answer = p.getAnswer();
 		p.newAnswer();
@@ -162,8 +151,7 @@ public class Game
 	 * INPUT PARAMETERS:  
 	 * 
 	 *********************************************************************************************/
-	public void bankrupt() 
-	{
+	public void bankrupt() {
 		players.get(whosTurn).setMoney(0.0);
 	}
 	
@@ -179,14 +167,10 @@ public class Game
 	 * INPUT PARAMETERS:  
 	 * 
 	 *********************************************************************************************/
-	public void loseATurn()
-	{
-		if(whosTurn == 2) 
-		{
+	public void loseATurn(){
+		if(whosTurn == 2) {
 			whosTurn = 0;
-		}
-		else
-		{
+		}	else	{
 			whosTurn += 1;
 		}
 	}
@@ -203,18 +187,13 @@ public class Game
 	 * INPUT PARAMETERS:  
 	 * 
 	 *********************************************************************************************/
-	public void setCurrent() throws IOException 
-	{
+	public void setCurrent() throws IOException {
 		char[] check;
 		check = p.getAnswer().toCharArray();
-		for(int i = 0; i < check.length; i++) 
-		{
-			if(check[i] == ' ') 
-			{
+		for(int i = 0; i < check.length; i++) {
+			if(check[i] == ' ') {
 				current.add(" ");	
-			}
-			else
-			{
+			} else {
 				current.add("*");
 			}
 		}
@@ -232,9 +211,12 @@ public class Game
 	 * INPUT PARAMETERS:  
 	 * 
 	 *********************************************************************************************/
-	public getCurrent() throws IOException 
-	{
-		
+	public String getCurrent() throws IOException {
+		String current = ""
+		for (i=0;i<current.size(),i++) {
+			current = current + current.get(i);
+		}
+		return current;
 	}
 	
 	/***************************************************************************************
@@ -249,13 +231,10 @@ public class Game
 	 * INPUT PARAMETERS:  
 	 * 
 	 *********************************************************************************************/
-	public void freePlay(char a) 
-	{
+	public void freePlay(char a) {
 		int numOfVowels = 0;
-		for(int i = 0; i < current.size(); i++) 
-		{
-			if(a == answers[i]) 
-			{
+		for(int i = 0; i < current.size(); i++) {
+			if(a == answers[i]) {
 				numOfVowels++;
 			}
 		}
@@ -274,8 +253,7 @@ public class Game
 	 * INPUT PARAMETERS:  
 	 * 
 	 *********************************************************************************************/
-	public String spin() 
-	{
+	public String spin() {
 		Random rand = new Random();
 		
 		currentSpokeValue = (int) wheel.get(rand.nextInt(wheel.size()));
@@ -295,10 +273,8 @@ public class Game
 	 * INPUT PARAMETERS:  
 	 * 
 	 *********************************************************************************************/
-	public boolean checkAns(String a) throws IOException 
-	{
-		if(a.toLowerCase() == p.getAnswer().toLowerCase()) 
-		{
+	public boolean checkAns(String a) throws IOException {
+		if(a.toLowerCase() == p.getAnswer().toLowerCase()) {
 			return true;
 		}
 		return false;
@@ -316,14 +292,10 @@ public class Game
 	 * INPUT PARAMETERS:  
 	 * 
 	 *********************************************************************************************/
-	public void changeTurn()
-	{
-		if(whosTurn == 2) 
-		{
+	public void changeTurn(){
+		if(whosTurn == 2) {
 			whosTurn = 0;
-		}
-		else
-		{
+		}	else	{
 			whosTurn += 1;
 		}
 	}
@@ -340,8 +312,7 @@ public class Game
 	 * INPUT PARAMETERS:  
 	 * 
 	 *********************************************************************************************/
-	public int whosTurn()
-	{
+	public int whosTurn()	{
 		return whosTurn();
 	}
 	/***************************************************************************************
@@ -384,8 +355,7 @@ public class Game
 	 * INPUT PARAMETERS:  
 	 * 
 	 *********************************************************************************************/
-	public boolean win() 
-	{		
+	public boolean win() {		
 		return false;
 	}
 	
