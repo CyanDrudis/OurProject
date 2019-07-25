@@ -271,7 +271,7 @@ public class Game {
 	public String spin() {
 		Random rand = new Random();
 		
-		currentSpokeValue = (int) wheel.get(rand.nextInt(wheel.size()));
+		currentSpokeValue = Integer.valueOf(wheel.get(rand.nextInt(wheel.size())));
 		
 		return wheel.get(rand.nextInt(wheel.size())); //get a random index from the arraylist, may have to change later
 	}
@@ -329,7 +329,7 @@ public class Game {
 	 * 
 	 *********************************************************************************************/
 	public int whosTurn()	{
-		return whosTurn();
+		return whosTurn;
 	}
 	/***************************************************************************************
 	 * FUNCTION: checks inputted character with the guessed array and answer
@@ -363,6 +363,7 @@ public class Game {
 				return true;
 			}
 		}
+		return false;
 	}
 	
 	/***************************************************************************************
@@ -382,8 +383,30 @@ public class Game {
 		if (numberOfPuzzles == numberOfPuzzlesToWin) {
 			return true;
 		}
+		return false;
 	}
-	
+	/***************************************************************************************
+	 * FUNCTION: The win scenario
+	 * 
+	 * DESCRIPTION: when the number of puzzles to win has been reached, the method will return
+	 * true 
+	 * 
+	 * METHOD: win()
+	 * 
+	 * RETURNS: Boolean		
+	 *
+	 * INPUT PARAMETERS: none
+	 * 
+	 *********************************************************************************************/
+	public boolean winPuzzle() {
+		
+		for(int i = 0; i <guessed.size(); i ++) {
+			if(guessed.get(i) == "*") {
+				return false;
+			}
+		}
+		return true;
+	}
 	
 	/************************************************************************
 	 * Player related methods
