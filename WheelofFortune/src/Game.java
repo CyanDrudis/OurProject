@@ -210,7 +210,7 @@ public class Game {
 	/***************************************************************************************
 	 * FUNCTION: Returns the current string
 	 * 
-	 * DESCRIPTION: Returns the current string by converting the stirng array to string
+	 * DESCRIPTION: Returns the current string by converting the string array to string
 	 * 
 	 * METHOD: getCurrent
 	 * 
@@ -220,9 +220,13 @@ public class Game {
 	 * 
 	 *********************************************************************************************/
 	public String getCurrent() throws IOException {
-		String current = ""
-		for (i=0;i<current.size(),i++) {
+		String current = "";
+		/*
+		for (int i =0; i < current.size(); i++) { 
 			current = current + current.get(i);
+		}*/
+		for(int i = 0; i < current.length(); i++) {     //changed current.size() to current.length()
+			current = current + current.charAt(i);      //changed current=current+current.get(i) to current=current+current.charAt(i);
 		}
 		return current;
 	}
@@ -476,6 +480,6 @@ public class Game {
 	 * INPUT PARAMETERS: an integer 
 	 ******************************************************************************/
 	public void pricePerVowel(int numberOfVowels) {
-		this.money[whosTurn] = this.money[whosTurn] - numberOfVowels*vowelCost; //Do we need to subtract this.money as well? This will always result in a negative num
+		this.money[whosTurn] = this.money[whosTurn] - numberOfVowels*vowelCost; 
 	}
 }
