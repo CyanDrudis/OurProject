@@ -29,7 +29,7 @@ import java.util.Random;
  *********************************************************************************************************************/
 
 
-public class Puzzle extends Game
+public class Puzzle
 {
 	private ArrayList<String> answers = new ArrayList <String>();
 	private ArrayList<String> puzzle = new ArrayList <String>();

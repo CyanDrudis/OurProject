@@ -47,12 +47,10 @@ public class Game {
 	private int numberOfPuzzles;
 	private String name;
 	//private double money; //Player's account balance so to say
-	private ArrayList<Boolean> prizeList = new ArrayList<>(Collections.nCopies(bonus, false));
+	//private ArrayList<Boolean> prizeList = new ArrayList<>(Collections.nCopies(bonus, false));
 	
 	Puzzle p = new Puzzle();
-	Player p1 = new Player();
-	Player p2 = new Player();
-	Player p3 = new Player();
+
 	ArrayList<Player> players = new ArrayList<Player>();
 	/***************************************************************************************
 	 * FUNCTION: Importing the wheel
@@ -114,13 +112,14 @@ public class Game {
 	 * 
 	 *********************************************************************************************/
 	public void newGame() throws IOException {
+		p = new Puzzle();
 		answer = p.getAnswer();
 		p.newAnswer();
 		p.newPuzzle();
 		answers = p.getAnswer().toCharArray();
-		p1 = new Player();
-		p2 = new Player();
-		p3 = new Player();
+		Player p1 = new Player();
+		Player p2 = new Player();
+		Player p3 = new Player();
 		players = new ArrayList<Player>();
 		players.add(p1);
 		players.add(p2);
@@ -407,109 +406,109 @@ public class Game {
 		}
 		return true;
 	}
-	
-	/************************************************************************
-	 * Player related methods
-	 ************************************************************************/
-	/************************************************************************
-	 * FUNCTION: getMoney
-	 * 
-	 * DESCRIPTION: returns the amount of money in a player's account
-	 * 
-	 * METHOD: return instance variable money
-	 * 
-	 * RETURNS: a double
-	 ************************************************************************/
-	public double getMoney() {
-		return money[whosTurn];
-	}
-	
-    /************************************************************************
-	 * FUNCTION: getName
-	 * 
-	 * DESCRIPTION: return the given name of the player
-	 * 
-	 * METHOD: return instance variable name
-	 * 
-	 * RETURNS: a String
-	 ************************************************************************/
-	public String getName() {
-		return name;
-	}
-	
-	/************************************************************************
-	 * FUNCTION: setMoney
-	 * 
-	 * DESCRIPTION: set the amount of money for the invoking object/instance
-	 * 
-	 * METHOD: make the instances' money variable equal to what is passed in
-	 * 
-	 * RETURNS: nothing.
-	 * 
-	 * INPUT PARAMETERS:  a double
-	 ************************************************************************/
-	public void setMoney(double money) {
-		this.money[whosTurn] = money;
-	}
-	
-	/************************************************************************
-	 * FUNCTION: setName 
-	 * 
-	 * DESCRIPTION: set the given name for the invoking object/instance
-	 * 
-	 * METHOD: makes the object's name variable equal to what is passed in
-	 * 
-	 * RETURNS: nothing
-	 * 
-	 * INPUT PARAMETERS: a String
-	 ************************************************************************/
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	/*************************************************************************
-	 * FUNCTION: deposit
-	 * 
-	 * DESCRIPTION:  deposit a certain amount into the player's money, a placeholder for some type of account
-	 * 
-	 * METHOD: add the players money by the amount passed in
-	 * 
-	 * RETURNS: nothing
-	 * 
-	 * INPUT PARAMETERS: a double 
-	 *************************************************************************/
-	public void deposit(double amount) {
-		this.money[whosTurn] = this.money[whosTurn] + amount;
-	}
-	
-	/*************************************************************************
-	 * FUNCTION: withdraw 
-	 * 
-	 * DESCRIPTION: take out a certain amount of money from the players account.
-	 * 
-	 * METHOD: subtract the money in a player's account by the value passed in.
-	 * 		   note: It is possible to have a negative balance in Wheel of Fortune so this is not accounted for here.	
-	 * 
-	 * RETURNS: nothing
-	 * 
-	 * INPUT PARAMETERS: a double 
-	 **************************************************************************/
-	public void withdraw(double amount) {
-		this.money[whosTurn] = this.money[whosTurn] - amount;
-	}
-	
-	/****************************************************************************
-	 * FUNCTION: pricePerVowel
-	 * 
-	 * DESCRIPTION: the player has to pay in order to use a vowel //Better description later 
-	 * 
-	 * METHOD: the player's account is subtracted by the number of vowels used multiples by the cost which is 250.
-	 * 
-	 * RETURNS: nothing
-	 * 
-	 * INPUT PARAMETERS: an integer 
-	 ******************************************************************************/
-	public void pricePerVowel(int numberOfVowels) {
-		this.money[whosTurn] = this.money[whosTurn] - numberOfVowels*vowelCost; 
-	}
+//	
+//	/************************************************************************
+//	 * Player related methods
+//	 ************************************************************************/
+//	/************************************************************************
+//	 * FUNCTION: getMoney
+//	 * 
+//	 * DESCRIPTION: returns the amount of money in a player's account
+//	 * 
+//	 * METHOD: return instance variable money
+//	 * 
+//	 * RETURNS: a double
+//	 ************************************************************************/
+//	public double getMoney() {
+//		return money[whosTurn];
+//	}
+//	
+//    /************************************************************************
+//	 * FUNCTION: getName
+//	 * 
+//	 * DESCRIPTION: return the given name of the player
+//	 * 
+//	 * METHOD: return instance variable name
+//	 * 
+//	 * RETURNS: a String
+//	 ************************************************************************/
+//	public String getName() {
+//		return name;
+//	}
+//	
+//	/************************************************************************
+//	 * FUNCTION: setMoney
+//	 * 
+//	 * DESCRIPTION: set the amount of money for the invoking object/instance
+//	 * 
+//	 * METHOD: make the instances' money variable equal to what is passed in
+//	 * 
+//	 * RETURNS: nothing.
+//	 * 
+//	 * INPUT PARAMETERS:  a double
+//	 ************************************************************************/
+//	public void setMoney(double money) {
+//		this.money[whosTurn] = money;
+//	}
+//	
+//	/************************************************************************
+//	 * FUNCTION: setName 
+//	 * 
+//	 * DESCRIPTION: set the given name for the invoking object/instance
+//	 * 
+//	 * METHOD: makes the object's name variable equal to what is passed in
+//	 * 
+//	 * RETURNS: nothing
+//	 * 
+//	 * INPUT PARAMETERS: a String
+//	 ************************************************************************/
+//	public void setName(String name) {
+//		this.name = name;
+//	}
+//	
+//	/*************************************************************************
+//	 * FUNCTION: deposit
+//	 * 
+//	 * DESCRIPTION:  deposit a certain amount into the player's money, a placeholder for some type of account
+//	 * 
+//	 * METHOD: add the players money by the amount passed in
+//	 * 
+//	 * RETURNS: nothing
+//	 * 
+//	 * INPUT PARAMETERS: a double 
+//	 *************************************************************************/
+//	public void deposit(double amount) {
+//		this.money[whosTurn] = this.money[whosTurn] + amount;
+//	}
+//	
+//	/*************************************************************************
+//	 * FUNCTION: withdraw 
+//	 * 
+//	 * DESCRIPTION: take out a certain amount of money from the players account.
+//	 * 
+//	 * METHOD: subtract the money in a player's account by the value passed in.
+//	 * 		   note: It is possible to have a negative balance in Wheel of Fortune so this is not accounted for here.	
+//	 * 
+//	 * RETURNS: nothing
+//	 * 
+//	 * INPUT PARAMETERS: a double 
+//	 **************************************************************************/
+//	public void withdraw(double amount) {
+//		this.money[whosTurn] = this.money[whosTurn] - amount;
+//	}
+//	
+//	/****************************************************************************
+//	 * FUNCTION: pricePerVowel
+//	 * 
+//	 * DESCRIPTION: the player has to pay in order to use a vowel //Better description later 
+//	 * 
+//	 * METHOD: the player's account is subtracted by the number of vowels used multiples by the cost which is 250.
+//	 * 
+//	 * RETURNS: nothing
+//	 * 
+//	 * INPUT PARAMETERS: an integer 
+//	 ******************************************************************************/
+//	public void pricePerVowel(int numberOfVowels) {
+//		this.money[whosTurn] = this.money[whosTurn] - numberOfVowels*vowelCost; 
+//	}
 }

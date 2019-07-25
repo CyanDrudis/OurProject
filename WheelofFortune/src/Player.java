@@ -23,7 +23,7 @@ public class Player extends Game{
 	private static final double vowelCost = 250;
 	private String name;
 	private double money; //Player's account balance so to say
-	private ArrayList<Boolean> prizeList = new ArrayList<>(Collections.nCopies(bonus, false));
+	//private ArrayList<Boolean> prizeList = new ArrayList<>(Collections.nCopies(bonus, false));
 	
 	//[0] = cruise, [1] = wildcard, [2] = 1/2 car (1st half) [3] = 1/2 car (2nd half)
 	//[4] = 1 million dollar prize
@@ -38,9 +38,9 @@ public class Player extends Game{
 	 *
 	 * INPUT PARAMETERS:  an integer
 	 */
-	public Boolean getPrizeListBoolean(int index) {
-		return prizeList.get(index);
-	}
+//	public Boolean getPrizeListBoolean(int index) {
+//		return prizeList.get(index);
+//	}
 	
 	/************************************************************************
 	 * FUNCTION: getMoney

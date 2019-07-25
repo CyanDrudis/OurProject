@@ -14,28 +14,29 @@ import java.util.Scanner;
 public class Runtime extends Game {
 		
 		
-		String spoke;
-		Game g = new Game();
-		Puzzle p = new Puzzle();
+		
 		//Player p1 = new Player();
 		//Player p2 = new Player();
 		
-	public void main(String[] args) throws IOException {
-		while(win()==false) {
+	public static void main(String[] args) throws IOException {
+		Game g = new Game();
+		while(g.win()==false) {
+		String spoke;
+		g.newGame();
+		g.importWheel();
+		g.setCurrent();
 			System.out.println("New puzzle!");
-			while(winPuzzle()==false) {
-				g.newGame();
-				g.importWheel();
-				g.setCurrent();
+			while(g.winPuzzle()==false) {
+				
 				System.out.println("Welcome to Wheel of Fortune. Take a spin of the Wheel.");
 				spoke = g.spin();
 				System.out.println("You spun the wheel and landed on" + spoke);
 				if (spoke == "loseaturn") {
-					loseATurn();
+					g.loseATurn();
 					System.out.println("Sorry you lose a turn!");
 				}
 				if (spoke == "bankrupt") {
-					bankrupt();
+					g.bankrupt();
 					System.out.println("Oh no you went bankrupt!");
 				}
 				System.out.println("Puzzle:" + g.getCurrent());
@@ -46,11 +47,11 @@ public class Runtime extends Game {
 				if(check.length == 1) 
 				{
 					char a = check[0];
-					if(inputChar(a)) 
+					if(g.inputChar(a)) 
 					{
 						System.out.println("Correct!");
 					}
-					refresh();
+					g.refresh();
 				}
 				else
 				{
@@ -58,7 +59,7 @@ public class Runtime extends Game {
 					{
 						System.out.println("Correct!");
 					}
-					refresh();
+					g.refresh();
 					g.newGame();
 				}
 		}	}
