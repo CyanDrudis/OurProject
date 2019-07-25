@@ -87,8 +87,8 @@ public class Puzzle
 	 *********************************************************************************************/
 	public String getPuzzle() throws IOException 
 	{
-		File f = new File(Puzzle.class.getProtectionDomain().getCodeSource().getLocation().getPath() + "//puzzle.txt");
-		BufferedReader br = new BufferedReader(new FileReader(f));
+		BufferedReader br = new BufferedReader(new FileReader(getClass().getClassLoader().getResource("puzzle.txt").getFile()));
+		// used (above line)code from: https://www.mkyong.com/java/java-read-a-file-from-resources-folder/
 		String line = "";
 		line = br.readLine();
 		while (line != null) 
@@ -118,8 +118,8 @@ public class Puzzle
 	public String getAnswer () throws IOException 
 	{
 		String[] ans;
-		File f = new File(Puzzle.class.getProtectionDomain().getCodeSource().getLocation().getPath() + "//answer.txt");
-		BufferedReader br = new BufferedReader(new FileReader(f));
+		BufferedReader br = new BufferedReader(new FileReader(getClass().getClassLoader().getResource("answers.txt").getFile()));
+		// used (above line)code from: https://www.mkyong.com/java/java-read-a-file-from-resources-folder/
 		String line = "";
 		line = br.readLine();
 	    while (line != null) 
@@ -147,8 +147,8 @@ public class Puzzle
 	 *********************************************************************************************/
 	public ArrayList<String> getWheel () throws IOException
 	{
-		File f = new File(Puzzle.class.getProtectionDomain().getCodeSource().getLocation().getPath() + "//wheel.txt");
-		BufferedReader br = new BufferedReader(new FileReader(f));
+		BufferedReader br = new BufferedReader(new FileReader(getClass().getClassLoader().getResource("wheel.txt").getFile()));
+		// used (above line)code from: https://www.mkyong.com/java/java-read-a-file-from-resources-folder/
 		String line = "";
 		line = br.readLine();
 	    while (line != null) 
