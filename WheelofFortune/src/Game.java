@@ -345,15 +345,22 @@ public class Game {
 	 * 
 	 *********************************************************************************************/
 	public Boolean inputChar(char a) {
-		for (i=0;i<guessed.size();i++){
+		
+		for (int i=0;i<guessed.size();i++){
 			if ((a+"") == guessed.get(i)) {
 				return false;
 			} 
-		}
-		for (i=0;i<answers.size();i++) {
-			if (a == answers.get(i)) {
+		}/*
+		for (int i=0;i<answers.size();i++) { //change from answers.size() to answers.length() ?
+			if (a == answers.get(i)) {       //change from answers.get(i) to answers[i]
 				return true;
 				guessed.add(a+"");
+			}
+		}*/
+		for (int i = 0; i < answers.length; i++) {
+			if (a == answers[i]) {
+				guessed.add(a+"");
+				return true;
 			}
 		}
 	}
