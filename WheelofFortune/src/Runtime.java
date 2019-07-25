@@ -30,7 +30,7 @@ public class Runtime extends Game {
 				
 				System.out.println("Welcome to Wheel of Fortune. Take a spin of the Wheel.");
 				spoke = g.spin();
-				System.out.println("You spun the wheel and landed on" + spoke);
+				System.out.println("You spun the wheel and landed on " + spoke);
 				if (spoke == "loseaturn") {
 					g.loseATurn();
 					System.out.println("Sorry you lose a turn!");
@@ -39,7 +39,11 @@ public class Runtime extends Game {
 					g.bankrupt();
 					System.out.println("Oh no you went bankrupt!");
 				}
-				System.out.println("Puzzle:" + g.getCurrent());
+				int playersTurn = g.whosTurn() + 1;
+				System.out.println("Player " + playersTurn +" Turn!");
+				System.out.println("Category: " + g.getPuzzle());
+				System.out.println("Puzzle: " + g.getCurrent());
+				System.out.println("Balance: " + g.getBal());
 				System.out.println("Now guess a letter or try to solve :");
 				Scanner read = new Scanner(System.in);
 				String input = read.nextLine();
@@ -60,7 +64,7 @@ public class Runtime extends Game {
 						System.out.println("Correct!");
 					}
 					g.refresh();
-					g.newGame();
+					//g.newGame();
 				}
 		}	}
 	}

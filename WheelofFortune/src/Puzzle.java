@@ -97,7 +97,9 @@ public class Puzzle
 			line = br.readLine();
 		}
 		br.close();
+		randomIntForPuzzle = rand.nextInt(puzzle.size());
 		return puzzle.get(randomIntForPuzzle);	
+		
 	}
 	/***************************************************************************************
 	 * FUNCTION: to import the answer array from our own text file, then make a smaller array of those answers and return a random one

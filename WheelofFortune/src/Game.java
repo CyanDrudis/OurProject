@@ -68,7 +68,38 @@ public class Game {
 	public void importWheel() throws IOException {
 		wheel = p.getWheel();
 	}
-	
+	/***************************************************************************************
+	 * FUNCTION: 
+	 * 
+	 * DESCRIPTION: 
+	 * 
+	 * 
+	 * METHOD: 
+	 * 
+	 * RETURNS: 
+	 *
+	 * INPUT PARAMETERS:
+	 * 
+	 *********************************************************************************************/
+	public String getPuzzle() {
+		return puzzle;
+	}
+	/***************************************************************************************
+	 * FUNCTION: 
+	 * 
+	 * DESCRIPTION: 
+	 * 
+	 * 
+	 * METHOD: 
+	 * 
+	 * RETURNS: 
+	 *
+	 * INPUT PARAMETERS:
+	 * 
+	 *********************************************************************************************/
+	public double getBal() {
+		return players.get(whosTurn).getMoney();
+	}
 	/***************************************************************************************
 	 * FUNCTION: Refresh the current string array to display to the user what they've guessed/what is
 	 * left to guess
@@ -113,7 +144,7 @@ public class Game {
 	 *********************************************************************************************/
 	public void newGame() throws IOException {
 		p = new Puzzle();
-		p.getPuzzle();
+		puzzle = p.getPuzzle();
 		p.getAnswer();
 		p.newPuzzle();
 		p.newAnswer();
@@ -221,15 +252,11 @@ public class Game {
 	 * 
 	 *********************************************************************************************/
 	public String getCurrent() throws IOException {
-		String current = "";
-		/*
-		for (int i =0; i < current.size(); i++) { 
-			current = current + current.get(i);
-		}*/
-		for(int i = 0; i < current.length(); i++) {     //changed current.size() to current.length()
-			current = current + current.charAt(i);      //changed current=current+current.get(i) to current=current+current.charAt(i);
+		String toReturn = "";
+		for(int i = 0; i < current.size(); i ++) {
+			toReturn += current.get(i);
 		}
-		return current;
+		return toReturn;
 	}
 	
 	/***************************************************************************************
@@ -271,10 +298,12 @@ public class Game {
 	 *********************************************************************************************/
 	public String spin() {
 		Random rand = new Random();
+		int randomNumForWheel = rand.nextInt(wheel.size());
+		if(wheel.get(randomNumForWheel) != "bankrupt" && wheel.get(randomNumForWheel) != "millionprize" && wheel.get(randomNumForWheel) != "loseaturn" && wheel.get(randomNumForWheel) != "freeplay") {
+		currentSpokeValue = Integer.valueOf(wheel.get(randomNumForWheel));
+		}
 		
-		currentSpokeValue = Integer.valueOf(wheel.get(rand.nextInt(wheel.size())));
-		
-		return wheel.get(rand.nextInt(wheel.size())); //get a random index from the arraylist, may have to change later
+		return wheel.get(randomNumForWheel); //get a random index from the arraylist, may have to change later
 	}
 	
 	/***************************************************************************************
@@ -361,6 +390,7 @@ public class Game {
 		for (int i = 0; i < answers.length; i++) {
 			if (a == answers[i]) {
 				guessed.add(a+"");
+				players.get(whosTurn).deposit(currentSpokeValue);
 				return true;
 			}
 		}
