@@ -26,7 +26,7 @@ public class Runtime extends Game {
 		g.importWheel();
 		g.setCurrent();
 			System.out.println("New puzzle!");
-			while(g.winPuzzle()==false) {
+			while(!g.winPuzzle()) {
 				
 				System.out.println("Welcome to Wheel of Fortune. Take a spin of the Wheel.");
 				spoke = g.spin();

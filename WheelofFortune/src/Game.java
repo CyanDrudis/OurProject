@@ -113,9 +113,11 @@ public class Game {
 	 *********************************************************************************************/
 	public void newGame() throws IOException {
 		p = new Puzzle();
-		answer = p.getAnswer();
-		p.newAnswer();
+		p.getPuzzle();
+		p.getAnswer();
 		p.newPuzzle();
+		p.newAnswer();
+		answer = p.getAnswer();
 		answers = p.getAnswer().toCharArray();
 		Player p1 = new Player();
 		Player p2 = new Player();
@@ -399,8 +401,8 @@ public class Game {
 	 *********************************************************************************************/
 	public boolean winPuzzle() {
 		
-		for(int i = 0; i <guessed.size(); i ++) {
-			if(guessed.get(i) == "*") {
+		for(int i = 0; i <current.size(); i ++) {
+			if(current.get(i) == "*") {
 				return false;
 			}
 		}

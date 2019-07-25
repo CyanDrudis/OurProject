@@ -52,9 +52,7 @@ public class Puzzle
 	 *********************************************************************************************/
 	public void newPuzzle() 
 	{
-		if(puzzle.size()>0) {
 		randomIntForPuzzle = rand.nextInt(puzzle.size());
-		}
 	}
 	/***************************************************************************************
 	 * FUNCTION: generate a random integer for a new random answer
@@ -71,9 +69,7 @@ public class Puzzle
 	 *********************************************************************************************/
 	public void newAnswer() 
 	{
-		if(answers.get(randomIntForPuzzle).split(",").length > 0) {
 		randomIntForAnswer = rand.nextInt(answers.get(randomIntForPuzzle).split(",").length);
-		}
 	}
 	/***************************************************************************************
 	 * FUNCTION: to import the puzzle array from our own txt file
