@@ -374,11 +374,11 @@ public class Game {
 	 * INPUT PARAMETERS:  char
 	 * 
 	 *********************************************************************************************/
-	public Boolean inputChar(char a) {
+	public String inputChar(char a) {
 		
 		for (int i=0;i<guessed.size();i++){
 			if ((a+"") == guessed.get(i)) {
-				return false;
+				return "alreadyThere";
 			} 
 		}/*
 		for (int i=0;i<answers.size();i++) { //change from answers.size() to answers.length() ?
@@ -391,10 +391,10 @@ public class Game {
 			if (a == answers[i]) {
 				guessed.add(a+"");
 				players.get(whosTurn).deposit(currentSpokeValue);
-				return true;
+				return "there";
 			}
 		}
-		return false;
+		return "notThere";
 	}
 	
 	/***************************************************************************************

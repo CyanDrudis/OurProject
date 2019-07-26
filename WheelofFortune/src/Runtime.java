@@ -51,9 +51,14 @@ public class Runtime extends Game {
 				if(check.length == 1) 
 				{
 					char a = check[0];
-					if(g.inputChar(a)) 
+					if(g.inputChar(a) == "there") 
 					{
 						System.out.println("Correct!");
+					} else if (g.inputChar(a) == "notThere"){
+						System.out.println("Letter is not in word!");
+						g.changeTurn();
+					} else if (g.inputChar(a) == "alreadyThere") {
+						System.out.println("You've already guessed this letter");
 					}
 					g.refresh();
 				}
