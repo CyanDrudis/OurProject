@@ -118,11 +118,18 @@ public class Game {
 	public void refresh() throws IOException {
 		char[] check;
 		check = p.getAnswer().toCharArray();
+		ArrayList<String> current = new ArrayList<String>();
 		for(int i = 0; i < check.length; i++) {
 			if(check[i] == ' ') {
 				current.add(" ");	
-			} else if(guessed.contains(check[i])){
-				current.set(i, check[i]+"");
+			}else if(guessed.contains((check[i]+""))) {
+				for(int j = 0; j < guessed.size(); j++) {
+					if (guessed.get(j) == (check[i]+"")) {
+						current.add(guessed.get(j));
+					}
+				}
+//			} else if(guessed.contains(check[i])){
+//				current.set(i, check[i]+"");
 			} else {
 				current.add("*");
 			}
@@ -255,6 +262,26 @@ public class Game {
 		String toReturn = "";
 		for(int i = 0; i < current.size(); i ++) {
 			toReturn += current.get(i);
+		}
+		return toReturn;
+	}
+	
+	/***************************************************************************************
+	 * FUNCTION: Returns the guessed string
+	 * 
+	 * DESCRIPTION: Returns the current string by converting the string array to string
+	 * 
+	 * METHOD: getGuessed
+	 * 
+	 * RETURNS: String of the already guessed word
+	 *
+	 * INPUT PARAMETERS: none
+	 * 
+	 *********************************************************************************************/
+	public String getGuessed() throws IOException {
+		String toReturn = "";
+		for(int i = 0; i < guessed.size(); i ++) {
+			toReturn += guessed.get(i);
 		}
 		return toReturn;
 	}
@@ -394,6 +421,7 @@ public class Game {
 				return "there";
 			}
 		}
+		guessed.add(a+"");
 		return "notThere";
 	}
 	

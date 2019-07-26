@@ -48,6 +48,9 @@ public class Runtime extends Game {
 				Scanner read = new Scanner(System.in);
 				String input = read.nextLine();
 				char check [] = input.toCharArray();
+				if (input == "check guessed") {
+					System.out.println(g.getGuessed());
+				}
 				if(check.length == 1) 
 				{
 					char a = check[0];
@@ -67,6 +70,9 @@ public class Runtime extends Game {
 					if(g.checkAns(input)) 
 					{
 						System.out.println("Correct!");
+					} else {
+						System.out.println("Incorrect!");
+						g.changeTurn();
 					}
 					g.refresh();
 					//g.newGame();
