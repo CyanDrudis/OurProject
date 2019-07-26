@@ -327,7 +327,7 @@ public class Game {
 		Random rand = new Random();
 		int randomNumForWheel = rand.nextInt(wheel.size());
 		if(wheel.get(randomNumForWheel) != "bankrupt" && wheel.get(randomNumForWheel) != "millionprize" && wheel.get(randomNumForWheel) != "loseaturn" && wheel.get(randomNumForWheel) != "freeplay") {
-		currentSpokeValue = Integer.valueOf(wheel.get(randomNumForWheel));
+			currentSpokeValue = Integer.valueOf(wheel.get(randomNumForWheel));
 		}
 		
 		return wheel.get(randomNumForWheel); //get a random index from the arraylist, may have to change later
