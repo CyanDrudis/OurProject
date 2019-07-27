@@ -261,8 +261,7 @@ public class Game {
 	 * 
          * SOURCE: https://stackoverflow.com/questions/8751455/arraylist-contains-case-sensitivity
 	 *********************************************************************************************/
-	public boolean containsCaseInsensitive(String strToCompare, ArrayList<String>list)
-        {
+	public boolean containsCaseInsensitive(String strToCompare, ArrayList<String>list) {
             for(String str:list){
                 if(str.equalsIgnoreCase(strToCompare)){
                     return(true);
