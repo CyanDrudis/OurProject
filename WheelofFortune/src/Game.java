@@ -44,7 +44,7 @@ public class Game {
 	private static final int bonus =5;
 	private static final double vowelCost = 250;
 	private static final int numberOfPuzzlesToWin = 3;
-	private int numberOfPuzzles;
+	private int numberOfPuzzles = -1;
 	private String name;
 	//private double money; //Player's account balance so to say
 	//private ArrayList<Boolean> prizeList = new ArrayList<>(Collections.nCopies(bonus, false));
@@ -115,26 +115,26 @@ public class Game {
 	 * INPUT PARAMETERS: void
 	 * 
 	 *********************************************************************************************/
-	public void refresh() throws IOException {
-		char[] check;
-		check = answer.toCharArray();
-		ArrayList<String> current = new ArrayList<String>();
-		for(int i = 0; i < check.length; i++) {
-			if(check[i] == ' ') {
-				current.add(" ");	
-			}else if(guessed.contains((check[i]+""))) {
-				for(int j = 0; j < guessed.size(); j++) {
-					if (guessed.get(j) == (check[i]+"")) {
-						current.add(guessed.get(j));
-					}
-				}
-//			} else if(guessed.contains(check[i])){
-//				current.set(i, check[i]+"");
-			} else {
-				current.add("*");
-			}
-		}
-	}
+//	public void refresh() throws IOException {
+//		char[] check;
+//		check = answer.toCharArray();
+//		ArrayList<String> current = new ArrayList<String>();
+//		for(int i = 0; i < check.length; i++) {
+//			if(check[i] == ' ') {
+//				current.add(" ");	
+//			}else if(guessed.contains((check[i]+""))) {
+//				for(int j = 0; j < guessed.size(); j++) {
+//					if (guessed.get(j).equals(check[i]+"")) {
+//						current.add(guessed.get(j));
+//					}
+//				}
+////			} else if(guessed.contains(check[i])){
+////				current.set(i, check[i]+"");
+//			} else {
+//				current.add("*");
+//			}
+//		}
+//	}
 	
 	/***************************************************************************************
 	 * FUNCTION: creating a brand new game (puzzle and answer)
@@ -198,6 +198,7 @@ public class Game {
 	 *********************************************************************************************/
 	public void bankrupt() {
 		players.get(whosTurn).setMoney(0.0);
+                changeTurn();
 	}
 	
 	/***************************************************************************************
@@ -240,14 +241,34 @@ public class Game {
 		for(int i = 0; i < check.length; i++) {
 			if(check[i] == ' ') {
                             current.add(" ");	
-			} else  if(guessed.contains(""+check[i])){
+			} else  if(containsCaseInsensitive(check[i]+"", guessed)){
                             current.add(check[i]+"");
 			} else {
                             current.add("*");
                         }
 		}
 	}
-	
+        /***************************************************************************************
+	 * FUNCTION: 
+	 * 
+	 * DESCRIPTION: 
+	 * 
+	 * METHOD: containsCaseInsensitive(String strToCompare, ArrayList<String>list)
+	 * 
+	 * RETURNS: 
+	 *
+	 * INPUT PARAMETERS:
+	 * 
+         * SOURCE: https://stackoverflow.com/questions/8751455/arraylist-contains-case-sensitivity
+	 *********************************************************************************************/
+	public boolean containsCaseInsensitive(String strToCompare, ArrayList<String>list)
+        {
+            for(String str:list){
+                if(str.equalsIgnoreCase(strToCompare)){
+                    return(true);}
+                }
+            return(false);
+        }
 	/***************************************************************************************
 	 * FUNCTION: Returns the current string
 	 * 
@@ -260,6 +281,7 @@ public class Game {
 	 * INPUT PARAMETERS: none
 	 * 
 	 *********************************************************************************************/
+        
 	public String getCurrent() throws IOException {
 		String toReturn = "";
 		for(int i = 0; i < current.size(); i ++) {
@@ -329,7 +351,7 @@ public class Game {
 		Random rand = new Random();
 		int randomNumForWheel = rand.nextInt(wheel.size());
                 setCurrent();
-		if(!wheel.get(randomNumForWheel).equals("bankrupt")  && !wheel.get(randomNumForWheel).equals("millionprize") && !wheel.get(randomNumForWheel).equals("loseaturn") && !wheel.get(randomNumForWheel).equals("freeplay")) {
+		if(!wheel.get(randomNumForWheel).equals("bankrupt")&& !wheel.get(randomNumForWheel).equals("loseaturn") && !wheel.get(randomNumForWheel).equals("freeplay")) {
 			currentSpokeValue = Integer.valueOf(wheel.get(randomNumForWheel));
 		}
 		return wheel.get(randomNumForWheel); //get a random index from the arraylist, may have to change later
@@ -349,7 +371,8 @@ public class Game {
 	 * 
 	 *********************************************************************************************/
 	public boolean checkAns(String a) throws IOException {
-		if(a.toLowerCase() == p.getAnswer().toLowerCase()) {
+		if(a.toLowerCase().equalsIgnoreCase(answer.toLowerCase())) {
+                        guessed.clear();
 			return true;
 		}
 		return false;
@@ -406,7 +429,7 @@ public class Game {
 	public String inputChar(char a) {
 		
 		for (int i=0;i<guessed.size();i++){
-			if ((a+"") == guessed.get(i)) {
+			if ((a+"").equals(guessed.get(i))) {
 				return "alreadyThere";
 			} 
 		}/*
@@ -416,14 +439,20 @@ public class Game {
 				guessed.add(a+"");
 			}
 		}*/
+                boolean there = false;
 		for (int i = 0; i < answers.length; i++) {
 			if (a == answers[i]) {
 				guessed.add(a+"");
 				players.get(whosTurn).deposit(currentSpokeValue);
-				return "there";
-			}
+                                there = true;
+                        }
 		}
-		guessed.add(a+"");
+                if(there){
+                return "there";
+                }
+                if(!guessed.contains(a+"")){
+                   guessed.add(a+""); 
+                }
 		return "notThere";
 	}
 	

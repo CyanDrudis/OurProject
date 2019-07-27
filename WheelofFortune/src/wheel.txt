@@ -23,7 +23,7 @@
 700
 700
 bankrupt
-millionprize
+bankrupt
 bankrupt
 600
 600
@@ -43,9 +43,9 @@ bankrupt
 650
 650
 650
-freeplay
-freeplay
-freeplay
+950
+950
+950
 700
 700
 700
