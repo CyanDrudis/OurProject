@@ -426,6 +426,23 @@ public class Game {
 	}
 	
 	/***************************************************************************************
+	 * FUNCTION: Increasing the puzzle counter
+	 * 
+	 * DESCRIPTION: Increasing the puzzle counter to see when the win condition has been reached
+	 * 
+	 * METHOD: win()
+	 * 
+	 * RETURNS: none	
+	 *
+	 * INPUT PARAMETERS: none
+	 * 
+	 *********************************************************************************************/
+	public void winPuzzleCounter() {
+		
+		numberOfPuzzles = numberOfPuzzles + 1;
+	}
+	
+	/***************************************************************************************
 	 * FUNCTION: The win scenario
 	 * 
 	 * DESCRIPTION: when the number of puzzles to win has been reached, the method will return

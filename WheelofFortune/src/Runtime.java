@@ -77,7 +77,8 @@ public class Runtime extends Game {
 					g.refresh();
 					//g.newGame();
 				}
-		}	}
+			}
+		}	
 	}
 		//Check the answer
 		//If the answer is right, refresh()
