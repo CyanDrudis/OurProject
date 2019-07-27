@@ -117,7 +117,7 @@ public class Game {
 	 *********************************************************************************************/
 	public void refresh() throws IOException {
 		char[] check;
-		check = p.getAnswer().toCharArray();
+		check = answer.toCharArray();
 		ArrayList<String> current = new ArrayList<String>();
 		for(int i = 0; i < check.length; i++) {
 			if(check[i] == ' ') {
@@ -152,11 +152,10 @@ public class Game {
 	public void newGame() throws IOException {
 		p = new Puzzle();
 		puzzle = p.getPuzzle();
-		p.getAnswer();
+		answer = p.getAnswer();
 		p.newPuzzle();
 		p.newAnswer();
-		answer = p.getAnswer();
-		answers = p.getAnswer().toCharArray();
+		answers = answer.toCharArray();
 		Player p1 = new Player();
 		Player p2 = new Player();
 		Player p3 = new Player();
@@ -236,13 +235,16 @@ public class Game {
 	 *********************************************************************************************/
 	public void setCurrent() throws IOException {
 		char[] check;
-		check = p.getAnswer().toCharArray();
+		check = answer.toCharArray();
+                current.clear();
 		for(int i = 0; i < check.length; i++) {
 			if(check[i] == ' ') {
-				current.add(" ");	
+                            current.add(" ");	
+			} else  if(guessed.contains(""+check[i])){
+                            current.add(check[i]+"");
 			} else {
-				current.add("*");
-			}
+                            current.add("*");
+                        }
 		}
 	}
 	
@@ -323,13 +325,13 @@ public class Game {
 	 * INPUT PARAMETERS: none
 	 * 
 	 *********************************************************************************************/
-	public String spin() {
+	public String spin() throws IOException {
 		Random rand = new Random();
 		int randomNumForWheel = rand.nextInt(wheel.size());
-		if(wheel.get(randomNumForWheel) != "bankrupt" && wheel.get(randomNumForWheel) != "millionprize" && wheel.get(randomNumForWheel) != "loseaturn" && wheel.get(randomNumForWheel) != "freeplay") {
+                setCurrent();
+		if(!wheel.get(randomNumForWheel).equals("bankrupt")  && !wheel.get(randomNumForWheel).equals("millionprize") && !wheel.get(randomNumForWheel).equals("loseaturn") && !wheel.get(randomNumForWheel).equals("freeplay")) {
 			currentSpokeValue = Integer.valueOf(wheel.get(randomNumForWheel));
 		}
-		
 		return wheel.get(randomNumForWheel); //get a random index from the arraylist, may have to change later
 	}
 	

@@ -58,7 +58,7 @@ public class Runtime extends Game {
 					{
 						System.out.println("Correct!");
 					} else if (g.inputChar(a) == "notThere"){
-						System.out.println("Letter is not in word!");
+						System.out.println("Letter is not in puzzle!");
 						g.changeTurn();
 					} else if (g.inputChar(a) == "alreadyThere") {
 						System.out.println("You've already guessed this letter");
