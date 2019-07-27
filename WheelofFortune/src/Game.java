@@ -198,7 +198,7 @@ public class Game {
 	 *********************************************************************************************/
 	public void bankrupt() {
 		players.get(whosTurn).setMoney(0.0);
-                changeTurn();
+        changeTurn();
 	}
 	
 	/***************************************************************************************
@@ -245,7 +245,7 @@ public class Game {
                             current.add(check[i]+"");
 			} else {
                             current.add("*");
-                        }
+			}
 		}
 	}
         /***************************************************************************************
@@ -265,8 +265,9 @@ public class Game {
         {
             for(String str:list){
                 if(str.equalsIgnoreCase(strToCompare)){
-                    return(true);}
-                }
+                    return(true);
+                    }
+            }
             return(false);
         }
 	/***************************************************************************************
@@ -379,6 +380,25 @@ public class Game {
 	}
 	
 	/***************************************************************************************
+	 * FUNCTION: checks string to return guessed answer list
+	 * 
+	 * DESCRIPTION: 
+	 * 
+	 * METHOD: checkGuess()
+	 * 
+	 * RETURNS: Boolean
+	 *
+	 * INPUT PARAMETERS: String
+	 * 
+	 *********************************************************************************************/
+	public boolean checkGuess(String a) throws IOException {
+		if(a.equalsIgnoreCase("check guessed")){
+			return true;
+		}
+		return false;
+	}
+	
+	/***************************************************************************************
 	 * FUNCTION: Changes who's turn it is
 	 * 
 	 * DESCRIPTION: Changes who's turn it is
@@ -439,20 +459,20 @@ public class Game {
 				guessed.add(a+"");
 			}
 		}*/
-                boolean there = false;
+        boolean there = false;
 		for (int i = 0; i < answers.length; i++) {
 			if (a == answers[i]) {
 				guessed.add(a+"");
 				players.get(whosTurn).deposit(currentSpokeValue);
-                                there = true;
-                        }
+                there = true;
+			}
 		}
-                if(there){
-                return "there";
-                }
-                if(!guessed.contains(a+"")){
-                   guessed.add(a+""); 
-                }
+        if(there){
+        	return "there";
+        }
+        if(!guessed.contains(a+"")){
+        	guessed.add(a+""); 
+        }
 		return "notThere";
 	}
 	
