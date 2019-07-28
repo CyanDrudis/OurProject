@@ -29,7 +29,11 @@ public class Runtime extends Game {
             g.winPuzzleCounter();
 			System.out.println("New puzzle!");
 			while(!g.winPuzzle()) {
-				spoke = g.spin();
+                            spoke = g.spin();
+                            while(spoke.equals("freespin")){
+                                System.out.println("You spun the wheel and... Free Spin! Spinning again...");
+                                spoke = g.spin();
+                            }
                 int playersTurn = g.whosTurn() + 1;
             if (spoke.equals("loseaturn")) {
             	g.loseATurn();

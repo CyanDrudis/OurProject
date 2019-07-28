@@ -353,7 +353,7 @@ public class Game {
 		Random rand = new Random();
 		int randomNumForWheel = rand.nextInt(wheel.size());
                 setCurrent();
-		if(!wheel.get(randomNumForWheel).equals("bankrupt")&& !wheel.get(randomNumForWheel).equals("loseaturn") && !wheel.get(randomNumForWheel).equals("freeplay")) {
+		if(!wheel.get(randomNumForWheel).equals("bankrupt")&& !wheel.get(randomNumForWheel).equals("loseaturn") && !wheel.get(randomNumForWheel).equals("freespin")) {
 			currentSpokeValue = Integer.valueOf(wheel.get(randomNumForWheel));
 		}
 		return wheel.get(randomNumForWheel); //get a random index from the arraylist, may have to change later
