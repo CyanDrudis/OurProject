@@ -49,12 +49,16 @@ public class Game {
 	private static final int numberOfPuzzlesToWin = 3;
 	private int numberOfPuzzles = -1;
 	private String name;
+        private int randomNumForWheel;
 	//private double money; //Player's account balance so to say
 	//private ArrayList<Boolean> prizeList = new ArrayList<>(Collections.nCopies(bonus, false));
 	
 	Puzzle p = new Puzzle();
 
 	ArrayList<Player> players = new ArrayList<Player>();
+        public int getRandomNumForWheel(){
+            return randomNumForWheel;
+        }
 	/***************************************************************************************
 	 * FUNCTION: Importing the wheel
 	 * 
@@ -352,7 +356,7 @@ public class Game {
 	 *********************************************************************************************/
 	public String spin() throws IOException {
 		Random rand = new Random();
-		int randomNumForWheel = rand.nextInt(wheel.size());
+                randomNumForWheel = rand.nextInt(wheel.size());
                 setCurrent();
 		if(!wheel.get(randomNumForWheel).equals("bankrupt")&& !wheel.get(randomNumForWheel).equals("loseaturn") && !wheel.get(randomNumForWheel).equals("freespin")) {
 			currentSpokeValue = Integer.valueOf(wheel.get(randomNumForWheel));
