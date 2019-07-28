@@ -54,26 +54,24 @@ public class Runtime extends Game {
                      Scanner read = new Scanner(System.in);
                      String input = read.nextLine();
                      char check [] = input.toCharArray();
-                     if (input == "check guessed") {
-                     	System.out.println(g.getGuessed());
-                     } 
+                     
                      if (check.length == 1) {
                      	char a = check[0];
                     	String outcome = g.inputChar(a);
-                     if(outcome == "there") {
+                     if(outcome.equals("there")) {
                      	System.out.println("Correct!");
-                     } else if (outcome == "notThere"){
+                     } else if (outcome.equals("notThere")){
                     	 System.out.println("Letter is not in puzzle!");
                      	 g.changeTurn();
-                     } else if (outcome == "alreadyThere") {
+                     } else if (outcome.equals("alreadyThere")) {
                     	 System.out.println("That letter has already been guessed!");
                          g.changeTurn();
+                     } else if (outcome.equals("puzzleComplete")){
+                         System.out.println("Puzzle complete");
                      }
                      //g.refresh();
                      } else {
-                    	 if(g.checkGuess(input)) {
-                         	System.out.println(g.getGuessed());
-                         } else if (g.checkAns(input)) {
+                         if (g.checkAns(input)) {
                          	System.out.println("Correct!");
                          } else {
                         	 System.out.println("Incorrect!");

@@ -1,3 +1,4 @@
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
@@ -448,7 +449,13 @@ public class Game {
 	 * 
 	 *********************************************************************************************/
 	public String inputChar(char a) {
-		
+            if(!guessed.contains(a+"")){
+        	guessed.add(a+""); 
+            }
+		if(!current.contains("*")){
+                    guessed.clear();
+                    return "puzzleComplete";
+                }
 		for (int i=0;i<guessed.size();i++){
 			if ((a+"").equals(guessed.get(i))) {
 				return "alreadyThere";
@@ -464,16 +471,19 @@ public class Game {
 		for (int i = 0; i < answers.length; i++) {
 			if (a == answers[i]) {
 				guessed.add(a+"");
+                                if(a == 'a' ||a == 'e' ||a == 'i' ||a == 'o' || a =='u'){
+                                    players.get(whosTurn).withdraw(currentSpokeValue);
+                                }
+                                else{
 				players.get(whosTurn).deposit(currentSpokeValue);
+                                }
                 there = true;
 			}
 		}
         if(there){
         	return "there";
         }
-        if(!guessed.contains(a+"")){
-        	guessed.add(a+""); 
-        }
+        
 		return "notThere";
 	}
 	
