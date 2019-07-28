@@ -26,11 +26,14 @@ public class Runtime extends Game {
 			g.newGame();
 			g.importWheel();
 			g.setCurrent();
-            g.winPuzzleCounter();
+                        g.winPuzzleCounter();
 			System.out.println("New puzzle!");
 			while(!g.winPuzzle()) {
 				spoke = g.spin();
                 int playersTurn = g.whosTurn() + 1;
+                while(spoke.equals("freespin")){
+                    spoke = g.spin();
+                }
             if (spoke.equals("loseaturn")) {
             	g.loseATurn();
 				System.out.println("You spun the wheel and... Sorry you lose a turn!");
@@ -43,7 +46,7 @@ public class Runtime extends Game {
                  playersTurn = g.whosTurn() + 1;
                  System.out.println("Player "+ playersTurn +" next!");
             	 } else {
-            		 System.out.println("You spun the wheel and landed on $" + spoke);
+                     System.out.println("You spun the wheel and landed on $" + spoke);
                      System.out.println("Player " + playersTurn +" Turn" + " | Category: " + g.getPuzzle() + " | Balance: " + g.getBal());
                      System.out.println("Puzzle: " + g.getCurrent());
                      System.out.println("Now guess a letter or try to solve :");
@@ -77,15 +80,15 @@ public class Runtime extends Game {
                          }
                          //g.refresh();
                          //g.newGame();
-                     }
-            	 }
-            }
+                         }
+                    	 }
+                         }
 			}
 			int playersTurn = g.whosTurn() + 1;
             System.out.println("Congratulations player "+ playersTurn + " you successfully solved the puzzle!");
             g.winPuzzleCounter();
-		}	
-	}
+            }	
+}
 		//Check the answer
 		//If the answer is right, refresh()
 		//If the answer is wrong, changeTurn()
