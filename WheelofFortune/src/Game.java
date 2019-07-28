@@ -356,7 +356,9 @@ public class Game {
 	 *********************************************************************************************/
 	public String spin() throws IOException {
 		Random rand = new Random();
+                if(wheel.size()>0){
                 randomNumForWheel = rand.nextInt(wheel.size());
+                }
                 setCurrent();
 		if(!wheel.get(randomNumForWheel).equals("bankrupt")&& !wheel.get(randomNumForWheel).equals("loseaturn") && !wheel.get(randomNumForWheel).equals("freespin")) {
 			currentSpokeValue = Integer.valueOf(wheel.get(randomNumForWheel));
