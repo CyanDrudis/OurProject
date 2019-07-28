@@ -549,7 +549,9 @@ public class Game {
 				return false;
 			}
 		}
+                guessed.clear();
 		return true;
+                
 	}
 //	
 //	/************************************************************************
