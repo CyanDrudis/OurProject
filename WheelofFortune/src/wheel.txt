@@ -4,7 +4,7 @@ bankrupt
 350
 250
 150
-freepsin
+freespin
 100
 375
 200
