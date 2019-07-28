@@ -16,7 +16,6 @@ loseaturn
 200
 375
 100
-freespin
 150
 250
 350
