@@ -19,8 +19,10 @@ import java.util.Collections;
  *					  -answer: a String, the word that the players will be guessing
  *					  -whosTurn: keeps track of who's turn it is, used to skip turns as well			
  *					  -ArrayList<String> wheel = array list of the wheel which has all the available "prizes"
- *					  -ArrayList<String> current = array list of the current 
- *
+ *					  -ArrayList<String> current = array list of the current  
+ *					  -ArrayList<String> guessed = array list of guessed letters
+ *					  -answers: a character array which takes the answer and separates it into characters
+ *					  -numberOfPuzzles: keeps track of number of puzzles completed	
  *
  *					  -name: a String, the player's name
  *                    -money: a double, the player's 'account' so to say  
@@ -231,7 +233,7 @@ public class Game {
 	 * 
 	 * RETURNS: void
 	 *
-	 * INPUT PARAMETERS:void  
+	 * INPUT PARAMETERS: void  
 	 * 
 	 *********************************************************************************************/
 	public void setCurrent() throws IOException {
@@ -259,7 +261,7 @@ public class Game {
 	 *
 	 * INPUT PARAMETERS:
 	 * 
-         * SOURCE: https://stackoverflow.com/questions/8751455/arraylist-contains-case-sensitivity
+     * SOURCE: https://stackoverflow.com/questions/8751455/arraylist-contains-case-sensitivity
 	 *********************************************************************************************/
 	public boolean containsCaseInsensitive(String strToCompare, ArrayList<String>list) {
             for(String str:list){
@@ -381,7 +383,7 @@ public class Game {
 	/***************************************************************************************
 	 * FUNCTION: checks string to return guessed answer list
 	 * 
-	 * DESCRIPTION: 
+	 * DESCRIPTION: allows user to check what letters they have guessed
 	 * 
 	 * METHOD: checkGuess()
 	 * 
