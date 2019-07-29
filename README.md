@@ -1,8 +1,8 @@
 # OurProject
 
 Contributors
-CyanMatrix - 
-RoiCB7 - 
+CyanMatrix - Harrison Toker
+RoiCB7 - Chris Botuli
 rzwc - Richard Chow
 
 Our project is based on the game Wheel of Fortune as popularily seen on TV. 
