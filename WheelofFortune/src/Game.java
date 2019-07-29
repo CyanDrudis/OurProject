@@ -121,8 +121,8 @@ public class Game {
 	 * INPUT PARAMETERS:
 	 * 
 	 *********************************************************************************************/
-	public double setBal(int whosTurn, int money) {
-		return players.get(whosTurn).setMoney(money);
+	public void setBal(int whosTurn, int money) {
+		players.get(whosTurn).setMoney(money);
 	}
 	
 	/***************************************************************************************

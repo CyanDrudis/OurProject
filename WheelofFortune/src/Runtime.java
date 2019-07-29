@@ -55,6 +55,10 @@ public class Runtime extends Game {
                      String input = read.nextLine();
                      char check [] = input.toCharArray();
                      
+                     if(input.equals("Quit")) {
+                    	 System.exit(0);
+                     }	
+                     
                      if (check.length == 1) {
                      	char a = check[0];
                     	String outcome = g.inputChar(a);
@@ -94,8 +98,8 @@ public class Runtime extends Game {
                 String Continue = read.nextLine();
                 if (Continue.equals("Y")) {
                 	g.setWinPuzzleCounter(0);
-                	for(int i = 0, i < players.size(), i++) {
-                		g.setMoney(i,0);
+                	for(int i = 0; i < 3; i++) {
+                		g.setBal(i,0);
                 	}
                 	
                 } else if (Continue.equals("N")) {
