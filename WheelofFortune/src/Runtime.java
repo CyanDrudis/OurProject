@@ -94,7 +94,9 @@ public class Runtime extends Game {
                 String Continue = read.nextLine();
                 if (Continue.equals("Y")) {
                 	g.setWinPuzzleCounter(0);
-                	//p.setMoney(0);
+                	for(int i = 0, i < players.size(), i++) {
+                		g.setMoney(i,0);
+                	}
                 	
                 } else if (Continue.equals("N")) {
                 	System.exit(0);

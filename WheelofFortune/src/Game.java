@@ -47,7 +47,7 @@ public class Game {
 	private static final int bonus =5;
 	private static final double vowelCost = 50;
 	private static final int numberOfPuzzlesToWin = 3;
-	private int numberOfPuzzles = -1;
+	private int numberOfPuzzles = 0;
 	private String name;
         private int randomNumForWheel;
 	//private double money; //Player's account balance so to say
@@ -107,6 +107,24 @@ public class Game {
 	public double getBal() {
 		return players.get(whosTurn).getMoney();
 	}
+	
+	/***************************************************************************************
+	 * FUNCTION: Setting the balance of the player
+	 * 
+	 * DESCRIPTION: 
+	 * 
+	 * 
+	 * METHOD: getBal()
+	 * 
+	 * RETURNS: 
+	 *
+	 * INPUT PARAMETERS:
+	 * 
+	 *********************************************************************************************/
+	public double setBal(int whosTurn, int money) {
+		return players.get(whosTurn).setMoney(money);
+	}
+	
 	/***************************************************************************************
 	 * FUNCTION: Refresh the current string array to display to the user what they've guessed/what is
 	 * left to guess
