@@ -126,6 +126,23 @@ public class Game {
 	}
 	
 	/***************************************************************************************
+	 * FUNCTION: Getting player list size
+	 * 
+	 * DESCRIPTION: 
+	 * 
+	 * 
+	 * METHOD: getPlayerListSize()
+	 * 
+	 * RETURNS: 
+	 *
+	 * INPUT PARAMETERS:
+	 * 
+	 *********************************************************************************************/
+	public int getPlayerListSize() {
+		return players.size();
+	}
+	
+	/***************************************************************************************
 	 * FUNCTION: Refresh the current string array to display to the user what they've guessed/what is
 	 * left to guess
 	 * 

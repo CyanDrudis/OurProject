@@ -57,7 +57,9 @@ public class Runtime extends Game {
                      
                      if(input.equals("Quit")) {
                     	 System.exit(0);
-                     }	
+                     } else if (input.equals("quit")){
+                    	 System.exit(0);
+                     }
                      
                      if (check.length == 1) {
                      	char a = check[0];
@@ -98,7 +100,7 @@ public class Runtime extends Game {
                 String Continue = read.nextLine();
                 if (Continue.equals("Y")) {
                 	g.setWinPuzzleCounter(0);
-                	for(int i = 0; i < 3; i++) {
+                	for(int i = 0; i < g.getPlayerListSize(); i++) {
                 		g.setBal(i,0);
                 	}
                 	
