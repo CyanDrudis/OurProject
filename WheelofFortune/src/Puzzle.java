@@ -87,7 +87,7 @@ public class Puzzle
 	 *********************************************************************************************/
 	public String getPuzzle() throws IOException 
 	{
-		BufferedReader br = new BufferedReader(new FileReader(getClass().getClassLoader().getResource("puzzle.txt").getFile()));
+		BufferedReader br = new BufferedReader(new FileReader(getClass().getClassLoader().getResource("wheeloffortune//puzzle.txt").getFile()));
 		// used (above line)code from: https://www.mkyong.com/java/java-read-a-file-from-resources-folder/
 		String line = "";
 		line = br.readLine();
@@ -120,7 +120,7 @@ public class Puzzle
 	public String getAnswer () throws IOException 
 	{
 		String[] ans;
-		BufferedReader br = new BufferedReader(new FileReader(getClass().getClassLoader().getResource("answers.txt").getFile()));
+		BufferedReader br = new BufferedReader(new FileReader(getClass().getClassLoader().getResource("wheeloffortune//answers.txt").getFile()));
 		// used (above line)code from: https://www.mkyong.com/java/java-read-a-file-from-resources-folder/
 		String line = "";
 		line = br.readLine();
@@ -131,6 +131,8 @@ public class Puzzle
 	    }
 	    br.close();
 	    ans = answers.get(randomIntForPuzzle).split(",");
+            System.out.println(ans.toString());
+            randomIntForAnswer = rand.nextInt(ans.length);
 		return ans[randomIntForAnswer];
 	}
 	/***************************************************************************************
@@ -149,7 +151,7 @@ public class Puzzle
 	 *********************************************************************************************/
 	public ArrayList<String> getWheel () throws IOException
 	{
-		BufferedReader br = new BufferedReader(new FileReader(getClass().getClassLoader().getResource("wheel.txt").getFile()));
+		BufferedReader br = new BufferedReader(new FileReader(getClass().getClassLoader().getResource("wheeloffortune//wheel.txt").getFile()));
 		// used (above line)code from: https://www.mkyong.com/java/java-read-a-file-from-resources-folder/
 		String line = "";
 		line = br.readLine();

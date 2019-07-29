@@ -21,26 +21,23 @@ import java.util.Collections;
 public class Player extends Game{
 	private static final int bonus =5;
 	private String name;
-	private double money; //Player's account balance so to say
-	//private ArrayList<Boolean> prizeList = new ArrayList<>(Collections.nCopies(bonus, false));
+	private double money;
+        //Player's current round account balance
+        private double totalMoney;
+        //Player's account balance so to say
 	
-	//[0] = cruise, [1] = wildcard, [2] = 1/2 car (1st half) [3] = 1/2 car (2nd half)
-	//[4] = 1 million dollar prize
-	
-	/* FUNCTION: getPrizeListBoolean
+	/************************************************************************
+	 * FUNCTION: getMoney
 	 * 
-	 * PURPOSE: 
+	 * PURPOSE: returns the amount of money in a player's account
 	 * 
-	 * METHOD: 
+	 * METHOD: return instance variable money
 	 * 
-	 * RETURNS: a Boolean
-	 *
-	 * INPUT PARAMETERS:  an integer
-	 */
-//	public Boolean getPrizeListBoolean(int index) {
-//		return prizeList.get(index);
-//	}
-	
+	 * RETURNS: a double
+	 ************************************************************************/
+	public double getTotalMoney() {
+		return totalMoney;
+	}
 	/************************************************************************
 	 * FUNCTION: getMoney
 	 * 
