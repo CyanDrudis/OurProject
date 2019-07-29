@@ -81,7 +81,7 @@ public class Game {
 	 * DESCRIPTION: 
 	 * 
 	 * 
-	 * METHOD: 
+	 * METHOD: getPuzzle() 
 	 * 
 	 * RETURNS: 
 	 *
