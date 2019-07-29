@@ -97,7 +97,7 @@ public class Game {
 	 * DESCRIPTION: 
 	 * 
 	 * 
-	 * METHOD: 
+	 * METHOD: getBal()
 	 * 
 	 * RETURNS: 
 	 *
