@@ -1,4 +1,10 @@
 # OurProject
+
+Contributors
+CyanMatrix - 
+RoiCB7 - 
+rzwc - Richard Chow
+
 Our project is based on the game Wheel of Fortune as popularily seen on TV. 
 Intention is to have everything run from Game.java but the interaction with the program occur in Runtime.java. 
 So a prospective user would not have to worry about the other java files. 
