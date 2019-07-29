@@ -33,7 +33,6 @@ public class RuntimeGUI extends javax.swing.JFrame {
     public void spinWheel(){
         try{
         spoke = g.spin();
-        System.out.println(spoke);
         }
         catch(IOException ex){
             System.out.println("IOException");
@@ -50,13 +49,14 @@ public class RuntimeGUI extends javax.swing.JFrame {
         spinInput = true;
     }
     public void refresh() throws IOException{
+        g.setCurrent();
         jLabel1.setText("Puzzle: " + g.getCurrent());
         jLabel5.setText("$"+g.players.get(0).getMoney());
         jLabel7.setText("$"+g.players.get(1).getMoney());
         jLabel9.setText("$"+g.players.get(2).getMoney());
         int playersTurn = g.whosTurn()+1;
         jLabel11.setText("Player " + playersTurn + "'s turn.");
-        jLabel12.setText("Category :" + g.getPuzzle());
+        jLabel12.setText("Category : " + g.getPuzzle());
     }
     public RuntimeGUI() throws IOException{
         initComponents();
@@ -107,7 +107,6 @@ public class RuntimeGUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         label1 = new java.awt.Label();
         jLabel11 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -167,14 +166,6 @@ public class RuntimeGUI extends javax.swing.JFrame {
         jLabel11.setText("Player x turn");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, -1, -1));
 
-        jButton2.setText("jButton2");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 490, -1, -1));
-
         jLabel12.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         jLabel12.setText("Category:");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, -1, -1));
@@ -209,10 +200,8 @@ public class RuntimeGUI extends javax.swing.JFrame {
         if(jTextField1.getText().equals("")){
            jLabel10.setText("Please enter in a letter or guess the puzzle");
         }else{
-        
         spinWheel();
         try{
-        System.out.println(g.getGuessed());
         spinInput = true;
         if(spinInput){
                     spinInput = false;
@@ -239,21 +228,35 @@ public class RuntimeGUI extends javax.swing.JFrame {
                                     refresh();
                                     if(outcome.equals("there")) {
                                         jLabel10.setText("Correct");
-                                        System.out.println("test");
+                                        refresh();
                                     } else if (outcome.equals("notThere")){
                                         jLabel10.setText("Incorrect");
                                         g.changeTurn();
+                                        refresh();
                                     } else if (outcome.equals("alreadyThere")) {
                                         jLabel10.setText("Already guessed");
                                         g.changeTurn();
+                                        refresh();
                                     } else if (outcome.equals("puzzleComplete")){
-                                        jLabel10.setText("Puzzle complete");
+                                        g.winPuzzleCounter();
+                                        g.newGame();
+                                        g.importWheel();
+                                        g.setCurrent();
+                                        playersTurn = g.whosTurn() + 1;
+                                        jLabel10.setText("Player " + playersTurn + " solved it!, New Puzzle!");
+                                        refresh();
                                     }
                                     refresh();
                                 }
                                 else{
                                     if(g.checkAns(input)){
-                                        jLabel10.setText("Correct!");
+                                        g.winPuzzleCounter();
+                                        g.newGame();
+                                        g.importWheel();
+                                        g.setCurrent();
+                                        playersTurn = g.whosTurn() + 1;
+                                        jLabel10.setText("Player " + playersTurn + "solved it!, New Puzzle!");
+                                        refresh();
                                     }else{
                                         jLabel10.setText("Incorrect!");
                                         g.changeTurn();
@@ -271,18 +274,6 @@ public class RuntimeGUI extends javax.swing.JFrame {
         }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        try{
-        g.newGame();
-        g.importWheel();
-        g.setCurrent();
-        }
-        catch(IOException ex){
-            
-        }
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
@@ -331,7 +322,6 @@ public class RuntimeGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

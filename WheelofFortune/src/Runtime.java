@@ -67,12 +67,14 @@ public class Runtime extends Game {
                     	 System.out.println("That letter has already been guessed!");
                          g.changeTurn();
                      } else if (outcome.equals("puzzleComplete")){
-                         System.out.println("Puzzle complete");
+                         playersTurn = g.whosTurn() + 1;
+                         System.out.println("Correct! Player "+ playersTurn + " solved the puzzle");
                      }
                      //g.refresh();
                      } else {
                          if (g.checkAns(input)) {
-                         	System.out.println("Correct!");
+                             playersTurn = g.whosTurn() + 1;
+                         	System.out.println("Correct! Player "+ playersTurn + " solved the puzzle");
                          } else {
                         	 System.out.println("Incorrect!");
                            	 g.changeTurn();

@@ -45,7 +45,7 @@ public class Game {
 	private char[] answers;
 	private double[] money;
 	private static final int bonus =5;
-	private static final double vowelCost = 250;
+	private static final double vowelCost = 50;
 	private static final int numberOfPuzzlesToWin = 3;
 	private int numberOfPuzzles = -1;
 	private String name;
@@ -317,28 +317,6 @@ public class Game {
 		return toReturn;
 	}
 	
-	/***************************************************************************************
-	 * FUNCTION: Allows user to guess vowels and withdraws money from their bank account according
-	 * to the number of vowels that they guess
-	 * 
-	 * DESCRIPTION: Compares guessed vowel to the answer character array
-	 * 
-	 * METHOD: freePlay()
-	 * 
-	 * RETURNS: void
-	 *
-	 * INPUT PARAMETERS: void  
-	 * 
-	 *********************************************************************************************/
-	public void freePlay(char a) {
-		int numOfVowels = 0;
-		for(int i = 0; i < current.size(); i++) {
-			if(a == answers[i]) {
-				numOfVowels++;
-			}
-		}
-		players.get(whosTurn).pricePerVowel(numOfVowels);
-	}
 	
 	/***************************************************************************************
 	 * FUNCTION: gets a random index of the wheel
@@ -454,11 +432,8 @@ public class Game {
 	 * INPUT PARAMETERS:  char
 	 * 
 	 *********************************************************************************************/
-	public String inputChar(char a) {
-		if(!current.contains("*")){
-                    guessed.clear();
-                    return "puzzleComplete";
-                }
+	public String inputChar(char a) throws IOException {
+		
 		for (int i=0;i<guessed.size();i++){
 			if ((a+"").equals(guessed.get(i))) {
 				return "alreadyThere";
@@ -472,11 +447,11 @@ public class Game {
 		}*/
         boolean there = false;
 		for (int i = 0; i < answers.length; i++) {
-			if (a == answers[i]) {
+			if ((a+"").equalsIgnoreCase(answers[i]+"")) {
                             there = true;
 				guessed.add(a+"");
                                 if(a == 'a' ||a == 'e' ||a == 'i' ||a == 'o' || a =='u'){
-                                    players.get(whosTurn).withdraw(currentSpokeValue);
+                                    players.get(whosTurn).withdraw(vowelCost);
                                 }
                                 else{
 				players.get(whosTurn).deposit(currentSpokeValue);
@@ -484,6 +459,11 @@ public class Game {
                 
 			}
 		}
+                setCurrent();
+                if(!current.contains("*")){
+                    guessed.clear();
+                    return "puzzleComplete";
+                }
         if(there){
         	return "there";
         }
