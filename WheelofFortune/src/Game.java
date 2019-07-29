@@ -126,6 +126,33 @@ public class Game {
 	}
 	
 	/***************************************************************************************
+	 * FUNCTION: Getting highest balance
+	 * 
+	 * DESCRIPTION: 
+	 * 
+	 * 
+	 * METHOD: getHighestBalPlayer()
+	 * 
+	 * RETURNS: 
+	 *
+	 * INPUT PARAMETERS:
+	 * 
+	 *********************************************************************************************/
+	public int getHighestBalPlayer() {
+		int size = players.size();
+		int index = 1;
+		int highest = (int) getBal();
+		for (int i=0; i<players.size();i++) {
+			if (highest < getBal()) {
+				highest = (int)getBal();
+				changeTurn();
+				index = whosTurn();
+			}
+		}
+		return index;
+	}
+	
+	/***************************************************************************************
 	 * FUNCTION: Getting player list size
 	 * 
 	 * DESCRIPTION: 
@@ -261,6 +288,22 @@ public class Game {
 		}	else	{
 			whosTurn += 1;
 		}
+	}
+	
+	/***************************************************************************************
+	 * FUNCTION: Set Turn
+	 * 
+	 * DESCRIPTION: 
+	 * 
+	 * METHOD: setTurn()
+	 * 
+	 * RETURNS: void
+	 *
+	 * INPUT PARAMETERS: void
+	 * 
+	 *********************************************************************************************/
+	public void setTurn(int turn){
+		whosTurn = turn;
 	}
 	
 	/***************************************************************************************

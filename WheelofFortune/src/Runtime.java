@@ -95,12 +95,27 @@ public class Runtime extends Game {
             System.out.println("Congratulations player "+ playersTurn + " you successfully solved the puzzle!");
  
             if(g.win()) {
+            	if (g.whosTurn() == 2 ){
+            		g.changeTurn();
+            	} else if (g.whosTurn() == 1) {
+            		g.changeTurn();
+            		g.changeTurn();
+            	}
+            	for(int i = 0; i < g.getPlayerListSize(); i++) {
+            		System.out.println("Player " + (g.whosTurn()+1) + "'s balance: " + g.getBal());
+            		g.changeTurn();
+            	}
+            	
+            	int highest = g.getHighestBalPlayer() + 1;
+            	
+            	System.out.println("Congratulations Player "+ highest + " you won the game!");
             	System.out.println("Would you like to continue? Y/N");
             	Scanner read = new Scanner(System.in);
                 String Continue = read.nextLine();
                 if (Continue.equals("Y")) {
                 	g.setWinPuzzleCounter(0);
                 	for(int i = 0; i < g.getPlayerListSize(); i++) {
+                		g.setTurn(0);
                 		g.setBal(i,0);
                 	}
                 	
