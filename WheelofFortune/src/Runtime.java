@@ -26,7 +26,7 @@ public class Runtime extends Game {
 			g.newGame();
 			g.importWheel();
 			g.setCurrent();
-                        g.winPuzzleCounter();
+            g.winPuzzleCounter();
 			System.out.println("New puzzle!");
 			while(!g.winPuzzle()) {
                             spoke = g.spin();
@@ -87,7 +87,19 @@ public class Runtime extends Game {
 			}
 			int playersTurn = g.whosTurn() + 1;
             System.out.println("Congratulations player "+ playersTurn + " you successfully solved the puzzle!");
-            g.winPuzzleCounter();
+ 
+            if(g.win()) {
+            	System.out.println("Would you like to continue? Y/N");
+            	Scanner read = new Scanner(System.in);
+                String Continue = read.nextLine();
+                if (Continue.equals("Y")) {
+                	g.setWinPuzzleCounter(0);
+                	//p.setMoney(0);
+                	
+                } else if (Continue.equals("N")) {
+                	System.exit(0);
+                }
+            }
 		}	
 	}
 		//Check the answer
