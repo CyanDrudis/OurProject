@@ -4,9 +4,7 @@ import java.util.Scanner;
 /*********************************************************************************************************************
  * CLASS: Runtime.java
  * 
- * PURPOSE: to be the main engine where the game is created
- * 
- * VARIABLES: 
+ * PURPOSE: to be the main engine where the game is created along with where user interaction and input/output occur.
  *                    
  * NOTES: 
  *********************************************************************************************************************/
@@ -19,6 +17,10 @@ public class Runtime extends Game {
 		//Player p2 = new Player();
 		
 	public static void main(String[] args) throws IOException {
+		RunDaTing();
+	}
+	
+	public static void RunDaTing () throws IOException {
 		Game g = new Game();
 		while(g.win()==false) {
 			System.out.println("Welcome to Wheel of Fortune. Take a spin of the Wheel.");
@@ -27,30 +29,30 @@ public class Runtime extends Game {
 			g.importWheel();
 			g.setCurrent();
             g.winPuzzleCounter();
-			System.out.println("New puzzle!");
+			System.out.println("\nNew puzzle!");
 			while(!g.winPuzzle()) {
                             spoke = g.spin();
                             while(spoke.equals("freespin")){
-                                System.out.println("You spun the wheel and... Free Spin! Spinning again...");
+                                System.out.println("\nYou spun the wheel and... Free Spin! Spinning again...");
                                 spoke = g.spin();
                             }
                 int playersTurn = g.whosTurn() + 1;
             if (spoke.equals("loseaturn")) {
             	g.loseATurn();
-				System.out.println("You spun the wheel and... Sorry you lose a turn!");
+				System.out.println("\nYou spun the wheel and... Sorry you lose a turn!");
                 playersTurn = g.whosTurn() + 1;
                 System.out.println("Player "+ playersTurn +" next!");
             } else {
             	 if (spoke.equals("bankrupt")) {
                  g.bankrupt();
-                 System.out.println("You spun the wheel and... Oh no you went bankrupt!" );
+                 System.out.println("\nYou spun the wheel and... Oh no you went bankrupt!" );
                  playersTurn = g.whosTurn() + 1;
                  System.out.println("Player "+ playersTurn +" next!");
             	 } else {
-                     System.out.println("You spun the wheel and landed on $" + spoke);
+                     System.out.println("\nYou spun the wheel and landed on $" + spoke);
                      System.out.println("Player " + playersTurn +" Turn" + " | Category: " + g.getPuzzle() + " | Balance: " + g.getBal());
                      System.out.println("Puzzle: " + g.getCurrent());
-                     System.out.println("Now guess a letter or try to solve :");
+                     System.out.println("\nNow guess a letter or try to solve :");
                      Scanner read = new Scanner(System.in);
                      String input = read.nextLine();
                      char check [] = input.toCharArray();
@@ -59,22 +61,22 @@ public class Runtime extends Game {
                      	char a = check[0];
                     	String outcome = g.inputChar(a);
                      if(outcome.equals("there")) {
-                     	System.out.println("Correct!");
+                     	System.out.println("\nCorrect!");
                      } else if (outcome.equals("notThere")){
-                    	 System.out.println("Letter is not in puzzle!");
+                    	 System.out.println("\nLetter is not in puzzle!");
                      	 g.changeTurn();
                      } else if (outcome.equals("alreadyThere")) {
-                    	 System.out.println("That letter has already been guessed!");
+                    	 System.out.println("\nThat letter has already been guessed!");
                          g.changeTurn();
                      } else if (outcome.equals("puzzleComplete")){
-                         System.out.println("Puzzle complete");
+                         System.out.println("\nPuzzle complete");
                      }
                      //g.refresh();
                      } else {
                          if (g.checkAns(input)) {
-                         	System.out.println("Correct!");
+                         	System.out.println("\nCorrect!");
                          } else {
-                        	 System.out.println("Incorrect!");
+                        	 System.out.println("\nIncorrect!");
                            	 g.changeTurn();
                          }
                          //g.refresh();
@@ -84,12 +86,14 @@ public class Runtime extends Game {
             }
 			}
 			int playersTurn = g.whosTurn() + 1;
-            System.out.println("Congratulations player "+ playersTurn + " you successfully solved the puzzle!");
+            System.out.println("\nCongratulations player "+ playersTurn + " you successfully solved the puzzle!");
             g.winPuzzleCounter();
 		}	
-	}
 		//Check the answer
 		//If the answer is right, refresh()
 		//If the answer is wrong, changeTurn()
 		//If win, deposit value of wheel/get prize
+		
+	}
+	
 }
