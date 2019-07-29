@@ -26,7 +26,7 @@ public class RuntimeGUI extends javax.swing.JFrame {
     /**
      * Creates new form RunetimeGUI
      */
-    BufferedImage image = ImageIO.read(getClass().getClassLoader().getResource("wheeloffortune//wheelpng.png"));
+    BufferedImage image = ImageIO.read(getClass().getClassLoader().getResource("wheelpng.png"));
     BufferedImage toModify;
     Game g = new Game();
     
