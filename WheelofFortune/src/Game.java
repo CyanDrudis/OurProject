@@ -92,7 +92,7 @@ public class Game {
 		return puzzle;
 	}
 	/***************************************************************************************
-	 * FUNCTION: 
+	 * FUNCTION: Get the balance of the player
 	 * 
 	 * DESCRIPTION: 
 	 * 
