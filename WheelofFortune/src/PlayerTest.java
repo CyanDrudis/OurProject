@@ -33,12 +33,6 @@ public class PlayerTest {
 			assertEquals("Withdraw 500", -500, p.getMoney(), 0.000001);
 		}
 		
-		@Test	
-		public void test_price_per_vowel() {
-			Player p = new Player();
-			p.pricePerVowel(3);
-			assertEquals("Guessed three vowels, view balance afterwards", -750, p.getMoney(), 0.000001);
-		}
 	
 		
 
