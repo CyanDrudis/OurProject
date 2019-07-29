@@ -44,22 +44,28 @@ public class Game {
 	private static ArrayList<String> guessed = new ArrayList<String>();
 	private char[] answers;
 	private double[] money;
+	private static final int bonus =5;
+	private static final double vowelCost = 250;
 	private static final int numberOfPuzzlesToWin = 3;
 	private int numberOfPuzzles = -1;
-	
+	private String name;
+        private int randomNumForWheel;
 	//private double money; //Player's account balance so to say
 	//private ArrayList<Boolean> prizeList = new ArrayList<>(Collections.nCopies(bonus, false));
 	
 	Puzzle p = new Puzzle();
 
 	ArrayList<Player> players = new ArrayList<Player>();
+        public int getRandomNumForWheel(){
+            return randomNumForWheel;
+        }
 	/***************************************************************************************
-	 * METHOD: importWheel()
-	 * 
-	 * PURPOSE: Importing the wheel
+	 * FUNCTION: Importing the wheel
 	 * 
 	 * DESCRIPTION: importing the wheel from a text file containing all the wheel's 
 	 * options using the function in the puzzle class
+	 * 
+	 * METHOD: importWheel()
 	 * 
 	 * RETURNS: void
 	 *
@@ -70,11 +76,12 @@ public class Game {
 		wheel = p.getWheel();
 	}
 	/***************************************************************************************
-	 * METHOD: 
-	 * 
-	 * PURPOSE: 
+	 * FUNCTION: 
 	 * 
 	 * DESCRIPTION: 
+	 * 
+	 * 
+	 * METHOD: 
 	 * 
 	 * RETURNS: 
 	 *
@@ -85,11 +92,12 @@ public class Game {
 		return puzzle;
 	}
 	/***************************************************************************************
-	 * METHOD: 
-	 * 
-	 * PURPOSE: 
+	 * FUNCTION: 
 	 * 
 	 * DESCRIPTION: 
+	 * 
+	 * 
+	 * METHOD: 
 	 * 
 	 * RETURNS: 
 	 *
@@ -100,14 +108,14 @@ public class Game {
 		return players.get(whosTurn).getMoney();
 	}
 	/***************************************************************************************
-	 * METHOD: refresh()
-	 * 
-	 * PURPOSE: Refresh the current string array to display to the user what they've guessed/what is
+	 * FUNCTION: Refresh the current string array to display to the user what they've guessed/what is
 	 * left to guess
 	 * 
 	 * DESCRIPTION: This method takes the answer and creates a character array to which it checks the 
 	 * with the guessed string array, and fills in the index where the guess matches the answer and
 	 * the rest with asterisks
+	 * 
+	 * METHOD: refresh()
 	 * 
 	 * RETURNS: void
 	 *
@@ -136,12 +144,12 @@ public class Game {
 //	}
 	
 	/***************************************************************************************
-	 * METHOD: newGame
-	 * 
-	 * PURPOSE: creating a brand new game (puzzle and answer)
+	 * FUNCTION: creating a brand new game (puzzle and answer)
 	 * 
 	 * DESCRIPTION: creates a brand new game for the player to try and win, chooses a puzzle,
 	 * then chooses an answer from that puzzle category, creates three player accounts
+	 * 
+	 * METHOD: newGame()
 	 * 
 	 * RETURNS: void
 	 *
@@ -165,11 +173,11 @@ public class Game {
 	}
 	
 	/***************************************************************************************
-	 * METHOD: newPuzzle
-	 * 
-	 * PURPOSE: Create a new puzzle and obtain an answer from that puzzle
+	 * FUNCTION: Create a new puzzle and obtain an answer from that puzzle
 	 * 
 	 * DESCRIPTION: transfer answer to character array, create new answer and puzzle
+	 * 
+	 * METHOD: newPuzzle()
 	 * 
 	 * RETURNS: void
 	 *
@@ -184,11 +192,11 @@ public class Game {
 	}
 	
 	/***************************************************************************************
-	 * METHOD: bankrupt
-	 * 
-	 * PURPOSE: Reset users money upon landing on bankrupt section of the wheel
+	 * FUNCTION: Reset users money upon landing on bankrupt section of the wheel
 	 * 
 	 * DESCRIPTION: sets player who lands on the bankrupt section's money to 0
+	 * 
+	 * METHOD: bankrupt()
 	 * 
 	 * RETURNS: void
 	 *
@@ -201,11 +209,11 @@ public class Game {
 	}
 	
 	/***************************************************************************************
-	 * METHOD: loseATurn
+	 * FUNCTION: Cycle through players turn	
 	 * 
-	 * PURPOSE: Cycle through players turn	
+	 * DESCRIPTION: Cycle through players turn 	
 	 * 
-	 * DESCRIPTION: If whosTurn ever equals 2, we reset it to 0, otherwise we increment by 1 until the reset occurs again.
+	 * METHOD: loseATurn()
 	 * 
 	 * RETURNS: void
 	 *
@@ -221,12 +229,12 @@ public class Game {
 	}
 	
 	/***************************************************************************************
-	 * METHOD: setCurrent
+	 * FUNCTION: Set the base string to which the user is going to guess characters to fill up the word 
 	 * 
-	 * PURPOSE: Set the base string to which the user is going to guess characters to fill up the word 
-	 * 
-	 * DESCRIPTION: Go through each index of the length of the answer, and add either blank spaces or
+	 * DESCRIPTION: Go through each index of the length of the answer, and adds either blank spaces or
 	 * asterisks 
+	 * 
+	 * METHOD: setCurent()
 	 * 
 	 * RETURNS: void
 	 *
@@ -247,16 +255,16 @@ public class Game {
 			}
 		}
 	}
-    /***************************************************************************************
-	 * METHOD: containsCaseInsensitive
+        /***************************************************************************************
+	 * FUNCTION: 
 	 * 
-	 * PURPOSE: checks case sensitivity
+	 * DESCRIPTION: 
 	 * 
-	 * DESCRIPTION: checks each string in the list for case sensitivity.
+	 * METHOD: containsCaseInsensitive(String strToCompare, ArrayList<String>list)
 	 * 
-	 * RETURNS: a boolean
+	 * RETURNS: 
 	 *
-	 * INPUT PARAMETERS: a String and an Array List of Strings
+	 * INPUT PARAMETERS:
 	 * 
      * SOURCE: https://stackoverflow.com/questions/8751455/arraylist-contains-case-sensitivity
 	 *********************************************************************************************/
@@ -269,11 +277,11 @@ public class Game {
             return(false);
         }
 	/***************************************************************************************
+	 * FUNCTION: Returns the current string
+	 * 
+	 * DESCRIPTION: Returns the current string by converting the string array to string
+	 * 
 	 * METHOD: getCurrent
-	 * 
-	 * PURPOSE: get the current string
-	 * 
-	 * DESCRIPTION: Returns the current string by converting the contents of the string array to a string
 	 * 
 	 * RETURNS: String of the already guessed word
 	 *
@@ -290,11 +298,11 @@ public class Game {
 	}
 	
 	/***************************************************************************************
+	 * FUNCTION: Returns the guessed string
+	 * 
+	 * DESCRIPTION: Returns the current string by converting the string array to string
+	 * 
 	 * METHOD: getGuessed
-	 * 
-	 * PURPOSE: get the guessed string or the input
-	 * 
-	 * DESCRIPTION: Returns the current string by converting the contents of the string array to a string
 	 * 
 	 * RETURNS: String of the already guessed word
 	 *
@@ -310,40 +318,65 @@ public class Game {
 	}
 	
 	/***************************************************************************************
-	 * METHOD: spin
+	 * FUNCTION: Allows user to guess vowels and withdraws money from their bank account according
+	 * to the number of vowels that they guess
 	 * 
-	 * PURPOSE: gets a random index of the wheel. i.e. lands on a spoke of the wheel
+	 * DESCRIPTION: Compares guessed vowel to the answer character array
+	 * 
+	 * METHOD: freePlay()
+	 * 
+	 * RETURNS: void
+	 *
+	 * INPUT PARAMETERS: void  
+	 * 
+	 *********************************************************************************************/
+	public void freePlay(char a) {
+		int numOfVowels = 0;
+		for(int i = 0; i < current.size(); i++) {
+			if(a == answers[i]) {
+				numOfVowels++;
+			}
+		}
+		players.get(whosTurn).pricePerVowel(numOfVowels);
+	}
+	
+	/***************************************************************************************
+	 * FUNCTION: gets a random index of the wheel
 	 * 
 	 * DESCRIPTION: gets a random index of the wheel, which is the 'prize' that the user will be
 	 * gaining money from if they guess characters correctly, or if it's a special type of prize
 	 * such as bankrupt/1/2car, they will be receiving that 
 	 * 
-	 * RETURNS: a String
+	 * METHOD: spin()
+	 * 
+	 * RETURNS: String
 	 *
 	 * INPUT PARAMETERS: none
 	 * 
 	 *********************************************************************************************/
 	public String spin() throws IOException {
 		Random rand = new Random();
-		int randomNumForWheel = rand.nextInt(wheel.size());
+                if(wheel.size()>0){
+                randomNumForWheel = rand.nextInt(wheel.size());
+                }
                 setCurrent();
 		if(!wheel.get(randomNumForWheel).equals("bankrupt")&& !wheel.get(randomNumForWheel).equals("loseaturn") && !wheel.get(randomNumForWheel).equals("freespin")) {
 			currentSpokeValue = Integer.valueOf(wheel.get(randomNumForWheel));
 		}
-		return wheel.get(randomNumForWheel);
+		return wheel.get(randomNumForWheel); //get a random index from the arraylist, may have to change later
 	}
 	
 	/***************************************************************************************
-	 * METHOD: checkAns
-	 * 
-	 * PURPOSE: checks string guessed to the answer
+	 * FUNCTION: checks string guessed to answer
 	 * 
 	 * DESCRIPTION: when the user is ready to guess the entire word, they will input an answer 
 	 * of type string which will be compared to the actual answer
 	 * 
-	 * RETURNS: a Boolean
+	 * METHOD: checkAns()
+	 * 
+	 * RETURNS: Boolean
 	 *
-	 * INPUT PARAMETERS: a String
+	 * INPUT PARAMETERS: String
 	 * 
 	 *********************************************************************************************/
 	public boolean checkAns(String a) throws IOException {
@@ -355,15 +388,15 @@ public class Game {
 	}
 	
 	/***************************************************************************************
-	 * METHOD: checkGuess
+	 * FUNCTION: checks string to return guessed answer list
 	 * 
-	 * PURPOSE: allows user to check what letters they have guessed
+	 * DESCRIPTION: allows user to check what letters they have guessed
 	 * 
-	 * DESCRIPTION: checks string to return guessed answer list
+	 * METHOD: checkGuess()
 	 * 
-	 * RETURNS: a Boolean
+	 * RETURNS: Boolean
 	 *
-	 * INPUT PARAMETERS: a String
+	 * INPUT PARAMETERS: String
 	 * 
 	 *********************************************************************************************/
 	public boolean checkGuess(String a) throws IOException {
@@ -374,11 +407,11 @@ public class Game {
 	}
 	
 	/***************************************************************************************
-	 * METHOD: changeTurn
+	 * FUNCTION: Changes who's turn it is
 	 * 
-	 * PURPOSE: changes who's turn it is
+	 * DESCRIPTION: Changes who's turn it is
 	 * 
-	 * DESCRIPTION: If whosTurn ever equals 2, we reset it to 0, otherwise we increment by 1 until the reset occurs again.
+	 * METHOD: changeTurn()
 	 * 
 	 * RETURNS: void
 	 *
@@ -394,13 +427,13 @@ public class Game {
 	}
 	
 	/***************************************************************************************
-	 * METHOD: whosTurn
+	 * FUNCTION: Lets user know who's turn it is
 	 * 
-	 * PURPOSE: lets user know who's turn it is
+	 * DESCRIPTION: Returns which user's turn it is
 	 * 
-	 * DESCRIPTION: returns which user's turn it is
+	 * METHOD: whosTurn();
 	 * 
-	 * RETURNS: an Integer
+	 * RETURNS: Int
 	 *
 	 * INPUT PARAMETERS: none 
 	 * 
@@ -409,14 +442,10 @@ public class Game {
 		return whosTurn;
 	}
 	/***************************************************************************************
-	 * METHOD: inputChar
+	 * FUNCTION: checks inputted character with the guessed array and answer
 	 * 
-	 * PURPOSE: checks inputted character with the guessed array and answer
-	 * 
-	 * DESCRIPTION: checks if the guessed array contains a space or an asterisk. Then compares inputted character 
-	 * 	to the guessed array to see if it's already been guessed, then it is compared it to the answer, and added 
-	 *  to the guessed array. If any of the inputs are a vowel, then the current spoke value is charged to the player's
-	 *  account. Otherwise it deposits the spoke value into the player's account.
+	 * DESCRIPTION: first compared inputted character to the guessed array to see if it's already
+	 * been guessed, then is compared it to the answer, and added to the guessed array, or if it
 	 * 
 	 * METHOD: inputChar()
 	 * 
@@ -426,9 +455,6 @@ public class Game {
 	 * 
 	 *********************************************************************************************/
 	public String inputChar(char a) {
-            if(!guessed.contains(a+"")){
-        	guessed.add(a+""); 
-            }
 		if(!current.contains("*")){
                     guessed.clear();
                     return "puzzleComplete";
@@ -447,6 +473,7 @@ public class Game {
         boolean there = false;
 		for (int i = 0; i < answers.length; i++) {
 			if (a == answers[i]) {
+                            there = true;
 				guessed.add(a+"");
                                 if(a == 'a' ||a == 'e' ||a == 'i' ||a == 'o' || a =='u'){
                                     players.get(whosTurn).withdraw(currentSpokeValue);
@@ -454,7 +481,7 @@ public class Game {
                                 else{
 				players.get(whosTurn).deposit(currentSpokeValue);
                                 }
-                there = true;
+                
 			}
 		}
         if(there){
@@ -465,13 +492,13 @@ public class Game {
 	}
 	
 	/***************************************************************************************
-	 * METHOD: winPuzzleCounter
-	 * 
-	 * PURPOSE: Increasing the puzzle counter
+	 * FUNCTION: Increasing the puzzle counter
 	 * 
 	 * DESCRIPTION: Increasing the puzzle counter to see when the win condition has been reached
 	 * 
-	 * RETURNS: void	
+	 * METHOD: win()
+	 * 
+	 * RETURNS: none	
 	 *
 	 * INPUT PARAMETERS: none
 	 * 
@@ -482,12 +509,12 @@ public class Game {
 	}
 	
 	/***************************************************************************************
-	 * METHOD: win
-	 * 
-	 * PURPOSE: Determine if the conditions for a win is reached
+	 * FUNCTION: The win scenario
 	 * 
 	 * DESCRIPTION: when the number of puzzles to win has been reached, the method will return
 	 * true 
+	 * 
+	 * METHOD: win()
 	 * 
 	 * RETURNS: Boolean		
 	 *
@@ -501,12 +528,12 @@ public class Game {
 		return false;
 	}
 	/***************************************************************************************
-	 * METHOD: winPuzzle
+	 * FUNCTION: The win scenario
 	 * 
-	 * PURPOSE: Determines if the user completed the puzzle
+	 * DESCRIPTION: when the number of puzzles to win has been reached, the method will return
+	 * true 
 	 * 
-	 * DESCRIPTION: In a for loop, checks to see if anything in the current arrayList still contains a star, if so return false, 
-	 * the user has not completed the puzzle. Otherwise return true. 
+	 * METHOD: win()
 	 * 
 	 * RETURNS: Boolean		
 	 *
@@ -520,34 +547,113 @@ public class Game {
 				return false;
 			}
 		}
-		guessed.clear(); //May or may not delete
+                guessed.clear();
 		return true;
+                
 	}
+//	
+//	/************************************************************************
+//	 * Player related methods
+//	 ************************************************************************/
+//	/************************************************************************
+//	 * FUNCTION: getMoney
+//	 * 
+//	 * DESCRIPTION: returns the amount of money in a player's account
+//	 * 
+//	 * METHOD: return instance variable money
+//	 * 
+//	 * RETURNS: a double
+//	 ************************************************************************/
+//	public double getMoney() {
+//		return money[whosTurn];
+//	}
+//	
+//    /************************************************************************
+//	 * FUNCTION: getName
+//	 * 
+//	 * DESCRIPTION: return the given name of the player
+//	 * 
+//	 * METHOD: return instance variable name
+//	 * 
+//	 * RETURNS: a String
+//	 ************************************************************************/
+//	public String getName() {
+//		return name;
+//	}
+//	
+//	/************************************************************************
+//	 * FUNCTION: setMoney
+//	 * 
+//	 * DESCRIPTION: set the amount of money for the invoking object/instance
+//	 * 
+//	 * METHOD: make the instances' money variable equal to what is passed in
+//	 * 
+//	 * RETURNS: nothing.
+//	 * 
+//	 * INPUT PARAMETERS:  a double
+//	 ************************************************************************/
+//	public void setMoney(double money) {
+//		this.money[whosTurn] = money;
+//	}
+//	
+//	/************************************************************************
+//	 * FUNCTION: setName 
+//	 * 
+//	 * DESCRIPTION: set the given name for the invoking object/instance
+//	 * 
+//	 * METHOD: makes the object's name variable equal to what is passed in
+//	 * 
+//	 * RETURNS: nothing
+//	 * 
+//	 * INPUT PARAMETERS: a String
+//	 ************************************************************************/
+//	public void setName(String name) {
+//		this.name = name;
+//	}
+//	
+//	/*************************************************************************
+//	 * FUNCTION: deposit
+//	 * 
+//	 * DESCRIPTION:  deposit a certain amount into the player's money, a placeholder for some type of account
+//	 * 
+//	 * METHOD: add the players money by the amount passed in
+//	 * 
+//	 * RETURNS: nothing
+//	 * 
+//	 * INPUT PARAMETERS: a double 
+//	 *************************************************************************/
+//	public void deposit(double amount) {
+//		this.money[whosTurn] = this.money[whosTurn] + amount;
+//	}
+//	
+//	/*************************************************************************
+//	 * FUNCTION: withdraw 
+//	 * 
+//	 * DESCRIPTION: take out a certain amount of money from the players account.
+//	 * 
+//	 * METHOD: subtract the money in a player's account by the value passed in.
+//	 * 		   note: It is possible to have a negative balance in Wheel of Fortune so this is not accounted for here.	
+//	 * 
+//	 * RETURNS: nothing
+//	 * 
+//	 * INPUT PARAMETERS: a double 
+//	 **************************************************************************/
+//	public void withdraw(double amount) {
+//		this.money[whosTurn] = this.money[whosTurn] - amount;
+//	}
+//	
+//	/****************************************************************************
+//	 * FUNCTION: pricePerVowel
+//	 * 
+//	 * DESCRIPTION: the player has to pay in order to use a vowel //Better description later 
+//	 * 
+//	 * METHOD: the player's account is subtracted by the number of vowels used multiples by the cost which is 250.
+//	 * 
+//	 * RETURNS: nothing
+//	 * 
+//	 * INPUT PARAMETERS: an integer 
+//	 ******************************************************************************/
+//	public void pricePerVowel(int numberOfVowels) {
+//		this.money[whosTurn] = this.money[whosTurn] - numberOfVowels*vowelCost; 
+//	}
 }
-
-/***************************************************************************************
- * METHOD: freePlay
- * 
- * PURPOSE:  Allows user to guess vowels and withdraws money from their bank account according
- * to the number of vowels that they guess
- * 
- * DESCRIPTION: Compares guessed vowel to the answer character array
- * 
- * METHOD: freePlay()
- * 
- * RETURNS: void
- *
- * INPUT PARAMETERS: void  
- * 
- *********************************************************************************************
-public void freePlay(char a) {
-	int numOfVowels = 0;
-	for(int i = 0; i < current.size(); i++) {
-		if(a == answers[i]) {
-			numOfVowels++;
-		}
-	}
-	players.get(whosTurn).pricePerVowel(numOfVowels);
-}
-
-*/
