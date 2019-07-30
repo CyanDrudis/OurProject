@@ -106,7 +106,9 @@ public class Player extends Game{
 	 * Input Parameters: a double 
 	 *************************************************************************/
 	public void deposit(double amount) {
-		this.money = this.money + amount;
+		if (amount >= 0) {
+			this.money = this.money + amount;
+		}
 	}
 	
 	/*************************************************************************
@@ -122,7 +124,9 @@ public class Player extends Game{
 	 * Input Parameters: a double 
 	 **************************************************************************/
 	public void withdraw(double amount) {
-		this.money = this.money - amount;
+		if (amount >= 0) {
+			this.money = this.money - amount;
+		}
 	}
 	
 
