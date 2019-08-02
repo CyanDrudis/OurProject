@@ -79,6 +79,9 @@ public class FXMLDocumentController {
     
     @FXML
     private Button newGameButton;
+    
+    @FXML
+    private Label toDisplayPlayerTurn;
 
     @FXML
     void generateNewGame(ActionEvent event) {
@@ -110,7 +113,7 @@ public class FXMLDocumentController {
 		  }
 		  int spokesToTurn = g.getRandomNumForWheel();
 		  double rotationRequired = degreesPerSpoke*spokesToTurn;
-		  wheelImageView.setRotate(wheelImageView.getRotate() + rotationRequired); 
+		  wheelImageView.setRotate(rotationRequired); 
 		  spinInput = true;
 	}
 	
@@ -123,7 +126,7 @@ public class FXMLDocumentController {
 			player2MoneyLabel.setText("$"+g.players.get(1).getMoney());
 			player3MoneyLabel.setText("$"+g.players.get(2).getMoney());
 			int playersTurn = g.whosTurn()+1;
-			toDisplayLabel.setText("Player " + playersTurn + "'s turn.");
+			toDisplayPlayerTurn.setText("Player " + playersTurn + "'s turn.");
 			categoryLabel.setText("Category : " + g.getPuzzle());
 		} catch (IOException e) {
 				System.out.println("IOException, check file location");

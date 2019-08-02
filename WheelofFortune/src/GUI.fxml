@@ -27,18 +27,19 @@
         <Font name="System Bold Italic" size="24.0" fx:id="x2" />
       </font>
     </Label>
-    <Label fx:id="categoryLabel" font="$x2" layoutX="431.0" layoutY="52.0" text="Category:" />
+    <Label fx:id="categoryLabel" font="$x2" layoutX="322.0" layoutY="46.0" text="Category:" />
     <ImageView fx:id="wheelImageView" fitHeight="420.0" fitWidth="419.9999000000025" layoutX="579.0" layoutY="109.0" pickOnBounds="true" preserveRatio="false">
       <image>
-        <Image url="file:/C:/Users/cyand/Desktop/WheelofFortune/src/wheelpng.png" />
+        <Image url="@wheelpng.png" />
       </image>
     </ImageView>
-    <Label layoutX="782.0" layoutY="75.0" text="V" textFill="RED">
+    <Label layoutX="782.0" layoutY="63.0" text="V" textFill="RED">
       <font>
         <Font name="Calibri Bold" size="25.0" />
       </font>
     </Label>
       <Button fx:id="newGameButton" layoutX="54.0" layoutY="520.0" mnemonicParsing="false" onAction="#generateNewGame" text="New Game" />
       <Label fx:id="toDisplayLabel" layoutX="458.0" layoutY="267.0" />
+      <Label fx:id="toDisplayPlayerTurn" layoutX="458.0" layoutY="311.0" />
   </children>
 </AnchorPane>
