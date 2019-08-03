@@ -1,31 +1,22 @@
 package application;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
-import javax.swing.ImageIcon;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
+import javafx.util.Duration;
+import javafx.animation.*;
 
 public class FXMLDocumentController {
 	Game g = new Game();
 	String spoke = "";
-	private boolean startGame = false;
-    private final int wheelDimensions = 420;
-    private final int halfWayDimensions = 210;
     private final int degreesPerSpoke = 15;
     private boolean spinInput = false;
     private boolean gameInitialized = false;
-    private void test() {
-    	System.out.println("test");
-    }
+    private int oldSpokeIndex = 0;
     @FXML
     private Label player1Label;
 
@@ -97,24 +88,32 @@ public class FXMLDocumentController {
 			g.winPuzzleCounter();
 			refresh();
 			gameInitialized = true;
+			oldSpokeIndex = 0;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
     }
     
     @FXML
-	public void spinWheel(){
+	public void spinWheel() throws InterruptedException{
+    	int wheelSize = g.wheel.size();
 		try{
-		  spoke = g.spin();
+			while(g.getRandomNumForWheel() - oldSpokeIndex == 0) {//checks if there is a difference in the spoke were on in-case we randomly generate a 0
+				  spoke = g.spin();
+			  }
 		  }
 		  catch(IOException ex){
 			  System.out.println("IOException, check file location");
 		      ex.printStackTrace();
 		  }
-		  int spokesToTurn = g.getRandomNumForWheel();
+		  int spokesToTurn = wheelSize - oldSpokeIndex + g.getRandomNumForWheel();
 		  double rotationRequired = degreesPerSpoke*spokesToTurn;
-		  wheelImageView.setRotate(rotationRequired); 
+		  RotateTransition rotate = new RotateTransition(Duration.millis(2000), wheelImageView);
+		  System.out.println(spoke);//for testing purposes
+		  rotate.setByAngle(rotationRequired);
+		  rotate.play();
 		  spinInput = true;
+		  oldSpokeIndex = g.getRandomNumForWheel();
 	}
 	
 	@FXML
@@ -138,7 +137,7 @@ public class FXMLDocumentController {
 	}
 
     @FXML
-    public void display(ActionEvent event) {
+    public void display(ActionEvent event) throws InterruptedException {
     	if(gameInitialized) {
 	    	if(textField.getText().equals("")) {
 	    		toDisplayLabel.setText("Please enter in a letter or guess the puzzle");
@@ -192,13 +191,14 @@ public class FXMLDocumentController {
 		                                refresh();
 		                            }
 		                            else{
-		                                if(g.checkAns(input)){
+		                                if(g.checkAns(input)){	
+		                                	System.out.println("test");
+		                                	playersTurn = g.whosTurn() + 1;
+		                                	toDisplayLabel.setText("Player " + playersTurn + "solved it!, New Puzzle!");
 		                                    g.winPuzzleCounter();
 		                                    g.newGame();
 		                                    g.importWheel();
 		                                    g.setCurrent();
-		                                    playersTurn = g.whosTurn() + 1;
-		                                    toDisplayLabel.setText("Player " + playersTurn + "solved it!, New Puzzle!");
 		                                    refresh();
 		                                }else{
 		                                	toDisplayLabel.setText("Incorrect!");
