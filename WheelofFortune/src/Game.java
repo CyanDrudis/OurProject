@@ -1,3 +1,4 @@
+package application;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -39,7 +40,7 @@ public class Game {
 	private int currentSpokeValue;
 	private String answer;
 	private int whosTurn = 0; //0 = player, 1 = player 2, 2 = player 3
-	private static ArrayList<String> wheel = new ArrayList<String>();
+	
 	private static ArrayList<String> current = new ArrayList<String>();
 	private static ArrayList<String> guessed = new ArrayList<String>();
 	private char[] answers;
@@ -54,7 +55,7 @@ public class Game {
 	//private ArrayList<Boolean> prizeList = new ArrayList<>(Collections.nCopies(bonus, false));
 	
 	Puzzle p = new Puzzle();
-
+	ArrayList<String> wheel = new ArrayList<String>();
 	ArrayList<Player> players = new ArrayList<Player>();
         public int getRandomNumForWheel(){
             return randomNumForWheel;
