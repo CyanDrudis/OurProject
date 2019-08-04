@@ -1,0 +1,22 @@
+Test Document for JUnit Testing
+
+The Player.java class is the class that is thoroughly tested. 
+There is testing performed on the Game.java class, although not thoroughly, important methods are tested. 
+
+PlayerTest.java
+
+Purpose: The player class contains methods that set and get a player's money and name, as well as methods that
+deposit and withdraw money from their balance. Testing this class is important because these methods track the name
+and money for each player, and in order for the players to receive the right balance if they guess the right letters, 
+and/or have the right balance after guessing vowels, these methods must work correctly. As well, the final balance
+determines in the end who wins the game, so these instance variables must be storing the right values via the methods
+in order for the end game to be executed properly. 
+
+Procedure: 
+
+Game.java
+
+Purpose: 
+
+Procedure: 
+
