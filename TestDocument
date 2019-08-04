@@ -1,20 +1,40 @@
 Test Document for JUnit Testing
 
-The Player.java class is the class that is thoroughly tested. 
-There is testing performed on the Game.java class, although not thoroughly, important methods are tested. 
+The Player class is the class that is thoroughly tested. 
+There is testing performed on the Game class, although not thoroughly, important methods are tested. 
 
 PlayerTest.java
 
-Purpose: The player class contains methods that set and get a player's money and name, as well as methods that
+Purpose: 
+
+The player class contains methods that set and get a player's money and name, as well as methods that
 deposit and withdraw money from their balance. Testing this class is important because these methods track the name
-and money for each player, and in order for the players to receive the right balance if they guess the right letters, 
-and/or have the right balance after guessing vowels, these methods must work correctly. As well, the final balance
-determines in the end who wins the game, so these instance variables must be storing the right values via the methods
-in order for the end game to be executed properly. 
+and money for each player, and in order for the players to have the right amount deposited into their balance
+if they guess the right letters, and/or have the right amount withdrawn after guessing vowels, these methods must 
+work correctly. In addition, special spokes on the wheel such as bankrupt which makes a users balance 0 relies on the 
+setting money methods. As well, the final balance determines in the end who wins the game, so these instance variables 
+must be storing the right values via the methods in order for the end game to be executed properly. This player class contains
+two instance variables, balance and name which will store the values used to test the integrity of the methods.
 
 Procedure: 
 
-Game.java
+There are seven functions in the Player class.
+
+getTotalMoney():
+
+getMoney() and setMoney(): First the method is tested be asserting that the default balance is set to 0, shown by the
+test_default_getter_money() test. Next, the getMoney() and setMoney() methods are both tested using the 
+test_getter_and_setter_money() test, in which unique amounts are set for two different players using the setMoney() method,
+and the getMoney() method is called to assert that the money set in the balance is the same as the money actually in the balance.
+As well, the test_getter_and_setter_set_multiple_money() test is used to test whether setting a player's balance twice will 
+overwrite the previous balance with the new set balance. 
+
+getName() and setName(): First the getName() and setName() methods are both tested using the test_getter_and_setter_name() test,
+in which unique names are set for two different players using the setName() method, and the getName() method is called to assert
+that the name set is the same as the name in the instance variable. As well, the test_getter_and_setter_set_multiple_name() test is
+used to test whether setting a player's name twice will overwrite the previous name with the new set name.
+
+GameTest.java
 
 Purpose: 
 
