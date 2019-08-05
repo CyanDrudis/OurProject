@@ -58,118 +58,137 @@ public class Game {
 	ArrayList<Player> players = new ArrayList<Player>();
 	double[] money = {0.0, 0.0, 0.0};
 	
-	/***************************************************************************************
-	 * FUNCTION: Deposit
+	/**
 	 * 
-	 * DESCRIPTION: deposit to the players temporary account
+	 * This method is used to deposit an amount in the players 
+	 * temporary account, which player receives the money depends 
+	 * on who's turn it is, signified by the whosTurn instance variable. 
+	 * This temporary account's balance will then be transferred
+	 * over to a permanent account that will keep the total balance 
+	 * which will be used to substatiate the winner of the game.
+	 * 
+	 * @param amount the amount of money that will be deposited into the 
+	 * players account
+	 * 
+	 * @return void
 	 * 
 	 * 
-	 * METHOD: deposit()
-	 * 
-	 * RETURNS: void
-	 *
-	 * INPUT PARAMETERS: amount : double
-	 * 
-	 *********************************************************************************************/
+	 */
+	
 	public void deposit(double amount) {
 		money[whosTurn] += amount;
 	}
 	
-	/***************************************************************************************
-	 * FUNCTION: Deposit
+	/**
 	 * 
-	 * DESCRIPTION: deposit to the players temporary account
+	 * This method is used to withdraw an amount from the players temporary 
+	 * account, which player has the money withdrawn depends on who's turn 
+	 * it is, signified by the whosTurn instance variable. This temporary 
+	 * account's balance will then be transferred over to a permanent 
+	 * account that will keep the total balance which will be used to
+	 * substatiate the winner of the game.
+	 * 
+	 * @param amount the amount of money that will be withdrawn from the 
+	 * players account
+	 * 
+	 * @return void
 	 * 
 	 * 
-	 * METHOD: deposit()
-	 * 
-	 * RETURNS: void
-	 *
-	 * INPUT PARAMETERS: amount : double
-	 * 
-	 *********************************************************************************************/
+	 */
+	
 	public void withdraw(double amount) {
 		money[whosTurn] -= amount;
 	}
 	
-	/***************************************************************************************
-	 * FUNCTION: getRandomNumForWheel
+	/**
 	 * 
-	 * DESCRIPTION: returns the random number generated for the wheel
+	 * This method is used to get a random number for the wheel, this is 
+	 * used to ensure that there is no specific order of the values that 
+	 * the wheel can return. The values that the wheels returns from is in 
+	 * a text file called wheel.txt. 
 	 * 
-	 * METHOD: getRandomNumForWheel()
+	 * @param none
 	 * 
-	 * RETURNS: int
-	 *
-	 * INPUT PARAMETERS: none
+	 * @returns integer that's used as an index to get a certain value of 
+	 * the wheel from the text
+	 * file. 
 	 * 
-	 *********************************************************************************************/
+	 * 
+	 */
+	
     public int getRandomNumForWheel(){
         return randomNumForWheel;
     }
     
-	/***************************************************************************************
-	 * FUNCTION: Importing the wheel
+	/**
+	 * 	 
+	 * This method is used to import the wheel, it calls on a method that's
+	 * found in the puzzle class, which takes all of the values found in 
+	 * the wheel.txt file and imports them all into an array. 
 	 * 
-	 * DESCRIPTION: importing the wheel from a text file containing all the wheel's 
-	 * options using the function in the puzzle class
+	 * @param none
 	 * 
-	 * METHOD: importWheel()
+	 * @returns none
 	 * 
-	 * RETURNS: void
-	 *
-	 * INPUT PARAMETERS: void
+	 * @throws If an input or output exception occurred
 	 * 
-	 *********************************************************************************************/
+	 * 
+	 */
+    
 	public void importWheel() throws IOException {
 		wheel = p.getWheel();
 	}
-	/***************************************************************************************
-	 * FUNCTION: 
+	
+	/**
 	 * 
-	 * DESCRIPTION: 
+	 * This method returns the puzzle that represents the category of puzzle
+	 * that the user will be guessing from, found from the puzzle text file
+	 * 
+	 * @param none
+	 * 
+	 * @returns a puzzle of type String that represents the category of puzzle
+	 * that the user will be getting the String that they will have to guess
 	 * 
 	 * 
-	 * METHOD: getPuzzle() 
-	 * 
-	 * RETURNS: 
-	 *
-	 * INPUT PARAMETERS:
-	 * 
-	 *********************************************************************************************/
+	 */
+	
 	public String getPuzzle() {
 		return puzzle;
 	}
-	/***************************************************************************************
-	 * FUNCTION: Get the balance of the player
+	
+	/**
 	 * 
-	 * DESCRIPTION: 
+	 * This method retrieves the balance of the player who's turn it currently
+	 * is on, it calls on the getMoney function that's implemented in the same
+	 * Game class. 
+	 *  
+	 * @param none
+	 * 
+	 * @returns the balance of the player who's turn it current is
 	 * 
 	 * 
-	 * METHOD: getBal()
-	 * 
-	 * RETURNS: 
-	 *
-	 * INPUT PARAMETERS:
-	 * 
-	 *********************************************************************************************/
+	 */
+	
 	public double getBal() {
 		return players.get(whosTurn).getMoney();
 	}
 	
-	/***************************************************************************************
-	 * FUNCTION: Setting the balance of the player
+	/**
 	 * 
-	 * DESCRIPTION: 
-	 * 
-	 * 
-	 * METHOD: getBal()
-	 * 
-	 * RETURNS: 
+	 * This method sets the balance of a player, it can set the balance
+	 * of any player regardless of return and assigns a balance to it
 	 *
-	 * INPUT PARAMETERS:
+	 * @param whosTurn an integer which indicates whos turn it is in order
+	 * to set the balance for the correct player
 	 * 
-	 *********************************************************************************************/
+	 * @param money the amount of money that will be set for that specific
+	 * player
+	 * 
+	 * @returns void
+	 * 
+	 * 
+	 */
+	
 	public void setBal(int whosTurn, int money) {
 		players.get(whosTurn).setMoney(money);
 	}
