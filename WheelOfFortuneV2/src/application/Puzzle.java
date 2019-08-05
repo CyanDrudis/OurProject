@@ -30,8 +30,7 @@ import java.util.Random;
  *********************************************************************************************************************/
 
 
-public class Puzzle
-{
+public class Puzzle {
 	private ArrayList<String> answers = new ArrayList <String>();
 	private ArrayList<String> puzzle = new ArrayList <String>();
 	private ArrayList<String> wheel = new ArrayList <String>();
@@ -51,8 +50,7 @@ public class Puzzle
 	 * INPUT PARAMETERS:  nothing either!
 	 * 
 	 *********************************************************************************************/
-	public void newPuzzle() 
-	{
+	public void newPuzzle() {
 		randomIntForPuzzle = rand.nextInt(puzzle.size());
 	}
 	/***************************************************************************************
@@ -68,8 +66,7 @@ public class Puzzle
 	 * INPUT PARAMETERS:  nothing either!
 	 * 
 	 *********************************************************************************************/
-	public void newAnswer() 
-	{
+	public void newAnswer() {
 		randomIntForAnswer = rand.nextInt(answers.get(randomIntForPuzzle).split(",").length);
 	}
 	/***************************************************************************************
@@ -86,14 +83,12 @@ public class Puzzle
 	 * INPUT PARAMETERS: nothing! 
 	 * 
 	 *********************************************************************************************/
-	public String getPuzzle() throws IOException 
-	{
+	public String getPuzzle() throws IOException {
 		BufferedReader br = new BufferedReader(new FileReader(getClass().getClassLoader().getResource("application/puzzle.txt").getFile()));
 		// used (above line)code from: https://www.mkyong.com/java/java-read-a-file-from-resources-folder/
 		String line = "";
 		line = br.readLine();
-		while (line != null) 
-		{
+		while (line != null) {
 			puzzle.add(line);
 			line = br.readLine();
 		}
@@ -118,8 +113,7 @@ public class Puzzle
 	 * INPUT PARAMETERS: nothing! 
 	 * 
 	 *********************************************************************************************/
-	public String getAnswer() throws IOException 
-	{
+	public String getAnswer() throws IOException {
 		String[] ans;
 		BufferedReader br = new BufferedReader(new FileReader(getClass().getClassLoader().getResource("application/answers.txt").getFile()));
 		// used (above line)code from: https://www.mkyong.com/java/java-read-a-file-from-resources-folder/
@@ -149,14 +143,12 @@ public class Puzzle
 	 * INPUT PARAMETERS: nothing! 
 	 * 
 	 *********************************************************************************************/
-	public ArrayList<String> getWheel () throws IOException
-	{
+	public ArrayList<String> getWheel () throws IOException{
 		BufferedReader br = new BufferedReader(new FileReader(getClass().getClassLoader().getResource("application/wheel.txt").getFile()));
 		// used (above line)code from: https://www.mkyong.com/java/java-read-a-file-from-resources-folder/
 		String line = "";
 		line = br.readLine();
-	    while (line != null) 
-	    {
+	    while (line != null) {
 	        wheel.add(line);
 	        line = br.readLine();
 	    }
