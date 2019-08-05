@@ -667,6 +667,7 @@ public class Game {
 	        output.write(getPuzzle());
 	        output.write("\n");
 	        output.write(whosTurn+"\n");
+	        output.write(getRandomNumForWheel()+"\n");
 	        output.close();
         } catch ( IOException e ) {
             e.printStackTrace();
@@ -715,6 +716,8 @@ public class Game {
 			puzzle = line;
 			line = br.readLine();
 			whosTurn = Integer.valueOf(line.trim());
+			line = br.readLine();
+			randomNumForWheel = Integer.valueOf(line.trim());
 			br.close();
         } catch ( IOException e ) {
             e.printStackTrace();
