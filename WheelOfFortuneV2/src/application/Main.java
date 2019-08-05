@@ -45,21 +45,21 @@ public class Main extends Application {
 	
 	private EventHandler<WindowEvent> confirmCloseEventHandler = event -> {
 		Alert closeConfirmation = new Alert(
-	    Alert.AlertType.CONFIRMATION,
-	    "Are you sure you want to exit?"
+			Alert.AlertType.CONFIRMATION,
+			"Are you sure you want to exit?"
 	    );
 	    Button exitButton = (Button) closeConfirmation.getDialogPane().lookupButton(
 	    	ButtonType.OK
 	        );
-	        exitButton.setText("Exit");
-	        closeConfirmation.setHeaderText("Confirm Exit");
-	        closeConfirmation.initModality(Modality.APPLICATION_MODAL);
-	        closeConfirmation.initOwner(mainStage);
-	        closeConfirmation.setX(mainStage.getX());
-	        closeConfirmation.setY(mainStage.getY());
-	        Optional<ButtonType> closeResponse = closeConfirmation.showAndWait();
-	        if (!ButtonType.OK.equals(closeResponse.get())) {
-	            event.consume();
-	        }
-	    };
+		exitButton.setText("Exit");
+		closeConfirmation.setHeaderText("Confirm Exit");
+		closeConfirmation.initModality(Modality.APPLICATION_MODAL);
+		closeConfirmation.initOwner(mainStage);
+		closeConfirmation.setX(mainStage.getX());
+		closeConfirmation.setY(mainStage.getY());
+		Optional<ButtonType> closeResponse = closeConfirmation.showAndWait();
+		if (!ButtonType.OK.equals(closeResponse.get())) {
+			event.consume();
+		}
+	};
 }
