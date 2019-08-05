@@ -6,3 +6,7 @@ https://stackoverflow.com/questions/34166627/javafx-rotate-imageview\
 https://stackoverflow.com/questions/35512648/adding-a-timer-to-my-program-javafx
 https://stackoverflow.com/questions/3535754/netbeans-java-new-hint-thread-sleep-called-in-loop
 https://docs.oracle.com/javafx/2/api/javafx/animation/RotateTransition.html
+https://www.youtube.com/watch?v=ZuHcl5MmRck
+https://stackoverflow.com/questions/31540500/alert-box-for-when-user-attempts-to-close-application-using-setoncloserequest-in
+https://stackoverflow.com/questions/2885173/how-do-i-create-a-file-and-write-to-it-in-java
+https://examples.javacodegeeks.com/core-java/lang/system/get-classpath-example-2/
