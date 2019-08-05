@@ -536,20 +536,20 @@ public class Game {
 			if ((a+"").equalsIgnoreCase(answers[i]+"")) {
                             there = true;
 				guessed.add(a+"");
-                                if(a == 'a' ||a == 'e' ||a == 'i' ||a == 'o' || a =='u'){
-                                    money[whosTurn] -= vowelCost;
-                                }
-                                else{
-                                	money[whosTurn] += currentSpokeValue;
-                                }
+				if(a == 'a' ||a == 'e' ||a == 'i' ||a == 'o' || a =='u'){
+					money[whosTurn] -= vowelCost;
+				}
+				else{
+					money[whosTurn] += currentSpokeValue;
+				}
                 
 			}
 		}
-                setCurrent();
-                if(!current.contains("*")){
-                    guessed.clear(); 
-                    return "puzzleComplete";
-                }
+		setCurrent();
+		if(!current.contains("*")){
+			guessed.clear(); 
+			return "puzzleComplete";
+		}
         if(there){
         	return "there";
         }
