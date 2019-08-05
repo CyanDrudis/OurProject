@@ -84,6 +84,37 @@ public class FXMLDocumentController {
 
     @FXML
     private Label player3Total;
+    
+    @FXML
+    private Button loadGameButton;
+
+    @FXML
+    private Button saveGameButton;
+
+    @FXML
+    private TextField LoadGamePath;
+
+    @FXML
+    private TextField saveGamePath;
+
+    
+    @FXML
+    void loadGame(ActionEvent event) {
+    	if(!LoadGamePath.getText().isEmpty()) {
+    		g.loadGame(LoadGamePath.getText());
+    		gameInitialized = true;
+    		refresh();
+    	}
+    }
+
+    @FXML
+    void saveGame(ActionEvent event) {
+    	if(!saveGamePath.getText().isEmpty()){
+    		g.saveGame(saveGamePath.getText());
+    	} else {
+    		g.saveGame("DEFAULT");
+    	}
+    }
 
     @FXML
     void generateNewGame(ActionEvent event) {

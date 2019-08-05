@@ -1,5 +1,10 @@
 package application;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
@@ -632,5 +637,94 @@ public class Game {
 		}
                 guessed.clear();
 		return true;         
+	}
+	/***************************************************************************************
+	 * FUNCTION: 
+	 * 
+	 * DESCRIPTION: 
+	 * 
+	 * METHOD: saveGame(String saveName)
+	 * 
+	 * RETURNS:		
+	 *
+	 * INPUT PARAMETERS: saveName : String
+	 * 
+	 *********************************************************************************************/
+	public void saveGame(String saveName) {
+		BufferedWriter output = null;
+		try {
+			String strClassPath[] = System.getProperty( "java.class.path" ).split(";");
+			String path = strClassPath[0] +"\\" +saveName + ".txt";
+			path = path.replace('\\', '/');
+            File file = new File("src/application/" + saveName + ".txt");
+	        output = new BufferedWriter(new FileWriter(file));
+	        output.write(money[0]+";"+money[1]+";"+ money[2]+"\n");
+	        output.write(players.get(0).getMoney() + ";"+ players.get(1).getMoney() + ";" +players.get(2).getMoney()+"\n");
+	        for(int i = 0; i < guessed.size(); i++) {
+	        	output.write(guessed.get(i));
+	        }
+	        output.write("\n");
+	        output.write(answer);
+	        output.write("\n");
+	        output.write(getPuzzle());
+	        output.write("\n");
+	        output.write(whosTurn+"\n");
+	        output.close();
+        } catch ( IOException e ) {
+            e.printStackTrace();
+        }
+	}
+	/***************************************************************************************
+	 * FUNCTION: 
+	 * 
+	 * DESCRIPTION: 
+	 * 
+	 * METHOD: saveGame(String saveName)
+	 * 
+	 * RETURNS:		
+	 *
+	 * INPUT PARAMETERS: saveName : String
+	 * 
+	 *********************************************************************************************/
+	public void loadGame(String saveName) {
+		try {
+			String strClassPath[] = System.getProperty( "java.class.path" ).split(";");
+			String path = strClassPath[0] +"\\" +saveName + ".txt";
+			path = path.replace('\\', '/');
+            File file = new File("src/application/" + saveName + ".txt");
+            System.out.println("path");
+            BufferedReader br = new BufferedReader(new FileReader(file));
+			//BufferedReader br = new BufferedReader(new FileReader(getClass().getClassLoader().getResource("application/"+saveName+".txt").getFile()));
+			// used (above line)code from: https://www.mkyong.com/java/java-read-a-file-from-resources-folder/
+			String line;
+			line = br.readLine();
+			String[] check= line.split(";");
+			money[0] = Double.valueOf(check[0]);
+			money[1] = Double.valueOf(check[1]);
+			money[2] = Double.valueOf(check[2]);
+			line = br.readLine();
+			check = line.split(";");
+			players.add(new Player());
+			players.add(new Player());
+			players.add(new Player());
+			players.get(0).setMoney(Double.valueOf(check[0]));
+			players.get(1).setMoney(Double.valueOf(check[1]));
+			players.get(2).setMoney(Double.valueOf(check[2]));
+			line = br.readLine();
+			char[] checkChar = line.toCharArray();
+			for(int i = 0; i < checkChar.length; i++) {
+				guessed.add(checkChar[i]+"");
+			}
+			line = br.readLine();
+			answer = line;
+			answers = answer.toCharArray();
+			line = br.readLine();
+			puzzle = line;
+			line = br.readLine();
+			whosTurn = Integer.valueOf(line.trim());
+			br.close();
+        } catch ( IOException e ) {
+            e.printStackTrace();
+        }
 	}
 }
