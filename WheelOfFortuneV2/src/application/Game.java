@@ -231,6 +231,7 @@ public class Game {
 	 *********************************************************************************************/
 	public void newGame() throws IOException {
 		p = new Puzzle();
+		guessed.clear();
 		puzzle = p.getPuzzle();
 		answer = p.getAnswer();
 		answers = answer.toCharArray();
@@ -653,9 +654,6 @@ public class Game {
 	public void saveGame(String saveName) {
 		BufferedWriter output = null;
 		try {
-			String strClassPath[] = System.getProperty( "java.class.path" ).split(";");
-			String path = strClassPath[0] +"\\" +saveName + ".txt";
-			path = path.replace('\\', '/');
             File file = new File("src/application/" + saveName + ".txt");
 	        output = new BufferedWriter(new FileWriter(file));
 	        output.write(money[0]+";"+money[1]+";"+ money[2]+"\n");
@@ -688,13 +686,8 @@ public class Game {
 	 *********************************************************************************************/
 	public void loadGame(String saveName) {
 		try {
-			String strClassPath[] = System.getProperty( "java.class.path" ).split(";");
-			String path = strClassPath[0] +"\\" +saveName + ".txt";
-			path = path.replace('\\', '/');
             File file = new File("src/application/" + saveName + ".txt");
-            System.out.println("path");
             BufferedReader br = new BufferedReader(new FileReader(file));
-			//BufferedReader br = new BufferedReader(new FileReader(getClass().getClassLoader().getResource("application/"+saveName+".txt").getFile()));
 			// used (above line)code from: https://www.mkyong.com/java/java-read-a-file-from-resources-folder/
 			String line;
 			line = br.readLine();

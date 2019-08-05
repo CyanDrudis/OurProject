@@ -1,4 +1,5 @@
 package application;
+import java.io.File;
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
@@ -7,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
@@ -99,11 +101,17 @@ public class FXMLDocumentController {
 
     
     @FXML
-    void loadGame(ActionEvent event) {
+    void loadGame(ActionEvent event) throws IOException {
     	if(!LoadGamePath.getText().isEmpty()) {
     		g.loadGame(LoadGamePath.getText());
-    		gameInitialized = true;
+    		g.importWheel();      
+			g.setCurrent();
+			refresh();
+			gameInitialized = true;
+			oldSpokeIndex = 0;
     		refresh();
+    		Image image = new Image("application/wheelpng.png");
+    		wheelImageView.setImage(image);
     	}
     }
 
