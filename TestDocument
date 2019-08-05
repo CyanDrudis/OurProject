@@ -34,9 +34,27 @@ in which unique names are set for two different players using the setName() meth
 that the name set is the same as the name in the instance variable. As well, the test_getter_and_setter_set_multiple_name() test is
 used to test whether setting a player's name twice will overwrite the previous name with the new set name.
 
+deposit(): This method is first tested using the test_deposit_money() test, where money is deposited into the balance, and the 
+getMoney() method is called to assert that the balance is the same as the amount deposited. Then, multiple amounts are deposited
+into the balance in the test_deposit_more_money() test, and the getMoney() method is called again to check whether the test has passed.
+Next, in order to ensure negative amounts cannot be deposited, the test test_deposit_negative_money() is used to set a balance
+using setMoney(), then a negative amount is deposited using the deposit() method, if the balance returned using getMoney() is the 
+same as in setMoney(), then the deposit method is working correctly. As well, multiple negative amounts are deposited in the 
+test_deposit_more_negative_money() test, and if the setMoney() amount is equal to the getMoney() balance after multiple deposits of
+negative amounts of money, then the test will pass. 
+
+withdraw(): This method is first tested using the test_withdraw_money() test, where money is withdrawn from the balance, and the 
+getMoney() method is called to assert that the balance is the same as the amount withdrawn. Then, multiple amounts are withdrawn
+from the balance in the test_withdraw_more_money() test, and the getMoney() method is called again to check whether the test has passed.
+Next, in order to ensure negative amounts cannot be withdraw, the test test_withdrawn_negative_money() is used to set a balance
+using setMoney(), then a negative amount is withdrawn using the withdraw() method, if the balance returned using getMoney() is the 
+same as in setMoney(), then the withdraw method is working correctly. As well, multiple negative amounts are withdrawn from the 
+test_deposit_more_negative_money() test, and if the setMoney() amount is equal to the getMoney() balance after multiple withdraws of
+negative amounts of money, then the test will pass. 
+
 GameTest.java
 
 Purpose: 
 
 Procedure: 
-
+ 
