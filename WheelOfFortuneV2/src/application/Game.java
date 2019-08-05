@@ -193,19 +193,18 @@ public class Game {
 		players.get(whosTurn).setMoney(money);
 	}
 	
-	/***************************************************************************************
-	 * FUNCTION: Getting highest balance
-	 * 
-	 * DESCRIPTION: 
-	 * 
-	 * 
-	 * METHOD: getHighestBalPlayer()
-	 * 
-	 * RETURNS: 
-	 *
-	 * INPUT PARAMETERS:
-	 * 
-	 *********************************************************************************************/
+	 /** 
+	  *
+	  * This method sets the balance of a player, it can set the balance
+	  * of any player regardless of return and assigns a balance to it
+	  *
+	  * @param none
+	  * 
+	  * @returns void
+	  * 
+	  * 
+	  */ 
+	
 	public int getHighestBalPlayer() {
 		int highest = 0;
 		double highestBal = 0.0;
@@ -218,22 +217,42 @@ public class Game {
 		return highest;
 	}
 	
-	/***************************************************************************************
-	 * FUNCTION: Getting player list size
-	 * 
-	 * DESCRIPTION: 
-	 * 
-	 * 
-	 * METHOD: getPlayerListSize()
-	 * 
-	 * RETURNS: 
-	 *
-	 * INPUT PARAMETERS:
-	 * 
-	 *********************************************************************************************/
+	 /** 
+	  *
+	  * This retrieves the player list size stored in the PlayerList array,
+	  * this is useful so when the logic is implemented to allow a set amount
+	  * of players to play in the game, and when the game resets, a loop
+	  * will be performed where the players balance is set to 0, therefore,
+	  * needing the player list size to loop through all the indices
+	  *
+	  * @param none
+	  * 
+	  * @returns an integer that represents the size of the PlayerList array
+	  * 
+	  * 
+	  */ 
+	
 	public int getPlayerListSize() {
 		return players.size();
 	}
+	
+	/** 
+	  *
+	  * This method creates a brand new game first by creating a new Puzzle(),
+	  * which is the shell of the game, the guessed array is then cleared, 
+	  * a new puzzle category is retrieved using the getPuzzle() method, then
+	  * the answer is retrieved using the getAnswer() method, according to the 
+	  * category. The string answer is then converted into a character array 
+	  * which will then be used to compare the guesses towards. 
+	  * 
+	  * @param void
+	  * 
+	  * @returns void
+	  * 
+	  * @throws If an input or output exception occurred
+	  * 
+	  * 
+	  */ 
 	
 	/***************************************************************************************
 	 * FUNCTION: creating a brand new game (puzzle and answer)
