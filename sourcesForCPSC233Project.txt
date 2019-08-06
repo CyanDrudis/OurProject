@@ -1,3 +1,6 @@
+https://stackoverflow.com/questions/34711591/cannot-edit-jtextfield-java-swing
+https://www.mkyong.com/java/java-read-a-file-from-resources-folder/
+https://stackoverflow.com/questions/8751455/arraylist-contains-case-sensitivity
 https://www.youtube.com/watch?v=fl6Wp1I9wHQ
 https://www.youtube.com/watch?v=pzQXd08BPy4
 https://stackoverflow.com/questions/46270959/code-set-background-color-for-anchorpane-in-fxml-document
