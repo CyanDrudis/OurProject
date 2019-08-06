@@ -243,7 +243,9 @@ public class Game {
 	  * a new puzzle category is retrieved using the getPuzzle() method, then
 	  * the answer is retrieved using the getAnswer() method, according to the 
 	  * category. The string answer is then converted into a character array 
-	  * which will then be used to compare the guesses towards. 
+	  * which will then be used to compare the guesses towards. The default 
+	  * amount of players is three, therefore, three instances of player are
+	  * created, and added to an array list for players
 	  * 
 	  * @param void
 	  * 
@@ -254,46 +256,38 @@ public class Game {
 	  * 
 	  */ 
 	
-	/***************************************************************************************
-	 * FUNCTION: creating a brand new game (puzzle and answer)
-	 * 
-	 * DESCRIPTION: creates a brand new game for the player to try and win, chooses a puzzle,
-	 * then chooses an answer from that puzzle category, creates three player accounts
-	 * 
-	 * METHOD: newGame()
-	 * 
-	 * RETURNS: void
-	 *
-	 * INPUT PARAMETERS: void  
-	 * 
-	 *********************************************************************************************/
 	public void newGame() throws IOException {
-		p = new Puzzle();
-		guessed.clear();
-		puzzle = p.getPuzzle();
-		answer = p.getAnswer();
-		answers = answer.toCharArray();
-		Player p1 = new Player();
-		Player p2 = new Player();
-		Player p3 = new Player();
-		players = new ArrayList<Player>();
-		players.add(p1);
-		players.add(p2);
-		players.add(p3);
+	p = new Puzzle();
+	guessed.clear();
+	puzzle = p.getPuzzle();
+	answer = p.getAnswer();
+	answers = answer.toCharArray();
+	Player p1 = new Player();
+	Player p2 = new Player();
+	Player p3 = new Player();
+	players = new ArrayList<Player>();
+	players.add(p1);
+	players.add(p2);
+	players.add(p3);
 	}
 	
-	/***************************************************************************************
-	 * FUNCTION: Create a new puzzle and obtain an answer from that puzzle
+	/**
+	 * 	 
+	 * This method creates a new puzzle by retrieving the category from the
+	 * puzzle text file, as well, a corresponding answer will be picked from
+	 * the category. This puzzle is then transferred to a character array,
+	 * and every player gets their balance reset to 0.
 	 * 
-	 * DESCRIPTION: transfer answer to character array, create new answer and puzzle
+	 * @param none
 	 * 
-	 * METHOD: newPuzzle()
+	 * @returns none
 	 * 
-	 * RETURNS: void
-	 *
-	 * INPUT PARAMETERS: void
+	 * @throws If an input or output exception occurred
 	 * 
-	 *********************************************************************************************/
+	 * 
+	 */
+		
+		
 	public void newPuzzle() throws IOException {
 		p = new Puzzle();
 		puzzle = p.getPuzzle();
@@ -302,35 +296,39 @@ public class Game {
 		players.get(0).deposit(money[0]);
 	}
 	
-	/***************************************************************************************
-	 * FUNCTION: Reset users money upon landing on bankrupt section of the wheel
+	/**
+	 * 	 
+	 * This method resets users money upon landing on bankrupt section of
+	 * the wheel, by setting the player's balance to 0. The player who's
+	 * balance will be reset will depedn on the whosTurn instance variable,
+	 * as they are the person who landed on it 
 	 * 
-	 * DESCRIPTION: sets player who lands on the bankrupt section's money to 0
+	 * @param none
 	 * 
-	 * METHOD: bankrupt()
+	 * @returns none
 	 * 
-	 * RETURNS: void
-	 *
-	 * INPUT PARAMETERS: void
 	 * 
-	 *********************************************************************************************/
+	 */
+	
 	public void bankrupt() {
-		money[whosTurn] = 0;
-        changeTurn();
+	money[whosTurn] = 0;
+    changeTurn();
 	}
 	
-	/***************************************************************************************
-	 * FUNCTION: Cycle through players turn	
+	/**
+	 * 	 
+	 * This method is used to increment a players turn as the player finishes
+	 * their turn, or in the scenario where they land on the loseaturn spoke
+	 * on the wheel, in which case, they lose their chance to guess any letters,
+	 * and their turn gets skipped, and passed onto the next person
 	 * 
-	 * DESCRIPTION: Cycle through players turn 	
+	 * @param none
 	 * 
-	 * METHOD: loseATurn()
+	 * @returns none
 	 * 
-	 * RETURNS: void
-	 *
-	 * INPUT PARAMETERS: void
 	 * 
-	 *********************************************************************************************/
+	 */
+	
 	public void loseATurn(){
 		if(whosTurn == 2) {
 			whosTurn = 0;
@@ -339,39 +337,46 @@ public class Game {
 		}
 	}
 	
-	/***************************************************************************************
-	 * FUNCTION: Set Turn
+	/**
+	 * 	 
+	 * This method sets the turn, and is used when...
 	 * 
-	 * DESCRIPTION: 
 	 * 
-	 * METHOD: setTurn()
 	 * 
-	 * RETURNS: void
-	 *
-	 * INPUT PARAMETERS: void
+	 * @param none
 	 * 
-	 *********************************************************************************************/
+	 * @returns none
+	 * 
+	 * 
+	 */
+	
 	public void setTurn(int turn){
-		whosTurn = turn;
+	whosTurn = turn;
 	}
 	
-	/***************************************************************************************
-	 * FUNCTION: Set the base string to which the user is going to guess characters to fill up the word 
+	/**
+	 * 	 
+	 * This method creates an empty array called check, that is then set to
+	 * a character array of answer, the current array is then cleared for 
+	 * the updated current character array. For each index of the answer, if
+	 * the check is equal to a space, there's a space added in the current 
+	 * array, if it's equivalent to any of the guessed letters regardless
+	 * of lower/uppercase guess, it's reaplaced in the current string, and
+	 * if not, the un-guessed letters have asterisks inserted
 	 * 
-	 * DESCRIPTION: Go through each index of the length of the answer, and adds either blank spaces or
-	 * asterisks 
+	 * @param none
 	 * 
-	 * METHOD: setCurent()
+	 * @returns none
 	 * 
-	 * RETURNS: void
-	 *
-	 * INPUT PARAMETERS: void  
+	 * @throws If an input or output exception occurred
 	 * 
-	 *********************************************************************************************/
+	 * 
+	 */
+	
 	public void setCurrent() throws IOException {
 		char[] check;
 		check = answer.toCharArray();
-                current.clear();
+        current.clear();
 		for(int i = 0; i < check.length; i++) {
 			if(check[i] == ' ') {
                             current.add(" ");	
@@ -383,26 +388,30 @@ public class Game {
 		}
 	}
 	
-        /***************************************************************************************
-	 * FUNCTION: 
+	/**
+	 * 	 
+	 * This method is used when the user inputs more than one character,
+	 * it assumes that what the user has put is the entire answer, 
+	 * this guess will then be compared to the answer, and will return
+	 * a boolean value
 	 * 
-	 * DESCRIPTION: 
+	 * @param strToCompare the String that's being compared
 	 * 
-	 * METHOD: containsCaseInsensitive(String strToCompare, ArrayList<String>list)
+	 * @param list 
 	 * 
-	 * RETURNS: 
-	 *
-	 * INPUT PARAMETERS:
+	 * @returns boolean, whether the user has guessed the answer correctly or
+	 * not 
 	 * 
-     * SOURCE: https://stackoverflow.com/questions/8751455/arraylist-contains-case-sensitivity
-	 *********************************************************************************************/
+	 * 
+	 */
+	
 	public boolean containsCaseInsensitive(String strToCompare, ArrayList<String>list) {
-         for(String str:list){
+		for(String str:list){
               if(str.equalsIgnoreCase(strToCompare)){
                   return(true);
               }
          }
-     return(false);
+		return(false);
      }
 	
 	/***************************************************************************************
