@@ -97,7 +97,37 @@ public class FXMLDocumentController {
 
     @FXML
     private TextField saveGamePath;
+    
+    @FXML
+    private Button twoPlayerButton;
 
+    @FXML
+    private Button threePlayerButton;
+    
+    @FXML
+    void threePlayerMode(ActionEvent event) {
+    	g.setTwoPlayerMode(false);
+    	twoPlayerButton.setDisable(false);
+		threePlayerButton.setDisable(true);
+		player3Total.setVisible(true);
+		player3MoneyLabel.setVisible(true);
+		player3Label.setVisible(true);
+		refresh();
+    }
+
+    @FXML
+    void twoPlayerMode(ActionEvent event) {
+    	g.setTwoPlayerMode(true);
+    	player3Total.setVisible(false);
+		player3MoneyLabel.setVisible(false);
+		player3Label.setVisible(false);
+		twoPlayerButton.setDisable(true);
+		threePlayerButton.setDisable(false);
+		if(g.whosTurn() == 2) {
+			g.setTurn(0);
+		}
+		refresh();
+    }
     
     @FXML
     void loadGame(ActionEvent event) throws IOException {
@@ -105,7 +135,21 @@ public class FXMLDocumentController {
     		g.loadGame(LoadGamePath.getText());
     		g.importWheel();      
 			g.setCurrent();
-			refresh();
+			twoPlayerButton.setVisible(true);
+			threePlayerButton.setVisible(true);
+			if(g.getTwoPlayerMode()) {
+				player3Total.setVisible(false);
+				player3MoneyLabel.setVisible(false);
+				player3Label.setVisible(false);
+				twoPlayerButton.setDisable(true);
+				threePlayerButton.setDisable(false);
+			} else {
+				twoPlayerButton.setDisable(false);
+				threePlayerButton.setDisable(true);
+				player3Total.setVisible(true);
+				player3MoneyLabel.setVisible(true);
+				player3Label.setVisible(true);
+			}
 			gameInitialized = true;
     		refresh();
     	}
@@ -126,11 +170,14 @@ public class FXMLDocumentController {
     }
     @FXML
     public void gameInit() {
-    	
         try {
 			g.newGame();
 			g.importWheel();      
 			g.setCurrent();
+			g.setTurn(0);
+			twoPlayerButton.setVisible(true);
+			threePlayerButton.setVisible(true);
+			threePlayerButton.setDisable(true);
 			refresh();
 			gameInitialized = true;
 		} catch (IOException e) {
@@ -217,6 +264,7 @@ public class FXMLDocumentController {
 		                    }else{
 		                        if(spoke.equals("bankrupt")){
 		                            g.bankrupt();
+		                            toDisplayLabel.setText("You went bankrupt!");
 		                            refresh();
 		                        }else{
 		                            String input = textField.getText();
