@@ -5,19 +5,13 @@ import java.util.Scanner;
 /*********************************************************************************************************************
  * CLASS: Runtime.java
  * 
- * PURPOSE: to be the main engine where the game is created
- * 
- * VARIABLES: 
+ * PURPOSE: to be the main engine where the game is created. This would be the text version of the game. 
  *                    
  * NOTES: 
  *********************************************************************************************************************/
 		
 public class Runtime extends Game {
 		
-		
-		
-		//Player p1 = new Player();
-		//Player p2 = new Player();
 		
 	public static void main(String[] args) throws IOException {
 		Game g = new Game();
@@ -86,8 +80,6 @@ public class Runtime extends Game {
 								 System.out.println("Incorrect!");
 								 g.changeTurn();
 							 }
-							 //g.refresh();
-							 //g.newGame();
 						 }
 					 }
 				}
@@ -126,8 +118,4 @@ public class Runtime extends Game {
             }
 		}	
 	}
-		//Check the answer
-		//If the answer is right, refresh()
-		//If the answer is wrong, changeTurn()
-		//If win, deposit value of wheel/get prize
 }
