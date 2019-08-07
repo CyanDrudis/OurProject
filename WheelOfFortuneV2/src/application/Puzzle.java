@@ -37,6 +37,22 @@ public class Puzzle {
 	private int randomIntForPuzzle;
 	private int randomIntForAnswer;
 	Random rand = new Random();
+	
+	/**
+	 * 	 
+	 * 
+	 *
+	 * 
+	 * @param none
+	 * 
+	 * @returns none
+	 * 
+	 * @throws If an input or output exception occurred
+	 * 
+	 * 
+	 */
+	
+	
 	/***************************************************************************************
 	 * FUNCTION: generate a new random integer for a new random puzzle
 	 * 
@@ -50,9 +66,26 @@ public class Puzzle {
 	 * INPUT PARAMETERS:  nothing either!
 	 * 
 	 *********************************************************************************************/
+	
 	public void newPuzzle() {
 		randomIntForPuzzle = rand.nextInt(puzzle.size());
 	}
+	
+	/**
+	 * 	 
+	 * 
+	 *
+	 * 
+	 * @param none
+	 * 
+	 * @returns none
+	 * 
+	 * @throws If an input or output exception occurred
+	 * 
+	 * 
+	 */
+	
+	
 	/***************************************************************************************
 	 * FUNCTION: generate a random integer for a new random answer
 	 * 
@@ -66,9 +99,25 @@ public class Puzzle {
 	 * INPUT PARAMETERS:  nothing either!
 	 * 
 	 *********************************************************************************************/
+	
 	public void newAnswer() {
 		randomIntForAnswer = rand.nextInt(answers.get(randomIntForPuzzle).split(",").length);
 	}
+	
+	/**
+	 * 	 
+	 * 
+	 *
+	 * 
+	 * @param none
+	 * 
+	 * @returns none
+	 * 
+	 * @throws If an input or output exception occurred
+	 * 
+	 * 
+	 */
+	
 	/***************************************************************************************
 	 * FUNCTION: to import the puzzle array from our own txt file
 	 * 
@@ -83,6 +132,7 @@ public class Puzzle {
 	 * INPUT PARAMETERS: nothing! 
 	 * 
 	 *********************************************************************************************/
+	
 	public String getPuzzle() throws IOException {
 		BufferedReader br = new BufferedReader(new FileReader(getClass().getClassLoader().getResource("application/puzzle.txt").getFile()));
 		// used (above line)code from: https://www.mkyong.com/java/java-read-a-file-from-resources-folder/
@@ -97,6 +147,20 @@ public class Puzzle {
 		return puzzle.get(randomIntForPuzzle);	
 		
 	}
+	
+	/**
+	 * 	 
+	 * 
+	 *
+	 * 
+	 * @param none
+	 * 
+	 * @returns none
+	 * 
+	 * @throws If an input or output exception occurred
+	 * 
+	 * 
+	 */
 	/***************************************************************************************
 	 * FUNCTION: to import the answer array from our own text file, then make a smaller array of those answers and return a random one
 	 * 
@@ -113,6 +177,7 @@ public class Puzzle {
 	 * INPUT PARAMETERS: nothing! 
 	 * 
 	 *********************************************************************************************/
+	
 	public String getAnswer() throws IOException {
 		String[] ans;
 		BufferedReader br = new BufferedReader(new FileReader(getClass().getClassLoader().getResource("application/answers.txt").getFile()));
@@ -129,6 +194,20 @@ public class Puzzle {
         randomIntForAnswer = rand.nextInt(ans.length);
 		return ans[randomIntForAnswer];
 	}
+	
+	/**
+	 * 	 
+	 * 
+	 *
+	 * 
+	 * @param none
+	 * 
+	 * @returns none
+	 * 
+	 * @throws If an input or output exception occurred
+	 * 
+	 * 
+	 */
 	/***************************************************************************************
 	 * FUNCTION: to import the wheel array from our own text file
 	 * 
@@ -143,6 +222,7 @@ public class Puzzle {
 	 * INPUT PARAMETERS: nothing! 
 	 * 
 	 *********************************************************************************************/
+	
 	public ArrayList<String> getWheel () throws IOException{
 		BufferedReader br = new BufferedReader(new FileReader(getClass().getClassLoader().getResource("application/wheel.txt").getFile()));
 		// used (above line)code from: https://www.mkyong.com/java/java-read-a-file-from-resources-folder/
