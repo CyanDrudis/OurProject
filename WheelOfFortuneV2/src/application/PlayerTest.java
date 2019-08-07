@@ -35,28 +35,6 @@ public class PlayerTest {
 		assertEquals("Set balance to 500", 5020, p.getMoney(), 0.000001);
 		assertEquals("Set balance to 6019", 63, p1.getMoney(), 0.000001);
 	}
-		
-	@Test	
-	public void test_getter_and_setter_name() {
-		Player p = new Player();
-		Player p1 = new Player();
-		p.setName("WheelOfFortune");
-		p1.setName("Wheel Of Fortune");
-		assertEquals("Set name to WheelOfFortune", "WheelOfFortune", p.getName());
-		assertEquals("Set name to Wheel Of Fortune", "Wheel Of Fortune", p1.getName());
-	}
-	
-	@Test	
-	public void test_getter_and_setter_set_multiple_name() {
-		Player p = new Player();
-		Player p1 = new Player();
-		p.setName("WheelOfFortune");
-		p.setName("Fortune");
-		p1.setName("Wheel Of Fortune");
-		p1.setName("Wheel");
-		assertEquals("Set name to WheelOfFortune", "Fortune", p.getName());
-		assertEquals("Set name to Wheel Of Fortune", "Wheel", p1.getName());
-	}	
 	
 	@Test	
 	public void test_deposit_money() {
