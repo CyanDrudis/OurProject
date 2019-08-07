@@ -17,7 +17,8 @@ import java.util.Collections;
  *
  *			In addition to the methods of the game, there are methods to pass, set and modify relevant information about 
  *			the player as the game goes on. This is represented as a players 'account' (the amount of money they have),
- * 			their name and the prize list attached to them.
+ * 			their inputed guesses and amount of completed puzzles. This is also where the loading and saving of a previous
+ * 			game state is done. Along with actual game mechanics, such as spinning the wheel and getting a result from the spin.
  *
  *
  * 
@@ -32,10 +33,8 @@ import java.util.Collections;
  *					  -numberOfPuzzles: keeps track of number of puzzles completed	
  *
  *					  -name: a String, the player's name
- *                    -money: a double, the player's 'account' so to say  
- *                    -bonus:   
- *                    -vowelCost:
- *                    -prizeList: 
+ *                    -money: a double, the player's 'account' so to say    
+ *                    -vowelCost: a double, the price of inputing a vowel, which is $50
  *                    
  * NOTES: Negative balance is possible and allowed in Wheel of Fortune, therefore it is not accounted for here.
  *********************************************************************************************************************/
@@ -404,7 +403,7 @@ public class Game {
 	 * the updated current character array. For each index of the answer, if
 	 * the check is equal to a space, there's a space added in the current 
 	 * array, if it's equivalent to any of the guessed letters regardless
-	 * of lower/uppercase guess, it's reaplaced in the current string, and
+	 * of lower/uppercase guess, it's replaced in the current string, and
 	 * if not, the un-guessed letters have asterisks inserted
 	 * 
 	 * @param none
@@ -459,7 +458,10 @@ public class Game {
 	
 	/**
 	 * 	 
-	 * 
+	 * This method is used to retrieve the current string.
+	 * A for loop is run to retrieve the contents of the current
+	 * Array List and placed inside a String variable which will
+	 * be returned.
 	 *
 	 * 
 	 * @param none
@@ -481,7 +483,9 @@ public class Game {
 	
 	/**
 	 * 	 
-	 * 
+	 * This method is used to retrieve the guessed string or the input.
+	 * A for loop is run to retrieve the contents of the String array
+	 * which is then placed inside the String variable toReturn.
 	 *
 	 * 
 	 * @param none
@@ -504,7 +508,13 @@ public class Game {
 	
 	/**
 	 * 	 
-	 * 
+	 * This method is used to spin the wheel. The wheel is represented 
+	 * in the code as an Array List, this is simply a matter of 
+	 * retrieving a random index from said Array List to simulate
+	 * a spin and the spoke landing on a result. A result of bankrupt,
+	 * 'lose a turn' and 'freespin' is accounted for here wherein the
+	 * current spoke value is only updated if the index lands on a
+	 * number, i.e. the money value.
 	 *
 	 * 
 	 * @param none
@@ -525,12 +535,15 @@ public class Game {
 		if(!wheel.get(randomNumForWheel).equals("bankrupt")&& !wheel.get(randomNumForWheel).equals("loseaturn") && !wheel.get(randomNumForWheel).equals("freespin")) {
 			currentSpokeValue = Integer.valueOf(wheel.get(randomNumForWheel));
 		}
-		return wheel.get(randomNumForWheel); //get a random index from the arraylist, may have to change later
+		return wheel.get(randomNumForWheel); 
 	}
 	
 	/**
 	 * 	 
-	 * 
+	 * This method checks the inputted answer. If the conditions
+	 * are satisfied, wherein the final input is equal to the answer,
+	 * the guessed (the user input) and current (the current puzzle)
+	 * Array Lists are cleared. 
 	 *
 	 * 
 	 * @param s
@@ -553,6 +566,7 @@ public class Game {
 	
 	/**
 	 * 	 
+	 * This method is used to check the current guessed input.
 	 * 
 	 *
 	 * 
@@ -574,7 +588,13 @@ public class Game {
 	
 	/**
 	 * 	 
-	 * 
+	 * This method is used to rotate the current user's turn.
+	 * The first if statement is used in case there are two players.
+	 * Thus, whenever whosTurn is equal to 1 we reset it to 0, 
+	 * otherwise we set whosTurn to 1. The logic is then used to 
+	 * account for three possible players wherein if whosTurn is 
+	 * ever equal to 2 (player 3) we reset back to 0 (player 1)
+	 * otherwise we increment by 1.  
 	 *
 	 * 
 	 * @param none
@@ -600,7 +620,8 @@ public class Game {
 	
 	/**
 	 * 	 
-	 * 
+	 * This method is used to return whosTurn, i.e.
+	 * which player's turn is it to 'play'.
 	 *
 	 * 
 	 * @param none
@@ -616,8 +637,18 @@ public class Game {
 	
 	/**
 	 * 	 
+	 * This method is used to handle the user input. First check 
+	 * if the inputed character is already there by converting
+	 * the char to string and checking if it equals any string in
+	 * the guessed ArrayList. If the user inputs a vowel they must 
+	 * pay the vowel cost, and $50 is taken from from the player's
+	 * balance. Note, a negative balance is allowed in 
+	 * Wheel of Fortune, thus it is not accounted for in the code.
+	 * Otherwise, assuming the answer is correct the player's balance 
+	 * is updated by the spoke value. 
 	 * 
-	 *
+	 * If there are no more '*' we clear the guessed Array List and prompt
+	 * the user that they have completed the puzzle.
 	 * 
 	 * @param a
 	 * 
@@ -661,9 +692,7 @@ public class Game {
 	
 	/**
 	 * 	 
-	 * 
-	 * 
-	 *
+	 * This method is used to set the the win counter.
 	 * 
 	 * @param zero
 	 * 
@@ -678,7 +707,7 @@ public class Game {
 	
 	/**
 	 * 	 
-	 * 
+	 * This method is used to update the puzzle counter.
 	 * 
 	 *
 	 * 
@@ -705,7 +734,10 @@ public class Game {
 	/**
 	 * 	 
 	 * 
-	 *
+	 * This method is used to determine who won. 
+	 * If a given player's numberOfPuzzles they have
+	 * completed is greater than or equal to the numberOfPuzzlesToWin
+	 * a boolean value of true is returned.
 	 *
 	 * 
 	 * @param none
@@ -725,7 +757,9 @@ public class Game {
 	/**
 	 * 	 
 	 * 
-	 * 
+	 * This method is used to determine of the user has completed 
+	 * the puzzle. If there are no '*' left, the guessed Array List
+	 * is cleared and a boolean vale of true is returned.
 	 *
 	 * 
 	 * @param none
@@ -747,6 +781,7 @@ public class Game {
 	
 	/**
 	 * 	 
+	 * This method is used to save the previous game.
 	 * 
 	 *
 	 *
@@ -785,7 +820,7 @@ public class Game {
 	/**
 	 * 	 
 	 * 
-	 *
+	 *This method is used to load a previously saved game.
 	 *
 	 * 
 	 * @param saveName

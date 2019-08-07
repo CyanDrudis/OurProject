@@ -10,25 +10,19 @@ import java.util.Collections;
  * PURPOSE: To pass, set and modify relevant information about the player as the game goes on. 
  *          This is represented as a players 'account' (the amount of money they have), their name and the prize list attached to them.
  * 
- * PRIVATE VARIABLES: -name: a String, the player's name
- *                    -money: a double, the player's 'account' so to say  
- *                    -bonus:   
- *                    -vowelCost:
- *                    -prizeList: 
+ * PRIVATE VARIABLES: -money: a double, the player's 'account' so to say  
  *                    
  * NOTES: Negative balance is possible and allowed in Wheel of Fortune, therefore it is not accounted for here.
  *********************************************************************************************************************/
 
 public class Player extends Game{
-	private String name;
 	private double money;
         //Player's current round account balance
-        //Player's account balance so to say
 	
 	/**
 	 * 	 
 	 * 
-	 *
+	 *This method is used to return the money instance variable.
 	 *
 	 * 
 	 * @param none
@@ -45,24 +39,9 @@ public class Player extends Game{
 	/**
 	 * 	 
 	 * 
-	 * 
-	 *
-	 * 
-	 * @param none
-	 * 
-	 * @returns String
-	 * 
-	 * 
-	 */
-	
-	public String getName() {
-		return name;
-	}
-	
-	/**
-	 * 	 
-	 * 
-	 * 
+	 * This method is used to set the money instance variable. 
+	 * A double is passed in and the instance variable money is
+	 * updated with this passed in value.
 	 *
 	 * 
 	 * @param money
@@ -76,28 +55,12 @@ public class Player extends Game{
 		this.money = money;
 	}
 	
-	/**
-	 * 	 
-	 * 
-	 * 
-	 *
-	 * 
-	 * @param name
-	 * 
-	 * @returns none
-	 * 
-	 * 
-	 */
-	
-	public void setName(String name) {
-		this.name = name;
-	}
 	
 	/**
 	 * 
-	 * 	 
-	 * 
-	 *
+	 * This method is used to update the player's balance
+	 * by a deposited value. As long as the deposited value is greater
+	 * than or equal to zero, the player's balance is then updated.
 	 * 
 	 * @param amount
 	 * 
@@ -114,7 +77,11 @@ public class Player extends Game{
 	
 	/**
 	 * 	 
-	 * 
+	 * This method is used to withdraw money from a player's
+	 * balance. As long the desired amount withdrawn is greater than 0,
+	 * the player's balance is charged this amount.
+	 * Note: Wheel of Fortune allows for negative balances. Thus, it
+	 * is not accounted for here.  
 	 *
 	 *
 	 * 
