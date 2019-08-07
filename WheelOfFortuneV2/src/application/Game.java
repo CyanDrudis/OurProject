@@ -52,7 +52,7 @@ public class Game {
 	private static final double vowelCost = 50;
 	private static final int numberOfPuzzlesToWin = 3;
 	private int numberOfPuzzles = 0;
-    private int randomNumForWheel;
+        private int randomNumForWheel;
 	Puzzle p = new Puzzle();
 	ArrayList<String> wheel = new ArrayList<String>();
 	ArrayList<Player> players = new ArrayList<Player>();
