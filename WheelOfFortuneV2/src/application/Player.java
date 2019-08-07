@@ -25,91 +25,106 @@ public class Player extends Game{
         //Player's current round account balance
         //Player's account balance so to say
 	
-	/************************************************************************
-	 * FUNCTION: getMoney
+	/**
+	 * 	 
 	 * 
-	 * PURPOSE: returns the amount of money in a player's account
+	 *
+	 *
 	 * 
-	 * METHOD: return instance variable money
+	 * @param none
 	 * 
-	 * RETURNS: a double
-	 ************************************************************************/
+	 * @returns double
+	 * 
+	 * 
+	 */
+	
 	public double getMoney() {
 		return money;
 	}
 	
-    /************************************************************************
-	 * FUNCTION: getName
+	/**
+	 * 	 
 	 * 
-	 * PURPOSE: return the given name of the player
 	 * 
-	 * METHOD: return instance variable name
+	 *
 	 * 
-	 * RETURNS: a String
-	 ************************************************************************/
+	 * @param none
+	 * 
+	 * @returns String
+	 * 
+	 * 
+	 */
+	
 	public String getName() {
 		return name;
 	}
 	
-	/************************************************************************
-	 * FUNCTION: setMoney
+	/**
+	 * 	 
 	 * 
-	 * PURPOSE: set the amount of money for the invoking object/instance
 	 * 
-	 * METHOD: make the instances' money variable equal to what is passed in
+	 *
 	 * 
-	 * RETURNS: nothing.
+	 * @param money
 	 * 
-	 * INPUT PARAMETERS:  a double
-	 ************************************************************************/
+	 * @returns none
+	 * 
+	 * 
+	 */
+	
 	public void setMoney(double money) {
 		this.money = money;
 	}
 	
-	/************************************************************************
-	 * Function: setName 
+	/**
+	 * 	 
 	 * 
-	 * Purpose: set the given name for the invoking object/instance
 	 * 
-	 * Method: makes the object's name variable equal to what is passed in
+	 *
 	 * 
-	 * Returns: nothing
+	 * @param name
 	 * 
-	 * Input Parameters: a String
-	 ************************************************************************/
+	 * @returns none
+	 * 
+	 * 
+	 */
+	
 	public void setName(String name) {
 		this.name = name;
 	}
 	
-	/*************************************************************************
-	 * Function: deposit
+	/**
 	 * 
-	 * Purpose:  deposit a certain amount into the player's money, a placeholder for some type of account
+	 * 	 
 	 * 
-	 * Method: add the players money by the amount passed in
+	 *
 	 * 
-	 * Returns: nothing
+	 * @param amount
 	 * 
-	 * Input Parameters: a double 
-	 *************************************************************************/
+	 * @returns none
+	 * 
+	 * 
+	 */
+	
 	public void deposit(double amount) {
 		if (amount >= 0) {
 			this.money = this.money + amount;
 		}
 	}
 	
-	/*************************************************************************
-	 * Function: withdraw 
+	/**
+	 * 	 
 	 * 
-	 * Purpose: take out a certain amount of money from the players account.
+	 *
+	 *
 	 * 
-	 * Method: subtract the money in a player's account by the value passed in.
-	 * 		   note: It is possible to have a negative balance in Wheel of Fortune so this is not accounted for here.	
+	 * @param amount
 	 * 
-	 * Returns: nothing
+	 * @returns none
 	 * 
-	 * Input Parameters: a double 
-	 **************************************************************************/
+	 * 
+	 */
+	
 	public void withdraw(double amount) {
 		if (amount >= 0) {
 			this.money = this.money - amount;
