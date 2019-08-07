@@ -60,15 +60,12 @@ public class Game {
 	
 	/**
 	 * 	 
-	 * 
+	 * This method is used to set a game with two players.
 	 *
 	 * 
 	 * @param none
 	 * 
 	 * @returns none
-	 * 
-	 * @throws If an input or output exception occurred
-	 * 
 	 * 
 	 */
 	
@@ -78,15 +75,12 @@ public class Game {
 	
 	/**
 	 * 	 
-	 * 
+	 * This method is used to confirm a game with two players.
 	 *
 	 * 
 	 * @param none
 	 * 
 	 * @returns none
-	 * 
-	 * @throws If an input or output exception occurred
-	 * 
 	 * 
 	 */
 	
@@ -540,7 +534,7 @@ public class Game {
 	
 	/**
 	 * 	 
-	 * This method checks the inputted answer. If the conditions
+	 * This method checks the inputed answer. If the conditions
 	 * are satisfied, wherein the final input is equal to the answer,
 	 * the guessed (the user input) and current (the current puzzle)
 	 * Array Lists are cleared. 
