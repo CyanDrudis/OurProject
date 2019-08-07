@@ -116,9 +116,9 @@ public class Game {
 	 * 
 	 */
 	
-    public int getRandomNumForWheel(){
-        return randomNumForWheel;
-    }
+        public int getRandomNumForWheel(){
+     	   return randomNumForWheel;
+    	}
     
 	/**
 	 * 	 
