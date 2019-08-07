@@ -13,17 +13,17 @@ import java.util.Random;
  * 
  * PRIVATE VARIABLES: 
  * 
- * answers:ArrayList<String>: a List of the answers, each line has multiple answers per category seperated by ','
+ * answers:ArrayList<String>: a List of the answers, each line has multiple answers per category separated by ','
  * each index in this array correlates with an index in the puzzle array
  * 
  * puzzle:ArrayList<String>: a List of the puzzle categories, one on each index.
  * 
- * wheel:ArrayList<String>: a List of the wheel which includes how much money the player will recieve for each correct
+ * wheel:ArrayList<String>: a List of the wheel which includes how much money the player will receive for each correct
  * consonant.
  * 
- * randomIntForPuzzle:int : a variable that is to be assigned a randomly generated number within the indexs of the puzzle array
+ * randomIntForPuzzle:int : a variable that is to be assigned a randomly generated number within the indexes of the puzzle array
  * 
- * randomIntForAnswer:int : a variable that is to be assigned a randomly generated number within the indexs of the answer array
+ * randomIntForAnswer:int : a variable that is to be assigned a randomly generated number within the indexes of the answer array
  * 
  *                    
  * NOTES: 
@@ -39,33 +39,16 @@ public class Puzzle {
 	Random rand = new Random();
 	
 	/**
-	 * 	 
-	 * 
-	 *
+	 * This method generates a new random integer for a new random puzzle,
+	 * passes the size of the puzzle array to the rand method to generate a random number
+	 * and assigns it to RandomIntForPuzzle
 	 * 
 	 * @param none
-	 * 
+	 *
 	 * @returns none
 	 * 
-	 * @throws If an input or output exception occurred
-	 * 
-	 * 
-	 */
-	
-	
-	/***************************************************************************************
-	 * FUNCTION: generate a new random integer for a new random puzzle
-	 * 
-	 * DESCRIPTION: passes the size of the puzzle array to the rand method to generate a random number
-	 *  and assigns it to RandomIntForPuzzle
-	 * 
-	 * METHOD: newPuzzle()
-	 * 
-	 * RETURNS: nothing! it's void!!
 	 *
-	 * INPUT PARAMETERS:  nothing either!
-	 * 
-	 *********************************************************************************************/
+	 **/
 	
 	public void newPuzzle() {
 		randomIntForPuzzle = rand.nextInt(puzzle.size());
@@ -73,32 +56,15 @@ public class Puzzle {
 	
 	/**
 	 * 	 
-	 * 
+	 * This method generates a random integer for a new random answer. The method uses the same integer created for the 
+	 * puzzle array because index's between the two correlate but then splits the answer list up by ',' 
+	 * then takes and stores the length of what that array would be like for later.
 	 *
-	 * 
 	 * @param none
 	 * 
 	 * @returns none
 	 * 
-	 * @throws If an input or output exception occurred
-	 * 
-	 * 
 	 */
-	
-	
-	/***************************************************************************************
-	 * FUNCTION: generate a random integer for a new random answer
-	 * 
-	 * DESCRIPTION: passes the same integer created for the puzzle array because index's between the two
-	 * correlate but then splits the answer list up by ',' and takes the length of what that array would be like for later
-	 * 
-	 * METHOD: newAnswer() 
-	 * 
-	 * RETURNS: nothing! it's void!!
-	 *
-	 * INPUT PARAMETERS:  nothing either!
-	 * 
-	 *********************************************************************************************/
 	
 	public void newAnswer() {
 		randomIntForAnswer = rand.nextInt(answers.get(randomIntForPuzzle).split(",").length);
@@ -106,32 +72,18 @@ public class Puzzle {
 	
 	/**
 	 * 	 
-	 * 
-	 *
+	 * This method is used to import the puzzle array from the puzzle.txt file. The method searches for the file 
+	 * where the class is, then passes that file to the file reader and then passes the file reader 
+	 * to the BufferedReader which will search through that file and add each line to the array until there is nothing left,
+	 * and will finally close the buffered reader. 
 	 * 
 	 * @param none
 	 * 
-	 * @returns none
+	 * @returns String
 	 * 
 	 * @throws If an input or output exception occurred
 	 * 
-	 * 
 	 */
-	
-	/***************************************************************************************
-	 * FUNCTION: to import the puzzle array from our own txt file
-	 * 
-	 * DESCRIPTION: searchs for the file where the class is, then passes that file to the file reader then passes the file reader 
-	 * to the BufferedReader then searchs through that file and adds each line to the array till there's nothing left then
-	 * closes the buffered reader
-	 * 
-	 * METHOD: String getPuzzle()
-	 * 
-	 * RETURNS: a randomized index in the puzzle array
-	 *
-	 * INPUT PARAMETERS: nothing! 
-	 * 
-	 *********************************************************************************************/
 	
 	public String getPuzzle() throws IOException {
 		BufferedReader br = new BufferedReader(new FileReader(getClass().getClassLoader().getResource("application/puzzle.txt").getFile()));
@@ -151,32 +103,21 @@ public class Puzzle {
 	/**
 	 * 	 
 	 * 
-	 *
+	 * This method is used to import the answers from the answer.txt file. Then make a smaller array 
+	 * from those answers and return a random one. Searches for the file where the class is, then passes
+	 * that file to the file reader and then passes the file reader to the BufferedReader which then searches 
+	 * through that file and adds each line to the array until there is nothing left, the buffered reader is then closed.
+	 * Afterwards it grabs the same index that the puzzle is on and makes its own tiny array from the split ',' method
+	 * and uses the randomIntForAnswer to randomize amongst the smaller list in which the answer is returned.
 	 * 
 	 * @param none
 	 * 
-	 * @returns none
+	 * @returns String
 	 * 
 	 * @throws If an input or output exception occurred
 	 * 
 	 * 
 	 */
-	/***************************************************************************************
-	 * FUNCTION: to import the answer array from our own text file, then make a smaller array of those answers and return a random one
-	 * 
-	 * DESCRIPTION: searchs for the file where the class is, then passes that file to the file reader then passes the file reader 
-	 * to the BufferedReader then searchs through that file and adds each line to the array till there's nothing left then
-	 * closes the buffered reader
-	 * then grabs the same index that the puzzle is on and makes its own tiny array from the split ',' method
-	 * and uses the randomIntForAnswer to randomize amongst the smaller list which answer is returned
-	 * 
-	 * METHOD: String getAnswer()
-	 * 
-	 * RETURNS: a randomized index in the ans array
-	 *
-	 * INPUT PARAMETERS: nothing! 
-	 * 
-	 *********************************************************************************************/
 	
 	public String getAnswer() throws IOException {
 		String[] ans;
@@ -197,31 +138,20 @@ public class Puzzle {
 	
 	/**
 	 * 	 
-	 * 
+	 * This method is used to import the wheel from the wheel.txt file. Searches for the file 
+	 * where the class is, then passes that file to the file reader and then passes the file reader 
+	 * to the BufferedReader which will then search through that file and add each line to the array 
+	 * until there is nothing left and then closes the buffered reader.
 	 *
 	 * 
 	 * @param none
 	 * 
-	 * @returns none
+	 * @returns ArrayList<String>
 	 * 
 	 * @throws If an input or output exception occurred
 	 * 
 	 * 
 	 */
-	/***************************************************************************************
-	 * FUNCTION: to import the wheel array from our own text file
-	 * 
-	 * DESCRIPTION: searchs for the file where the class is, then passes that file to the file reader then passes the file reader 
-	 * to the BufferedReader then searchs through that file and adds each line to the array till there's nothing left then
-	 * closes the buffered reader
-	 * 
-	 * METHOD: ArrayList<String> getWheel()
-	 * 
-	 * RETURNS: The entire wheel array
-	 *
-	 * INPUT PARAMETERS: nothing! 
-	 * 
-	 *********************************************************************************************/
 	
 	public ArrayList<String> getWheel () throws IOException{
 		BufferedReader br = new BufferedReader(new FileReader(getClass().getClassLoader().getResource("application/wheel.txt").getFile()));
@@ -236,11 +166,3 @@ public class Puzzle {
 		return wheel;
 	} 
 }
-
-
-
-
-
-
-
-
