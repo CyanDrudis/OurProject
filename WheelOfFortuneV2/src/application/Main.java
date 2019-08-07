@@ -21,9 +21,32 @@ import javafx.scene.text.Font;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
+/**
+ * 
+ * CLASS: Main
+ * 
+ * PURPOSE: This class is used to run the GUI. Along providing an in-game method through which the player can exit the game.
+ * 
+ * PRIVATE VARIABLES: Stage variable. 
+ * 
+ */
+
 
 public class Main extends Application {
 	private Stage mainStage;
+	
+	/**
+	 * 	 
+	 * This method is used to actually start the game by
+	 * creating the GUI. 
+	 *
+	 * 
+	 * @param Stage
+	 * 
+	 * @returns none
+	 * 
+	 */
+	
 	public void start(Stage primaryStage) {
 		try {
 			FXMLLoader loader = new FXMLLoader();
