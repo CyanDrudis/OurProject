@@ -52,11 +52,48 @@ public class Game {
 	private static final double vowelCost = 50;
 	private static final int numberOfPuzzlesToWin = 3;
 	private int numberOfPuzzles = 0;
-        private int randomNumForWheel;
+    private int randomNumForWheel;
+    private boolean twoPlayerMode = false;
 	Puzzle p = new Puzzle();
 	ArrayList<String> wheel = new ArrayList<String>();
 	ArrayList<Player> players = new ArrayList<Player>();
 	double[] money = {0.0, 0.0, 0.0};
+	
+	/**
+	 * 	 
+	 * 
+	 *
+	 * 
+	 * @param none
+	 * 
+	 * @returns none
+	 * 
+	 * @throws If an input or output exception occurred
+	 * 
+	 * 
+	 */
+	
+	public void setTwoPlayerMode(boolean bool) {
+		twoPlayerMode = bool;
+	}
+	
+	/**
+	 * 	 
+	 * 
+	 *
+	 * 
+	 * @param none
+	 * 
+	 * @returns none
+	 * 
+	 * @throws If an input or output exception occurred
+	 * 
+	 * 
+	 */
+	
+	public boolean getTwoPlayerMode() {
+		return twoPlayerMode;
+	}
 	
 	/**
 	 * 
@@ -116,9 +153,9 @@ public class Game {
 	 * 
 	 */
 	
-        public int getRandomNumForWheel(){
-     	   return randomNumForWheel;
-    	}
+	public int getRandomNumForWheel(){
+        return randomNumForWheel;
+    }
     
 	/**
 	 * 	 
@@ -134,7 +171,7 @@ public class Game {
 	 * 
 	 * 
 	 */
-    
+	
 	public void importWheel() throws IOException {
 		wheel = p.getWheel();
 	}
@@ -156,6 +193,7 @@ public class Game {
 		return puzzle;
 	}
 	
+
 	/**
 	 * 
 	 * This method retrieves the balance of the player who's turn it currently
@@ -193,17 +231,17 @@ public class Game {
 		players.get(whosTurn).setMoney(money);
 	}
 	
-	 /** 
-	  *
-	  * This method sets the balance of a player, it can set the balance
-	  * of any player regardless of return and assigns a balance to it
-	  *
-	  * @param none
-	  * 
-	  * @returns void
-	  * 
-	  * 
-	  */ 
+    /** 
+     *
+     * This method sets the balance of a player, it can set the balance
+     * of any player regardless of return and assigns a balance to it
+     *
+     * @param none
+     * 
+     * @returns void
+     * 
+     * 
+     */ 
 	
 	public int getHighestBalPlayer() {
 		int highest = 0;
@@ -217,58 +255,58 @@ public class Game {
 		return highest;
 	}
 	
-	 /** 
-	  *
-	  * This retrieves the player list size stored in the PlayerList array,
-	  * this is useful so when the logic is implemented to allow a set amount
-	  * of players to play in the game, and when the game resets, a loop
-	  * will be performed where the players balance is set to 0, therefore,
-	  * needing the player list size to loop through all the indices
-	  *
-	  * @param none
-	  * 
-	  * @returns an integer that represents the size of the PlayerList array
-	  * 
-	  * 
-	  */ 
+   /** 
+     *
+     * This retrieves the player list size stored in the PlayerList array,
+     * this is useful so when the logic is implemented to allow a set amount
+     * of players to play in the game, and when the game resets, a loop
+     * will be performed where the players balance is set to 0, therefore,
+     * needing the player list size to loop through all the indices
+     *
+     * @param none
+     * 
+     * @returns an integer that represents the size of the PlayerList array
+     * 
+     * 
+     */ 
 	
 	public int getPlayerListSize() {
 		return players.size();
 	}
 	
-	/** 
-	  *
-	  * This method creates a brand new game first by creating a new Puzzle(),
-	  * which is the shell of the game, the guessed array is then cleared, 
-	  * a new puzzle category is retrieved using the getPuzzle() method, then
-	  * the answer is retrieved using the getAnswer() method, according to the 
-	  * category. The string answer is then converted into a character array 
-	  * which will then be used to compare the guesses towards. The default 
-	  * amount of players is three, therefore, three instances of player are
-	  * created, and added to an array list for players
-	  * 
-	  * @param void
-	  * 
-	  * @returns void
-	  * 
-	  * @throws If an input or output exception occurred
-	  * 
-	  * 
-	  */ 
+   /** 
+	 *
+  	 * This method creates a brand new game first by creating a new Puzzle(),
+  	 * which is the shell of the game, the guessed array is then cleared, 
+  	 * a new puzzle category is retrieved using the getPuzzle() method, then
+  	 * the answer is retrieved using the getAnswer() method, according to the 
+  	 * category. The string answer is then converted into a character array 
+  	 * which will then be used to compare the guesses towards. The default 
+  	 * amount of players is three, therefore, three instances of player are
+  	 * created, and added to an array list for players
+  	 * 
+  	 * @param void
+  	 * 
+  	 * @returns void
+  	 * 
+  	 * @throws If an input or output exception occurred
+  	 * 
+  	 * 
+  	 */ 
 	
 	public void newGame() throws IOException {
-	p = new Puzzle();
-	guessed.clear();
-	puzzle = p.getPuzzle();
-	answer = p.getAnswer();
-	answers = answer.toCharArray();
-	Player p1 = new Player();
-	Player p2 = new Player();
-	Player p3 = new Player();
-	players = new ArrayList<Player>();
-	players.add(p1);
-	players.add(p2);
-	players.add(p3);
+		p = new Puzzle();
+		guessed.clear();
+		puzzle = p.getPuzzle();
+		answer = p.getAnswer();
+		answers = answer.toCharArray();
+		Player p1 = new Player();
+		Player p2 = new Player();
+		Player p3 = new Player();
+		players = new ArrayList<Player>();
+		players.add(p1);
+		players.add(p2);
+		players.add(p3);
 	}
 	
 	/**
@@ -286,8 +324,7 @@ public class Game {
 	 * 
 	 * 
 	 */
-		
-		
+	
 	public void newPuzzle() throws IOException {
 		p = new Puzzle();
 		puzzle = p.getPuzzle();
@@ -311,8 +348,8 @@ public class Game {
 	 */
 	
 	public void bankrupt() {
-	money[whosTurn] = 0;
-    changeTurn();
+		money[whosTurn] = 0;
+        changeTurn();
 	}
 	
 	/**
@@ -330,7 +367,13 @@ public class Game {
 	 */
 	
 	public void loseATurn(){
-		if(whosTurn == 2) {
+		if(twoPlayerMode) {
+			if(whosTurn == 1) {
+				whosTurn = 0;
+			} else {
+				whosTurn = 1;
+			}
+		} else if( whosTurn == 2) {
 			whosTurn = 0;
 		}	else	{
 			whosTurn += 1;
@@ -351,7 +394,7 @@ public class Game {
 	 */
 	
 	public void setTurn(int turn){
-	whosTurn = turn;
+		whosTurn = turn;
 	}
 	
 	/**
@@ -376,14 +419,14 @@ public class Game {
 	public void setCurrent() throws IOException {
 		char[] check;
 		check = answer.toCharArray();
-        current.clear();
+        	current.clear();
 		for(int i = 0; i < check.length; i++) {
 			if(check[i] == ' ') {
-                            current.add(" ");	
-			} else  if(containsCaseInsensitive(check[i]+"", guessed)){
-                            current.add(check[i]+"");
+				current.add(" ");	
+			} else  if (containsCaseInsensitive(check[i]+"", guessed)){
+				current.add(check[i]+"");
 			} else {
-                            current.add("*");
+                current.add("*");
 			}
 		}
 	}
@@ -407,26 +450,27 @@ public class Game {
 	
 	public boolean containsCaseInsensitive(String strToCompare, ArrayList<String>list) {
 		for(String str:list){
-              if(str.equalsIgnoreCase(strToCompare)){
-                  return(true);
-              }
-         }
-		return(false);
+			if(str.equalsIgnoreCase(strToCompare)){
+				return(true);
+			}
+		}
+     return(false);
      }
 	
-	/***************************************************************************************
-	 * FUNCTION: Returns the current string
+	/**
+	 * 	 
 	 * 
-	 * DESCRIPTION: Returns the current string by converting the string array to string
-	 * 
-	 * METHOD: getCurrent
-	 * 
-	 * RETURNS: String of the already guessed word
 	 *
-	 * INPUT PARAMETERS: none
 	 * 
-	 *********************************************************************************************/
-        
+	 * @param none
+	 * 
+	 * @returns String
+	 * 
+	 * @throws If an input or output exception occurred
+	 * 
+	 * 
+	 */
+	
 	public String getCurrent() throws IOException {
 		String toReturn = "";
 		for(int i = 0; i < current.size(); i ++) {
@@ -435,18 +479,20 @@ public class Game {
 		return toReturn;
 	}
 	
-	/***************************************************************************************
-	 * FUNCTION: Returns the guessed string
+	/**
+	 * 	 
 	 * 
-	 * DESCRIPTION: Returns the current string by converting the string array to string
-	 * 
-	 * METHOD: getGuessed
-	 * 
-	 * RETURNS: String of the already guessed word
 	 *
-	 * INPUT PARAMETERS: none
 	 * 
-	 *********************************************************************************************/
+	 * @param none
+	 * 
+	 * @returns String
+	 * 
+	 * @throws If an input or output exception occurred
+	 * 
+	 * 
+	 */
+	
 	public String getGuessed() throws IOException {
 		String toReturn = "";
 		for(int i = 0; i < guessed.size(); i ++) {
@@ -456,45 +502,46 @@ public class Game {
 	}
 	
 	
-	/***************************************************************************************
-	 * FUNCTION: gets a random index of the wheel
+	/**
+	 * 	 
 	 * 
-	 * DESCRIPTION: gets a random index of the wheel, which is the 'prize' that the user will be
-	 * gaining money from if they guess characters correctly, or if it's a special type of prize
-	 * such as bankrupt/1/2car, they will be receiving that 
-	 * 
-	 * METHOD: spin()
-	 * 
-	 * RETURNS: String
 	 *
-	 * INPUT PARAMETERS: none
 	 * 
-	 *********************************************************************************************/
+	 * @param none
+	 * 
+	 * @returns String
+	 * 
+	 * @throws If an input or output exception occurred
+	 * 
+	 * 
+	 */
+	
 	public String spin() throws IOException {
 		Random rand = new Random();
-                if(wheel.size()>0){
-                randomNumForWheel = rand.nextInt(wheel.size());
-                }
-                setCurrent();
+            if(wheel.size()>0){
+            	randomNumForWheel = rand.nextInt(wheel.size());
+            }
+            setCurrent();
 		if(!wheel.get(randomNumForWheel).equals("bankrupt")&& !wheel.get(randomNumForWheel).equals("loseaturn") && !wheel.get(randomNumForWheel).equals("freespin")) {
 			currentSpokeValue = Integer.valueOf(wheel.get(randomNumForWheel));
 		}
 		return wheel.get(randomNumForWheel); //get a random index from the arraylist, may have to change later
 	}
 	
-	/***************************************************************************************
-	 * FUNCTION: checks string guessed to answer
+	/**
+	 * 	 
 	 * 
-	 * DESCRIPTION: when the user is ready to guess the entire word, they will input an answer 
-	 * of type string which will be compared to the actual answer
-	 * 
-	 * METHOD: checkAns()
-	 * 
-	 * RETURNS: Boolean
 	 *
-	 * INPUT PARAMETERS: String
 	 * 
-	 *********************************************************************************************/
+	 * @param s
+	 * 
+	 * @returns boolean
+	 * 
+	 * @throws If an input or output exception occurred
+	 * 
+	 * 
+	 */
+	
 	public boolean checkAns(String a) throws IOException {
 		if(a.toLowerCase().trim().equalsIgnoreCase(answer.toLowerCase().trim())) {
             guessed.clear();
@@ -504,18 +551,20 @@ public class Game {
 		return false;
 	}
 	
-	/***************************************************************************************
-	 * FUNCTION: checks string to return guessed answer list
+	/**
+	 * 	 
 	 * 
-	 * DESCRIPTION: allows user to check what letters they have guessed
-	 * 
-	 * METHOD: checkGuess()
-	 * 
-	 * RETURNS: Boolean
 	 *
-	 * INPUT PARAMETERS: String
 	 * 
-	 *********************************************************************************************/
+	 * @param a
+	 * 
+	 * @returns boolean
+	 * 
+	 * @throws If an input or output exception occurred
+	 * 
+	 * 
+	 */
+	
 	public boolean checkGuess(String a) throws IOException {
 		if(a.equalsIgnoreCase("check guessed")){
 			return true;
@@ -523,54 +572,62 @@ public class Game {
 		return false;
 	}
 	
-	/***************************************************************************************
-	 * FUNCTION: Changes who's turn it is
+	/**
+	 * 	 
 	 * 
-	 * DESCRIPTION: Changes who's turn it is
-	 * 
-	 * METHOD: changeTurn()
-	 * 
-	 * RETURNS: void
 	 *
-	 * INPUT PARAMETERS: none
 	 * 
-	 *********************************************************************************************/
+	 * @param none
+	 * 
+	 * @returns none
+	 * 
+	 * 
+	 */
+	
 	public void changeTurn(){
-		if(whosTurn == 2) {
+		if(twoPlayerMode) {
+			if(whosTurn == 1) {
+				whosTurn = 0;
+			} else {
+				whosTurn = 1;
+			}
+		} else if (whosTurn == 2) {
 			whosTurn = 0;
 		}	else	{
 			whosTurn += 1;
 		}
 	}
 	
-	/***************************************************************************************
-	 * FUNCTION: Lets user know who's turn it is
+	/**
+	 * 	 
 	 * 
-	 * DESCRIPTION: Returns which user's turn it is
-	 * 
-	 * METHOD: whosTurn();
-	 * 
-	 * RETURNS: Int
 	 *
-	 * INPUT PARAMETERS: none 
 	 * 
-	 *********************************************************************************************/
+	 * @param none
+	 * 
+	 * @returns int
+	 * 
+	 * 
+	 */
+	
 	public int whosTurn()	{
 		return whosTurn;
 	}
-	/***************************************************************************************
-	 * FUNCTION: checks inputted character with the guessed array and answer
+	
+	/**
+	 * 	 
 	 * 
-	 * DESCRIPTION: first compared inputted character to the guessed array to see if it's already
-	 * been guessed, then is compared it to the answer, and added to the guessed array, or if it
-	 * 
-	 * METHOD: inputChar()
-	 * 
-	 * RETURNS: Boolean
 	 *
-	 * INPUT PARAMETERS:  char
 	 * 
-	 *********************************************************************************************/
+	 * @param a
+	 * 
+	 * @returns String
+	 * 
+	 * @throws If an input or output exception occurred
+	 * 
+	 * 
+	 */
+	
 	public String inputChar(char a) throws IOException {
 		
 		for (int i=0;i<guessed.size();i++){
@@ -581,22 +638,20 @@ public class Game {
         boolean there = false;
 		for (int i = 0; i < answers.length; i++) {
 			if ((a+"").equalsIgnoreCase(answers[i]+"")) {
-                            there = true;
+				there = true;
 				guessed.add(a+"");
-				if(a == 'a' ||a == 'e' ||a == 'i' ||a == 'o' || a =='u'){
-					money[whosTurn] -= vowelCost;
-				}
-				else{
-					money[whosTurn] += currentSpokeValue;
-				}
-                
+                if(a == 'a' ||a == 'e' ||a == 'i' ||a == 'o' || a =='u'){
+                	money[whosTurn] -= vowelCost;
+                } else {
+                	money[whosTurn] += currentSpokeValue;
+                }
 			}
 		}
-		setCurrent();
-		if(!current.contains("*")){
-			guessed.clear(); 
-			return "puzzleComplete";
-		}
+        setCurrent();
+        if(!current.contains("*")){
+        	guessed.clear(); 
+        	return "puzzleComplete";
+        }
         if(there){
         	return "there";
         }
@@ -604,34 +659,36 @@ public class Game {
 		return "notThere";
 	}
 	
-	/***************************************************************************************
-	 * FUNCTION: 
+	/**
+	 * 	 
 	 * 
-	 * DESCRIPTION: 
 	 * 
-	 * METHOD: 
-	 * 
-	 * RETURNS: none	
 	 *
-	 * INPUT PARAMETERS: none
 	 * 
-	 *********************************************************************************************/
+	 * @param zero
+	 * 
+	 * @returns none
+	 * 
+	 * 
+	 */
+	
 	public void setWinPuzzleCounter(int zero) {
 		numberOfPuzzles = zero;
 	}
 	
-	/***************************************************************************************
-	 * FUNCTION: Increasing the puzzle counter
+	/**
+	 * 	 
 	 * 
-	 * DESCRIPTION: Increasing the puzzle counter to see when the win condition has been reached
 	 * 
-	 * METHOD: win()
-	 * 
-	 * RETURNS: none	
 	 *
-	 * INPUT PARAMETERS: none
 	 * 
-	 *********************************************************************************************/
+	 * @param none
+	 * 
+	 * @returns none
+	 * 
+	 * 
+	 */
+	
 	public void winPuzzleCounter() {
 		numberOfPuzzles = numberOfPuzzles + 1;
 		for(int i = 0; i <= 2; i++) {
@@ -645,59 +702,62 @@ public class Game {
 		}
 	}
 	
-	/***************************************************************************************
-	 * FUNCTION: The win scenario
+	/**
+	 * 	 
 	 * 
-	 * DESCRIPTION: when the number of puzzles to win has been reached, the method will return
-	 * true 
-	 * 
-	 * METHOD: win()
-	 * 
-	 * RETURNS: Boolean		
 	 *
-	 * INPUT PARAMETERS: none
+	 *
 	 * 
-	 *********************************************************************************************/
+	 * @param none
+	 * 
+	 * @returns boolean
+	 * 
+	 * 
+	 */
+	
 	public boolean win() {	
 		if (numberOfPuzzles >= numberOfPuzzlesToWin) {
 			return true;
 		}
 		return false;
 	}
-	/***************************************************************************************
-	 * FUNCTION: The win scenario
+	
+	/**
+	 * 	 
 	 * 
-	 * DESCRIPTION: when the number of puzzles to win has been reached, the method will return
-	 * true 
 	 * 
-	 * METHOD: win()
-	 * 
-	 * RETURNS: Boolean		
 	 *
-	 * INPUT PARAMETERS: none
 	 * 
-	 *********************************************************************************************/
+	 * @param none
+	 * 
+	 * @returns boolean
+	 * 
+	 * 
+	 */
+	
 	public boolean winPuzzle() {
 		for(int i = 0; i <current.size(); i ++) {
 			if(current.get(i) == "*") {
 				return false;
 			}
 		}
-                guessed.clear();
+        guessed.clear();
 		return true;         
 	}
-	/***************************************************************************************
-	 * FUNCTION: 
+	
+	/**
+	 * 	 
 	 * 
-	 * DESCRIPTION: 
-	 * 
-	 * METHOD: saveGame(String saveName)
-	 * 
-	 * RETURNS:		
 	 *
-	 * INPUT PARAMETERS: saveName : String
+	 *
 	 * 
-	 *********************************************************************************************/
+	 * @param saveName
+	 * 
+	 * @returns none
+	 * 
+	 * 
+	 */
+	
 	public void saveGame(String saveName) {
 		BufferedWriter output = null;
 		try {
@@ -715,23 +775,26 @@ public class Game {
 	        output.write("\n");
 	        output.write(whosTurn+"\n");
 	        output.write(getRandomNumForWheel()+"\n");
+	        output.write(twoPlayerMode+"");
 	        output.close();
         } catch ( IOException e ) {
             e.printStackTrace();
         }
 	}
-	/***************************************************************************************
-	 * FUNCTION: 
+	
+	/**
+	 * 	 
 	 * 
-	 * DESCRIPTION: 
-	 * 
-	 * METHOD: saveGame(String saveName)
-	 * 
-	 * RETURNS:		
 	 *
-	 * INPUT PARAMETERS: saveName : String
+	 *
 	 * 
-	 *********************************************************************************************/
+	 * @param saveName
+	 * 
+	 * @returns none
+	 * 
+	 * 
+	 */
+	
 	public void loadGame(String saveName) {
 		try {
             File file = new File("src/application/" + saveName + ".txt");
@@ -765,6 +828,8 @@ public class Game {
 			whosTurn = Integer.valueOf(line.trim());
 			line = br.readLine();
 			randomNumForWheel = Integer.valueOf(line.trim());
+			line = br.readLine();
+			twoPlayerMode = Boolean.valueOf(line.trim());
 			br.close();
         } catch ( IOException e ) {
             e.printStackTrace();
