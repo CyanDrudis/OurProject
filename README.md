@@ -32,7 +32,7 @@ Proceed to have whomever's turn it is guess a letter or attempt to solve the puz
 However if a player lands on a spoke with an indicated money value they get that value times the amount of characters they're able to guess in the puzzle, unless that character is a vowel, in which case they have $50 detected per vowel.
   Game completion:
 If all of the characters are guessed or the puzzle itself is completely guessed(not case-sensitive) then a new puzzle will generate and after 3 puzzles whomever has the most accumulated points wins!
----------------------------------------------------------------------------------------------------------------------------
+
 In order to run the JUnit tests, right click the name of the project, go down to properties,
 click on Java Build Path, click Add Library, select JUnit and click Next, select JUnit 4 
 from the drop down and click Finish. Next, right click the test file you want to use, 
