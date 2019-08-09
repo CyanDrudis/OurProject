@@ -3,7 +3,6 @@ package application;
 import java.util.Optional;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -13,6 +12,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -34,7 +34,8 @@ import javafx.fxml.FXMLLoader;
 
 public class Main extends Application {
 	private Stage mainStage;
-	
+	private final int requestOnExitX = 700;
+	private final int requestOnExitY = 350;
 	/**
 	 * 	 
 	 * This method is used to actually start the game by
@@ -78,8 +79,8 @@ public class Main extends Application {
 		closeConfirmation.setHeaderText("Confirm Exit");
 		closeConfirmation.initModality(Modality.APPLICATION_MODAL);
 		closeConfirmation.initOwner(mainStage);
-		closeConfirmation.setX(mainStage.getX());
-		closeConfirmation.setY(mainStage.getY());
+		closeConfirmation.setX(requestOnExitX);
+		closeConfirmation.setY(requestOnExitY);
 		Optional<ButtonType> closeResponse = closeConfirmation.showAndWait();
 		if (!ButtonType.OK.equals(closeResponse.get())) {
 			event.consume();

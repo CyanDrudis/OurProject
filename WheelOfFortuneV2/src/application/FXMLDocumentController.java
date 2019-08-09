@@ -265,21 +265,36 @@ public class FXMLDocumentController {
 	}
 
     @FXML
-    public void display(ActionEvent event) throws InterruptedException {
+    public void display(ActionEvent event) throws InterruptedException, IOException {
+    	String input = textField.getText();
+    	char check[] = input.toCharArray();
     	if(g.win()) {
     		int playersTurn = g.getHighestBalPlayer() + 1;
     		toDisplayLabel.setText("Player " + playersTurn + " won with a balance of: " + g.players.get(g.getHighestBalPlayer()).getMoney());
     		spinClick.setDisable(true);
-    	}
-    	else if(gameInitialized) {
+    	}else if(gameInitialized) {
 	    	if(textField.getText().equals("")) {
 	    		toDisplayLabel.setText("Please enter in a letter or guess the puzzle");
 		    }else{
-		    spinWheel();
-		    try{
-		    spinInput = true;
-		    if(spinInput){
-		                spinInput = false;
+		    	if(check.length>1) {
+			    	if(g.checkAns(input)){	
+	                	int playersTurn = g.whosTurn() + 1;
+	                	toDisplayLabel.setText("Player " + playersTurn + " solved it!, New Puzzle!");
+	                    g.winPuzzleCounter();
+	                    g.newPuzzle();
+	                    g.setCurrent();
+	                    refresh();
+	                }else{
+	                	toDisplayLabel.setText("Incorrect!");
+	                    g.changeTurn();
+	                }
+	                refresh();
+		    	} else {
+		    		spinWheel();
+		    		try{
+		    			spinInput = true;
+		    			if(spinInput){
+		    	spinInput = false;
 		                    while(spoke.equals("freespin")){
 		                        spinWheel();
 		                        refresh();
@@ -296,8 +311,6 @@ public class FXMLDocumentController {
 		                            toDisplayLabel.setText("You went bankrupt!");
 		                            refresh();
 		                        }else{
-		                            String input = textField.getText();
-		                            char check[] = input.toCharArray();
 		                            if(check.length == 1){
 		                                char a = check[0];
 		                                String outcome = g.inputChar(a);
@@ -320,37 +333,22 @@ public class FXMLDocumentController {
 		                                    playersTurn = g.whosTurn() + 1;
 		                                    toDisplayLabel.setText("Player " + playersTurn + " solved it!, New Puzzle!");
 		                                    refresh();
-		                                }
-		                                refresh();
-		                            }
-		                            else{
-		                                if(g.checkAns(input)){	
-		                                	playersTurn = g.whosTurn() + 1;
-		                                	toDisplayLabel.setText("Player " + playersTurn + " solved it!, New Puzzle!");
-		                                    g.winPuzzleCounter();
-		                                    g.newPuzzle();
-		                                    g.setCurrent();
-		                                    refresh();
-		                                }else{
-		                                	toDisplayLabel.setText("Incorrect!");
-		                                    g.changeTurn();
-		                                }
-		                                refresh();
-		                            }
-		                            refresh();
-		                        }
-		                    }
-		                }
-		    refresh();
-		    }
-		    catch(IOException ex){
-		        
-		    }
-	    }
-    } else {
-    	toDisplayLabel.setText("Please press \"new game\"");
+					                    		}
+					                            refresh();
+					                            }
+					                            refresh();
+					                        }
+					                    }
+					                }
+					    refresh();
+					    }
+					    catch(IOException ex){
+					    	ex.printStackTrace();
+					    }
+		    		} 
+		    	}
+    	} else {
+    		toDisplayLabel.setText("Please press \"new game\"");
+    	}
     }
-}
-
-
 }
