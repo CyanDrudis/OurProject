@@ -6,6 +6,8 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
@@ -93,8 +95,8 @@ public class FXMLDocumentController {
     private Button saveGameButton;
 
     @FXML
-    private TextField LoadGamePath;
-
+    private MenuButton LoadGamePath;
+    
     @FXML
     private TextField saveGamePath;
     
@@ -103,6 +105,33 @@ public class FXMLDocumentController {
 
     @FXML
     private Button threePlayerButton;
+    
+    @FXML
+    private Button importButton;
+    
+    @FXML
+    void loadPreviousSaves(ActionEvent event) {
+    	//source: https://stackoverflow.com/questions/39163881/javafx-drop-down-button
+    	LoadGamePath.getItems().clear();
+    	for(int i = 0; i < g.getGameSaveNames().size(); i++) {
+    		String saveName = g.getGameSaveNames().get(i);
+    		LoadGamePath.getItems().add(new MenuItem(saveName));
+    		LoadGamePath.getItems().get(i).setOnAction(changeTabPlacement());
+    	}
+    }
+    
+    @FXML
+    private EventHandler<ActionEvent> changeTabPlacement() {
+    	//source: http://www.java2s.com/Code/Java/JavaFX/Menuitemeventhandler.htm
+        return new EventHandler<ActionEvent>() {
+
+            public void handle(ActionEvent event) {
+                MenuItem mItem = (MenuItem) event.getSource();
+                String side = mItem.getText();
+                LoadGamePath.setText(side);
+            }
+        };
+    }
     
     @FXML
     void threePlayerMode(ActionEvent event) {

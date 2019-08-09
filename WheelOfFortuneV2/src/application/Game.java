@@ -300,6 +300,9 @@ public class Game {
 		players.add(p1);
 		players.add(p2);
 		players.add(p3);
+		money[0] = 0.0;
+		money[1] = 0.0;
+		money[2] = 0.0;
 	}
 	
 	/**
@@ -790,7 +793,7 @@ public class Game {
 	public void saveGame(String saveName) {
 		BufferedWriter output = null;
 		try {
-            File file = new File("src/application/" + saveName + ".txt");
+            File file = new File("src/gamesaves/" + saveName + ".txt");
 	        output = new BufferedWriter(new FileWriter(file));
 	        output.write(money[0]+";"+money[1]+";"+ money[2]+"\n");
 	        output.write(players.get(0).getMoney() + ";"+ players.get(1).getMoney() + ";" +players.get(2).getMoney()+"\n");
@@ -823,10 +826,9 @@ public class Game {
 	 * 
 	 * 
 	 */
-	
 	public void loadGame(String saveName) {
 		try {
-            File file = new File("src/application/" + saveName + ".txt");
+            File file = new File("src/gamesaves/" + saveName);
             BufferedReader br = new BufferedReader(new FileReader(file));
 			// used (above line)code from: https://www.mkyong.com/java/java-read-a-file-from-resources-folder/
 			String line;
@@ -863,5 +865,30 @@ public class Game {
         } catch ( IOException e ) {
             e.printStackTrace();
         }
+	}
+	/**
+	 * 	 
+	 * 
+	 *This method is used to get the names of all game saves.
+	 *
+	 * 
+	 * @param none
+	 * 
+	 * @returns ArrayList<String>
+	 * 
+	 * 
+	 */
+	public ArrayList<String> getGameSaveNames() {
+		//source: https://stackoverflow.com/questions/5694385/getting-the-filenames-of-all-files-in-a-folder
+		ArrayList<String> toReturn = new ArrayList<String>();
+		File folder = new File("src/gamesaves");
+		File[] listOfFiles = folder.listFiles();
+		for (int i = 0; i < listOfFiles.length; i++) 
+		{
+		  if (listOfFiles[i].isFile()) {
+		    toReturn.add(listOfFiles[i].getName());
+		  	}
+		}
+		return toReturn;
 	}
 }
