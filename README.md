@@ -23,7 +23,7 @@ down to run as, then click run as Java Application.
 In order to run the GUI based version of WheelOfFortune, right click Main.java, navigate
 down to run as, then click run as Java Application. 
 
-----------------------------------------------------How to play------------------------------------------------------------
+--------------------------------------------------------How to play----------------------------------------------------------------
   Starting a game:
 Start every game by either clicking "New game" or loading a previous game state by clicking "import" then clicking
 the menu button(drop down menu) and selecting a previous game. 
