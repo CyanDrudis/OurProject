@@ -8,7 +8,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Collections;
 
 /*********************************************************************************************************************
  * CLASS: Game
@@ -37,6 +36,11 @@ import java.util.Collections;
  *                    -vowelCost: a double, the price of inputing a vowel, which is $50
  *                    
  * NOTES: Negative balance is possible and allowed in Wheel of Fortune, therefore it is not accounted for here.
+ * sources:
+ * https://stackoverflow.com/questions/5694385/getting-the-filenames-of-all-files-in-a-folder
+ * https://stackoverflow.com/questions/2885173/how-do-i-create-a-file-and-write-to-it-in-java
+ * https://stackoverflow.com/questions/8751455/arraylist-contains-case-sensitivity
+ * https://www.mkyong.com/java/java-read-a-file-from-resources-folder/
  *********************************************************************************************************************/
 
 public class Game {
@@ -445,6 +449,7 @@ public class Game {
 	 */
 	
 	public boolean containsCaseInsensitive(String strToCompare, ArrayList<String>list) {
+		//sources: https://stackoverflow.com/questions/8751455/arraylist-contains-case-sensitivity
 		for(String str:list){
 			if(str.equalsIgnoreCase(strToCompare)){
 				return(true);
@@ -791,6 +796,7 @@ public class Game {
 	 */
 	
 	public void saveGame(String saveName) {
+		//sources: https://stackoverflow.com/questions/2885173/how-do-i-create-a-file-and-write-to-it-in-java
 		BufferedWriter output = null;
 		try {
             File file = new File("src/gamesaves/" + saveName + ".txt");

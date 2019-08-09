@@ -29,7 +29,12 @@ import javafx.fxml.FXMLLoader;
  * PURPOSE: This class is used to run the GUI. Along providing an in-game method through which the player can exit the game.
  * 
  * PRIVATE VARIABLES: Stage variable. 
- * 
+ * sources:
+ * https://stackoverflow.com/questions/10275841/how-to-change-the-icon-on-the-title-bar-of-a-stage-in-java-fx-2-0-of-my-applicat
+ * https://stackoverflow.com/questions/31540500/alert-box-for-when-user-attempts-to-close-application-using-setoncloserequest-in0
+ * https://stackoverflow.com/questions/35956527/javafx-javafx-scene-layout-anchorpane-cannot-be-cast-to-javafx-scene-layout-bo
+ * sources:https://stackoverflow.com/questions/31540500/alert-box-for-when-user-attempts-to-close-application-using-setoncloserequest-in
+ * https://www.youtube.com/watch?v=ZuHcl5MmRck
  */
 
 
@@ -53,11 +58,13 @@ public class Main extends Application {
 		try {
 			//sources: 
 			//https://stackoverflow.com/questions/10275841/how-to-change-the-icon-on-the-title-bar-of-a-stage-in-java-fx-2-0-of-my-applicat
-			//
+			//https://stackoverflow.com/questions/31540500/alert-box-for-when-user-attempts-to-close-application-using-setoncloserequest-in
+			//https://stackoverflow.com/questions/35956527/javafx-javafx-scene-layout-anchorpane-cannot-be-cast-to-javafx-scene-layout-bo
+			//https://www.youtube.com/watch?v=ZuHcl5MmRck
 			FXMLLoader loader = new FXMLLoader();
 	        loader.setLocation(Main.class.getResource("GUI.fxml"));
 	        AnchorPane root = loader.load();
-			Scene scene = new Scene(root,1171,576);
+			Scene scene = new Scene(root,1171,629);
 			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("logo.jpg")));
 			primaryStage.setTitle("Wheel Of Fortune");
 			primaryStage.setOnCloseRequest(confirmCloseEventHandler);
@@ -74,7 +81,7 @@ public class Main extends Application {
 	}
 	
 	private EventHandler<WindowEvent> confirmCloseEventHandler = event -> {
-		//sources:
+		//sources:https://stackoverflow.com/questions/31540500/alert-box-for-when-user-attempts-to-close-application-using-setoncloserequest-in
 		Alert closeConfirmation = new Alert(
 			Alert.AlertType.CONFIRMATION,
 			"Are you sure you want to exit?"
