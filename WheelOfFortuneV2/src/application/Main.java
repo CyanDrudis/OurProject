@@ -14,6 +14,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -50,10 +51,15 @@ public class Main extends Application {
 	
 	public void start(Stage primaryStage) {
 		try {
+			//sources: 
+			//https://stackoverflow.com/questions/10275841/how-to-change-the-icon-on-the-title-bar-of-a-stage-in-java-fx-2-0-of-my-applicat
+			//
 			FXMLLoader loader = new FXMLLoader();
 	        loader.setLocation(Main.class.getResource("GUI.fxml"));
 	        AnchorPane root = loader.load();
 			Scene scene = new Scene(root,1171,576);
+			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("logo.jpg")));
+			primaryStage.setTitle("Wheel Of Fortune");
 			primaryStage.setOnCloseRequest(confirmCloseEventHandler);
 			primaryStage.setScene(scene);
 			primaryStage.show();
@@ -68,6 +74,7 @@ public class Main extends Application {
 	}
 	
 	private EventHandler<WindowEvent> confirmCloseEventHandler = event -> {
+		//sources:
 		Alert closeConfirmation = new Alert(
 			Alert.AlertType.CONFIRMATION,
 			"Are you sure you want to exit?"

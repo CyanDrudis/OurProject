@@ -124,7 +124,6 @@ public class FXMLDocumentController {
     private EventHandler<ActionEvent> changeTabPlacement() {
     	//source: http://www.java2s.com/Code/Java/JavaFX/Menuitemeventhandler.htm
         return new EventHandler<ActionEvent>() {
-
             public void handle(ActionEvent event) {
                 MenuItem mItem = (MenuItem) event.getSource();
                 String side = mItem.getText();
