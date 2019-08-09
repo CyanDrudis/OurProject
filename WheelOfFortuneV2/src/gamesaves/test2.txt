@@ -1,0 +1,8 @@
+1325.0;0.0;0.0
+0.0;0.0;0.0
+ttsl
+ Empire State Building
+Landmarks
+0
+10
+false
