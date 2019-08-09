@@ -365,7 +365,16 @@ public class FXMLDocumentController {
 	public void refresh() {
 		try {
 			g.setCurrent();
-			puzzleLabel.setText("Puzzle: " + g.getCurrent());
+			char check[] = g.getCurrent().toCharArray();
+			String puzzleText = "";
+			for(int i = 0; i < check.length; i++) {
+				if(check[i]=='*') {
+					puzzleText += "▬";
+				} else {
+					puzzleText += check[i];
+				}
+			}
+			puzzleLabel.setText("Puzzle: " + puzzleText);
 			player1MoneyLabel.setText("$"+g.money[0]);
 			player2MoneyLabel.setText("$"+g.money[1]);
 			player3MoneyLabel.setText("$"+g.money[2]);
