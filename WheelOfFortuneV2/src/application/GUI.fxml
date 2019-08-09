@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="1171.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FXMLDocumentController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="1171.0" style="-fx-background-color: #2f4f4f;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FXMLDocumentController">
   <children>
     <ImageView fx:id="wheelImageView" fitHeight="420.0" fitWidth="419.9999000000025" layoutX="715.0" layoutY="113.0" pickOnBounds="true" preserveRatio="false">
       <image>
@@ -22,40 +22,38 @@
          <font>
             <Font name="Arial" size="18.0" />
          </font></TextField>
-    <Label fx:id="Player2Label" layoutX="173.0" layoutY="239.0" text="Player Two">
+    <Label fx:id="Player2Label" layoutX="173.0" layoutY="239.0" text="Player Two" textFill="#a3ab0a">
       <font>
-        <Font name="System Bold" size="36.0" fx:id="x1" />
+        <Font name="SansSerif Regular" size="36.0" fx:id="x1" />
       </font>
     </Label>
-    <Label fx:id="Player1Label" font="$x1" layoutX="175.0" layoutY="103.0" text="Player One" />
-    <Label fx:id="player3Label" font="$x1" layoutX="174.0" layoutY="397.0" text="Player Three" />
-    <Label fx:id="player1MoneyLabel" layoutX="174.0" layoutY="142.0" text="\$ 0.0">
+    <Label fx:id="Player1Label" layoutX="175.0" layoutY="103.0" text="Player One" textFill="#a3ab0a">
+         <font>
+            <Font name="SansSerif Regular" size="36.0" />
+         </font></Label>
+    <Label fx:id="player3Label" font="$x1" layoutX="174.0" layoutY="397.0" text="Player Three" textFill="#a3ab0a" />
+    <Label fx:id="player1MoneyLabel" layoutX="174.0" layoutY="142.0" text="\$ 0.0" textFill="#14ff00">
          <font>
             <Font size="18.0" />
          </font></Label>
-    <Label fx:id="player2MoneyLabel" layoutX="173.0" layoutY="282.0" text="\$ 0.0">
+    <Label fx:id="player2MoneyLabel" layoutX="173.0" layoutY="282.0" text="\$ 0.0" textFill="#14ff00">
          <font>
             <Font size="18.0" />
          </font></Label>
-    <Label fx:id="player3MoneyLabel" layoutX="174.0" layoutY="436.0" text="\$ 0.0">
+    <Label fx:id="player3MoneyLabel" layoutX="174.0" layoutY="436.0" text="\$ 0.0" textFill="#14ff00">
          <font>
             <Font size="18.0" />
          </font></Label>
-    <Label fx:id="puzzleLabel" layoutX="14.0" layoutY="43.0" text="Puzzle:">
+    <Label fx:id="puzzleLabel" layoutX="400.0" layoutY="43.0" text="Puzzle:" textFill="#a3ab0a">
       <font>
-        <Font name="System Bold" size="24.0" fx:id="x2" />
+        <Font name="SansSerif Bold" size="24.0" fx:id="x2" />
       </font>
     </Label>
-    <Label fx:id="categoryLabel" font="$x2" layoutX="338.0" layoutY="43.0" text="Category:" />
-    <Label layoutX="918.0" layoutY="78.0" text="V" textFill="RED">
-      <font>
-        <Font name="Calibri Bold" size="25.0" />
-      </font>
-    </Label>
-      <Button fx:id="newGameButton" layoutX="242.0" layoutY="583.0" mnemonicParsing="false" onAction="#generateNewGame" prefHeight="25.0" prefWidth="92.0" text="New Game" />
-      <Label fx:id="player1Total" layoutX="175.0" layoutY="160.0" prefHeight="17.0" prefWidth="187.0" text="Total:" />
-      <Label fx:id="player2Total" layoutX="176.0" layoutY="302.0" prefHeight="17.0" prefWidth="184.0" text="Total:" />
-      <Label fx:id="player3Total" layoutX="178.0" layoutY="455.0" prefHeight="17.0" prefWidth="211.0" text="Total:" />
+    <Label fx:id="categoryLabel" font="$x2" layoutX="30.0" layoutY="43.0" text="Category:" textFill="#a3ab0a" />
+      <Button fx:id="newGameButton" layoutX="242.0" layoutY="583.0" mnemonicParsing="false" onAction="#generateNewGame" prefHeight="25.0" prefWidth="109.0" text="New Game" />
+      <Label fx:id="player1Total" layoutX="175.0" layoutY="160.0" prefHeight="17.0" prefWidth="187.0" text="Total:" textFill="#a3ab0a" />
+      <Label fx:id="player2Total" layoutX="176.0" layoutY="302.0" prefHeight="17.0" prefWidth="184.0" text="Total:" textFill="#a3ab0a" />
+      <Label fx:id="player3Total" layoutX="178.0" layoutY="455.0" prefHeight="17.0" prefWidth="211.0" text="Total:" textFill="#a3ab0a" />
       <Button fx:id="loadGameButton" layoutX="99.0" layoutY="583.0" mnemonicParsing="false" onAction="#loadGame" prefHeight="25.0" prefWidth="75.0" text="Load save" />
       <Button fx:id="saveGameButton" layoutX="24.0" layoutY="474.0" mnemonicParsing="false" onAction="#saveGame" prefHeight="25.0" prefWidth="121.0" text="Save Game" />
       <TextField fx:id="saveGamePath" layoutX="25.0" layoutY="437.0" prefHeight="25.0" prefWidth="121.0" promptText="&lt;game save name&gt;" />
@@ -64,5 +62,10 @@
       <MenuButton fx:id="LoadGamePath" layoutX="24.0" layoutY="548.0" mnemonicParsing="false" onAction="#loadPreviousSaves" prefHeight="25.0" prefWidth="149.0" />
       <Button fx:id="importButton" layoutX="24.0" layoutY="583.0" mnemonicParsing="false" onAction="#loadPreviousSaves" prefHeight="25.0" prefWidth="74.0" text="Import" />
       <ListView fx:id="toDisplayLabel" layoutX="439.0" layoutY="118.0" prefHeight="368.0" prefWidth="230.0" />
+      <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="898.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@arrow.png" />
+         </image>
+      </ImageView>
   </children>
 </AnchorPane>
