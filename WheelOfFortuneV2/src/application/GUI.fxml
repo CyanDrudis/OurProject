@@ -12,7 +12,7 @@
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="1171.0" style="-fx-background-color: #2f4f4f;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FXMLDocumentController">
   <children>
-    <ImageView fx:id="wheelImageView" fitHeight="420.0" fitWidth="419.9999000000025" layoutX="715.0" layoutY="113.0" pickOnBounds="true" preserveRatio="false">
+    <ImageView fx:id="wheelImageView" fitHeight="420.0" fitWidth="419.9999000000025" layoutX="715.0" layoutY="142.0" pickOnBounds="true" preserveRatio="false">
       <image>
         <Image url="@wheelpng.png" />
       </image>
@@ -47,7 +47,7 @@
          <font>
             <Font size="18.0" />
          </font></Label>
-    <Label fx:id="puzzleLabel" layoutX="400.0" layoutY="43.0" text="Puzzle:" textFill="#a3ab0a">
+    <Label fx:id="puzzleLabel" layoutX="535.0" layoutY="43.0" text="Puzzle:" textFill="#a3ab0a">
       <font>
         <Font name="Monospaced Bold" size="24.0" fx:id="x2" />
       </font>
@@ -65,7 +65,7 @@
       <MenuButton fx:id="LoadGamePath" layoutX="24.0" layoutY="548.0" mnemonicParsing="false" onAction="#loadPreviousSaves" prefHeight="25.0" prefWidth="149.0" />
       <Button fx:id="importButton" layoutX="24.0" layoutY="583.0" mnemonicParsing="false" onAction="#loadPreviousSaves" prefHeight="25.0" prefWidth="74.0" text="Import" />
       <ListView fx:id="toDisplayLabel" layoutX="439.0" layoutY="118.0" prefHeight="368.0" prefWidth="230.0" />
-      <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="898.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="898.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@arrow.png" />
          </image>
