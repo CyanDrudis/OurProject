@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -25,12 +26,12 @@
          <font>
             <Font name="Arial" size="18.0" />
          </font></TextField>
-    <Label fx:id="Player2Label" layoutX="173.0" layoutY="239.0" text="Player Two" textFill="#a3ab0a">
+    <Label fx:id="player2Label" layoutX="173.0" layoutY="239.0" text="Player Two" textFill="#a3ab0a">
       <font>
         <Font name="SansSerif Regular" size="36.0" fx:id="x1" />
       </font>
     </Label>
-    <Label fx:id="Player1Label" layoutX="175.0" layoutY="103.0" text="Player One" textFill="#a3ab0a">
+    <Label fx:id="player1Label" layoutX="175.0" layoutY="103.0" text="Player One" textFill="#a3ab0a">
          <font>
             <Font name="SansSerif Regular" size="36.0" />
          </font></Label>
@@ -57,18 +58,26 @@
       <Label fx:id="player1Total" layoutX="175.0" layoutY="160.0" prefHeight="17.0" prefWidth="187.0" text="Total:" textFill="#a3ab0a" />
       <Label fx:id="player2Total" layoutX="176.0" layoutY="302.0" prefHeight="17.0" prefWidth="184.0" text="Total:" textFill="#a3ab0a" />
       <Label fx:id="player3Total" layoutX="178.0" layoutY="455.0" prefHeight="17.0" prefWidth="211.0" text="Total:" textFill="#a3ab0a" />
-      <Button fx:id="loadGameButton" layoutX="99.0" layoutY="583.0" mnemonicParsing="false" onAction="#loadGame" prefHeight="25.0" prefWidth="75.0" text="Load save" />
-      <Button fx:id="saveGameButton" layoutX="24.0" layoutY="474.0" mnemonicParsing="false" onAction="#saveGame" prefHeight="25.0" prefWidth="121.0" text="Save Game" />
-      <TextField fx:id="saveGamePath" layoutX="25.0" layoutY="437.0" prefHeight="25.0" prefWidth="121.0" promptText="&lt;game save name&gt;" />
+      <Button fx:id="loadGameButton" layoutX="72.0" layoutY="437.0" mnemonicParsing="false" onAction="#loadGame" prefHeight="25.0" prefWidth="82.0" text="Load save" />
+      <Button fx:id="saveGameButton" layoutX="15.0" layoutY="580.0" mnemonicParsing="false" onAction="#saveGame" prefHeight="25.0" prefWidth="138.0" text="Save Game" />
+      <TextField fx:id="saveGamePath" layoutX="15.0" layoutY="549.0" prefHeight="25.0" prefWidth="138.0" promptText="&lt;game save name&gt;" />
       <Button fx:id="twoPlayerButton" layoutX="179.0" layoutY="527.0" mnemonicParsing="false" onAction="#twoPlayerMode" prefHeight="35.0" prefWidth="109.0" text="Two Player" visible="false" />
       <Button fx:id="threePlayerButton" layoutX="308.0" layoutY="526.0" mnemonicParsing="false" onAction="#threePlayerMode" prefHeight="35.0" prefWidth="109.0" text="ThreePlayer" visible="false" />
-      <MenuButton fx:id="LoadGamePath" layoutX="24.0" layoutY="548.0" mnemonicParsing="false" onAction="#loadPreviousSaves" prefHeight="25.0" prefWidth="149.0" />
-      <Button fx:id="importButton" layoutX="24.0" layoutY="583.0" mnemonicParsing="false" onAction="#loadPreviousSaves" prefHeight="25.0" prefWidth="74.0" text="Import" />
+      <MenuButton fx:id="LoadGamePath" layoutX="16.0" layoutY="406.0" mnemonicParsing="false" onAction="#loadPreviousSaves" prefHeight="25.0" prefWidth="138.0" />
+      <Button fx:id="importButton" layoutX="14.0" layoutY="437.0" mnemonicParsing="false" onAction="#loadPreviousSaves" prefHeight="25.0" prefWidth="54.0" text="Import" />
       <ListView fx:id="toDisplayLabel" layoutX="439.0" layoutY="118.0" prefHeight="368.0" prefWidth="230.0" />
       <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="898.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@arrow.png" />
          </image>
       </ImageView>
+      <TextField fx:id="playerNameField" layoutX="17.0" layoutY="248.0" prefHeight="25.0" prefWidth="138.0" promptText="&lt;player's name&gt;" />
+      <MenuButton layoutX="17.0" layoutY="283.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="138.0" text="Set Player Name">
+        <items>
+          <MenuItem fx:id="player1Name" mnemonicParsing="false" onAction="#player1NameAction" text="Player 1 name" />
+          <MenuItem fx:id="player2Name" mnemonicParsing="false" onAction="#player2NameAction" text="Player 2 name" />
+            <MenuItem fx:id="player3Name" mnemonicParsing="false" onAction="#player3NameAction" text="Player 3 name" />
+        </items>
+      </MenuButton>
   </children>
 </AnchorPane>

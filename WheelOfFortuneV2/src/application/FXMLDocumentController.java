@@ -131,9 +131,63 @@ public class FXMLDocumentController {
     
     @FXML
     private ListView<String> toDisplayLabel;
+    
+    @FXML
+    private MenuItem player1Name;
+
+    @FXML
+    private MenuItem player2Name;
+
+    @FXML
+    private MenuItem player3Name;
 
     @FXML
     private Button importButton;
+    
+    @FXML
+    private TextField playerNameField;
+    /**
+	 * 	 
+	 * Used to set the player 1 name.
+	 * (activated by player1Name menu item)
+	 * 
+	 * @param ActionEvent event
+	 * 
+	 * @returns none
+	 * 
+	 */
+    @FXML
+    void player1NameAction(ActionEvent event) {
+    	player1Label.setText(playerNameField.getText());
+    }
+    /**
+	 * 	 
+	 * Used to set the player 2 name.
+	 * (activated by player2Name menu item)
+	 * 
+	 * @param ActionEvent event
+	 * 
+	 * @returns none
+	 * 
+	 */
+    @FXML
+    void player2NameAction(ActionEvent event) {
+    	player2Label.setText(playerNameField.getText());
+    }
+    /**
+	 * 	 
+	 *  Used to set the player 3 name.
+	 * (activated by player3Name menu item)
+	 * 
+	 * @param ActionEvent event
+	 * 
+	 * @returns none
+	 * 
+	 */
+    @FXML
+    void player3NameAction(ActionEvent event) {
+    	player3Label.setText(playerNameField.getText());
+    }
     /**
 	 * 	 
 	 * This method is used to import the names of the game saves from the src/gamesaves folder.
