@@ -163,7 +163,7 @@ public class FXMLDocumentController {
     /**
 	 * 	 
 	 * Used to set the player 2 name.
-	 * (activated by player2Name menu item)
+	 * (activated by player2Name menu item).
 	 * 
 	 * @param ActionEvent event
 	 * 
@@ -177,7 +177,7 @@ public class FXMLDocumentController {
     /**
 	 * 	 
 	 *  Used to set the player 3 name.
-	 * (activated by player3Name menu item)
+	 * (activated by player3Name menu item).
 	 * 
 	 * @param ActionEvent event
 	 * 
@@ -191,7 +191,9 @@ public class FXMLDocumentController {
     /**
 	 * 	 
 	 * This method is used to import the names of the game saves from the src/gamesaves folder.
-	 * (activated by "import" button)
+	 * (activated by "import" button). The method uses a for loop with the terminating condition 
+	 * being that the index is less than the amount of game saves. The previous save is found by
+	 * passing the save name in LoadGamePath and the game is then adjusted accordingly. 
 	 * 
 	 * @param ActionEvent event
 	 * 
@@ -211,7 +213,7 @@ public class FXMLDocumentController {
     /**
 	 * 	 
 	 * This method is used to set the menu button's text to the text selected in the menu.
-	 * (activated by clicking a menu item)
+	 * (activated by clicking a menu item). 
 	 * 
 	 * @param ActionEvent event
 	 * 
@@ -232,7 +234,9 @@ public class FXMLDocumentController {
     /**
 	 * 	 
 	 * This method is used to set the game to three player.
-	 * (activated by clicking three player button)
+	 * (activated by clicking three player button). Implementation
+	 * is simple, the method activates all functionality related to
+	 * player three such as buttons and labels. 
 	 * 
 	 * @param ActionEvent event
 	 * 
@@ -252,7 +256,10 @@ public class FXMLDocumentController {
     /**
 	 * 	 
 	 * This method is used to set the game to two player.
-	 * (activated by clicking two player button)
+	 * (activated by clicking two player button). This method 
+	 * implementation is simple, the third player buttons and labels
+	 * are disabled. It also calls who'sTurn from Game class to reset 
+	 * the turn.
 	 * 
 	 * @param ActionEvent event
 	 * 
@@ -275,12 +282,15 @@ public class FXMLDocumentController {
     /**
 	 * 	 
 	 * This method is used to load a game, check to see if it is 2 or 3 player then refresh the board.
-	 * (activated by clicking load game button)
+	 * (activated by clicking load game button). This method loads the game, and imports the previous wheel
+	 * and inputed string. It will also check if the previous game was in two player mode or three player
+	 * mode and disable any buttons or labels accordingly. 
 	 * 
 	 * @param ActionEvent event
 	 * 
 	 * @returns none
 	 * 
+	 * @throws IOException
 	 */
     @FXML
     void loadGame(ActionEvent event) throws IOException {
@@ -310,7 +320,9 @@ public class FXMLDocumentController {
     /**
 	 * 	 
 	 * This method is used to save the current game state to src/gamesaves/
-	 * (activated by clicking save game button)
+	 * (activated by clicking save game button). Method ensures that if the
+	 * text field for saving a game in empty that it will always be available.
+	 * Otherwise it will be called Default.
 	 * 
 	 * @param ActionEvent event
 	 * 
@@ -325,30 +337,39 @@ public class FXMLDocumentController {
     		g.saveGame("DEFAULT");
     	}
     }
+    
     /**
-	 * 	 
-	 * This method is used to initialize the game.
-	 * (activated by clicking new game or loading a previous save)
-	 * 
-	 * @param ActionEvent event
-	 * 
-	 * @returns none
-	 * 
-	 */
+   	 * 	 
+   	 * This method is used to initialize the game.
+   	 * (activated by clicking new game or loading a previous save).
+   	 * Implementation of this function is simple, it just calls the 
+     * game initializer function gameInit().
+   	 * 
+   	 * @param ActionEvent event
+   	 * 
+   	 * @returns none
+   	 * 
+   	 */
     @FXML
     void generateNewGame(ActionEvent event) {
 			gameInit();
     }
+   
     /**
-	 * 	 
-	 * This method is what generateNewGame(ActionEvent event) calls to initialize a new game.
-	 * (activated by clicking new game)
-	 * 
-	 * @param none
-	 * 
-	 * @returns none
-	 * 
-	 */
+   	 * 	 
+   	 * This method is what generateNewGame(ActionEvent event) calls to initialize a new game.
+   	 * (activated by clicking new game). Various method from the Game class are called here.
+   	 * A new game is made, the wheel is imported and the player 1's turn is set.
+   	 * It also makes the players buttons visible.
+   	 * 
+   	 * Try-catch block is there for IOexceptions.
+   	 * 
+   	 * @param ActionEvent
+   	 * 
+   	 * @returns none
+   	 * 
+   	 */
+       
     @FXML
     public void gameInit() {
         try {
@@ -368,12 +389,26 @@ public class FXMLDocumentController {
     /**
 	 * 	 
 	 * This method is used to make the wheel spin.
-	 * (activated by display(ActionEvent event))
+	 * (activated by display(ActionEvent event)). The 
+	 * method first retrieves the wheel array and sets an 
+	 * animation for the wheel.png to rotate in an effort 
+	 * to simulate a wheel spin. Taking a random index from
+	 * the array is equivalent to the spoke landing on a random
+	 * value on the wheel. Note, that the spin button is 
+	 * disabled while the wheel animation is ongoing, so
+	 * that the wheel spin is not reset if the user decided
+	 * to click on it consecutively. 
+	 * 
+	 * The purpose of the try-catch block is just in case
+	 * there is any error in finding the relevant files needed
+	 * for the wheel.
+	 * 
 	 * 
 	 * @param none
 	 * 
 	 * @returns none
 	 * 
+	 * @throws InterruptedException
 	 */
     @FXML
 	public void spinWheel() throws InterruptedException{
@@ -408,7 +443,7 @@ public class FXMLDocumentController {
     /**
 	 * 	 
 	 * This method is used to refresh the entire screen every time something of significance happens.
-	 * (activated by multiple processes)
+	 * (activated by multiple processes). 
 	 * 
 	 * @param none
 	 * 
@@ -456,12 +491,23 @@ public class FXMLDocumentController {
 	}
 	/**
 	 * 	 
-	 * This method is game logic that runs every turn.
-	 * (activated by clicking spin button)
+	 * This method is the game logic that runs every turn.
+	 * (activated by clicking spin button). The method first 
+	 * checks if any player has won the game and prompts 
+	 * the user as to which player has won. Otherwise the 
+	 * the game continues and then goes on to check whether
+	 * or not the player has solved a puzzle, first ensuring
+	 * the answer text box is not empty. Again, if none of 
+	 * these are true, the game then allows the player to 
+	 * take a spin of the wheel and that is handled here. 
+	 * Finally, if none of the above is true, the game 
+	 * will prompt the player to start a new game.
 	 * 
 	 * @param ActionEvent event
 	 * 
 	 * @returns none
+	 * 
+	 * @throws IOException, InterruptedException
 	 * 
 	 */
     @FXML
