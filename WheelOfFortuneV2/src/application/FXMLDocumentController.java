@@ -462,7 +462,7 @@ public class FXMLDocumentController {
 			String puzzleText = "";
 			for(int i = 0; i < check.length; i++) {
 				if(check[i]=='*') {
-					puzzleText += "▬";
+					puzzleText += "-";
 				} else {
 					puzzleText += check[i];
 				}
