@@ -18,20 +18,21 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class FXMLDocumentController {
-	/**
+	/*******************************************************************************************************************
 	 * 
 	 * CLASS: FXMLDocumentController
 	 * 
-	 * PURPOSE: This class is used to handle the events generated from interacting with buttons, text fields, loading, saving, and some general game logic.
+	 * PURPOSE: This class is used to handle the events generated from interacting with buttons, text fields, 
+	 * loading, saving, and some general game logic.
 	 * 
-	 * PRIVATE VARIABLES: 
-	 * degreesPerSpoke : int , used for the calculation of spinning the wheel.
-	 * spinInput : boolean , used to make sure the user can only input 1 spin at a time.
-	 * gameInitialized : boolean , makes sure a new game is created or one is loaded before someone attempts to play.
-	 * oldSpokeIndex : int , used for the calculation of spinning the wheel.
-	 * viewList : ObvservableList<String> , used for the view list for what is happening in the game.
+	 * PRIVATE VARIABLES: 	-degreesPerSpoke : int , used for the calculation of spinning the wheel.
+	 * 						-spinInput : boolean , used to make sure the user can only input 1 spin at a time.
+	 * 						-gameInitialized : boolean , makes sure a new game is created or one is loaded before someone attempts to play.
+	 * 						-oldSpokeIndex : int , used for the calculation of spinning the wheel.
+	 * 						-viewList : ObvservableList<String> , used for the view list for what is happening in the game.
 	 * (loads of private labels, buttons, fonts, and few text fields and drop down menus auto generated from Gluon javafx scene builder)
-	 * sources: 
+	 * 
+	 * SOURCES: 
 	 * http://www.java2s.com/Code/Java/JavaFX/Menuitemeventhandler.htm
 	 * https://stackoverflow.com/questions/39163881/javafx-drop-down-button
 	 * https://docs.oracle.com/javafx/2/api/javafx/animation/RotateTransition.html
@@ -40,7 +41,7 @@ public class FXMLDocumentController {
 	 * https://www.youtube.com/watch?v=ZuHcl5MmRck
 	 * https://www.youtube.com/watch?v=pzQXd08BPy4
 	 * https://www.youtube.com/watch?v=fl6Wp1I9wHQ
-	 */
+	 *******************************************************************************************************************/
 
 	Game g = new Game();
 	String spoke = "";
@@ -447,7 +448,7 @@ public class FXMLDocumentController {
 	 * balance or who's turn it is. If the turns aren't compatible, the old players turn is not their
 	 * turn, it is set to the correct active player.
 	 * 
-	 * Try-catch block is used catch IO and Null Pointer exceptions. 
+	 * Try-catch block is used to catch IO and Null Pointer exceptions. 
 	 * @param none
 	 * 
 	 * @returns none
@@ -502,7 +503,8 @@ public class FXMLDocumentController {
 	 * or not the player has solved a puzzle, first ensuring
 	 * the answer text box is not empty. Again, if none of 
 	 * these are true, the game then allows the player to 
-	 * take a spin of the wheel and that is handled here. 
+	 * take a spin of the wheel and handles any of the 
+	 * special non digit spoke values like loseaturn or freespin. 
 	 * Finally, if none of the above is true, the game 
 	 * will prompt the player to start a new game.
 	 * 

@@ -47,7 +47,6 @@ public class Puzzle {
 	 *
 	 * @returns none
 	 * 
-	 *
 	 **/
 	
 	public void newPuzzle() {
@@ -79,7 +78,7 @@ public class Puzzle {
 	 * 
 	 * @param none
 	 * 
-	 * @returns String
+	 * @returns String. Representing a puzzle string from puzzle.txt
 	 * 
 	 * @throws If an input or output exception occurred
 	 * 
@@ -112,7 +111,7 @@ public class Puzzle {
 	 * 
 	 * @param none
 	 * 
-	 * @returns String
+	 * @returns String. Representing an answer string from answer.txt
 	 * 
 	 * @throws If an input or output exception occurred
 	 * 

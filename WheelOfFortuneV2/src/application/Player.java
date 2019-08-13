@@ -22,7 +22,8 @@ public class Player extends Game{
 	/**
 	 * 	 
 	 * 
-	 *This method is used to return the money instance variable.
+	 * This method is used to return the money instance variable.
+	 * This is equivalent to the player's account balance.
 	 *
 	 * 
 	 * @param none

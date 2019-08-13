@@ -25,8 +25,8 @@ import java.util.Random;
  *							will have to guess, and will fill up gradually as they guess characters
  *					  -answer: a String, the word that the players will be guessing
  *					  -whosTurn: keeps track of who's turn it is, used to skip turns as well			
- *					  -ArrayList<String> wheel = array list of the wheel which has all the available "prizes"
- *					  -ArrayList<String> current = array list of the current  
+ *					  -ArrayList<String> wheel = array list of the wheel which has all the available "prizes" and values.
+ *					  -ArrayList<String> current = array list of the current answer 
  *					  -ArrayList<String> guessed = array list of guessed letters
  *					  -answers: a character array which takes the answer and separates it into characters
  *					  -numberOfPuzzles: keeps track of number of puzzles completed	
@@ -36,7 +36,8 @@ import java.util.Random;
  *                    -vowelCost: a double, the price of inputing a vowel, which is $50
  *                    
  * NOTES: Negative balance is possible and allowed in Wheel of Fortune, therefore it is not accounted for here.
- * sources:
+ * 
+ * SOURCES:
  * https://stackoverflow.com/questions/5694385/getting-the-filenames-of-all-files-in-a-folder
  * https://stackoverflow.com/questions/2885173/how-do-i-create-a-file-and-write-to-it-in-java
  * https://stackoverflow.com/questions/8751455/arraylist-contains-case-sensitivity
@@ -52,7 +53,7 @@ public class Game {
 	private static ArrayList<String> guessed = new ArrayList<String>();
 	private char[] answers;
 	private final double prizeIfBankrupt = 1.0;
-	private static final double vowelCost = 50;
+	private static final double vowelCost = 50; //cost of a vowel
 	private static final int numberOfPuzzlesToWin = 3;
 	private int numberOfPuzzles = 0;
     private int randomNumForWheel;
@@ -60,14 +61,17 @@ public class Game {
 	Puzzle p = new Puzzle();
 	ArrayList<String> wheel = new ArrayList<String>();
 	ArrayList<Player> players = new ArrayList<Player>();
-	double[] money = {0.0, 0.0, 0.0};
+	double[] money = {0.0, 0.0, 0.0}; // Player accounts. Player 1's balance is index 0, Player 2's balance in index 1, etc.
 	
 	/**
 	 * 	 
-	 * This method is used to set a game with two players.
+	 * This method is used to set a game with two players. 
+	 * twoPlayerMode is set to true of false. This will be 
+	 * called in the GUI to determine which buttons and labels 
+	 * to disable and which player's actions should be kept track of.
 	 *
 	 * 
-	 * @param none
+	 * @param Boolean. Whether or not there are two players.
 	 * 
 	 * @returns none
 	 * 
@@ -80,11 +84,11 @@ public class Game {
 	/**
 	 * 	 
 	 * This method is used to confirm a game with two players.
-	 *
+	 * 
 	 * 
 	 * @param none
 	 * 
-	 * @returns none
+	 * @returns Boolean. Representing whether or not the game is set to two player mode.
 	 * 
 	 */
 	
@@ -99,13 +103,12 @@ public class Game {
 	 * on who's turn it is, signified by the whosTurn instance variable. 
 	 * This temporary account's balance will then be transferred
 	 * over to a permanent account that will keep the total balance 
-	 * which will be used to substatiate the winner of the game.
+	 * which will be used to substantiate the winner of the game.
 	 * 
 	 * @param amount the amount of money that will be deposited into the 
 	 * players account
 	 * 
 	 * @return void
-	 * 
 	 * 
 	 */
 	
@@ -120,13 +123,12 @@ public class Game {
 	 * it is, signified by the whosTurn instance variable. This temporary 
 	 * account's balance will then be transferred over to a permanent 
 	 * account that will keep the total balance which will be used to
-	 * substatiate the winner of the game.
+	 * Substantiate the winner of the game.
 	 * 
 	 * @param amount the amount of money that will be withdrawn from the 
 	 * players account
 	 * 
 	 * @return void
-	 * 
 	 * 
 	 */
 	
@@ -147,7 +149,6 @@ public class Game {
 	 * the wheel from the text
 	 * file. 
 	 * 
-	 * 
 	 */
 	
 	public int getRandomNumForWheel(){
@@ -166,7 +167,6 @@ public class Game {
 	 * 
 	 * @throws If an input or output exception occurred
 	 * 
-	 * 
 	 */
 	
 	public void importWheel() throws IOException {
@@ -182,7 +182,6 @@ public class Game {
 	 * 
 	 * @returns a puzzle of type String that represents the category of puzzle
 	 * that the user will be getting the String that they will have to guess
-	 * 
 	 * 
 	 */
 	
@@ -200,7 +199,6 @@ public class Game {
 	 * @param none
 	 * 
 	 * @returns the balance of the player who's turn it current is
-	 * 
 	 * 
 	 */
 	
@@ -221,7 +219,6 @@ public class Game {
 	 * 
 	 * @returns void
 	 * 
-	 * 
 	 */
 	
 	public void setBal(int whosTurn, int money) {
@@ -236,7 +233,6 @@ public class Game {
      * @param none
      * 
      * @returns void
-     * 
      * 
      */ 
 	
@@ -264,7 +260,6 @@ public class Game {
      * 
      * @returns an integer that represents the size of the PlayerList array
      * 
-     * 
      */ 
 	
 	public int getPlayerListSize() {
@@ -287,7 +282,6 @@ public class Game {
   	 * @returns void
   	 * 
   	 * @throws If an input or output exception occurred
-  	 * 
   	 * 
   	 */ 
 	
@@ -321,8 +315,7 @@ public class Game {
 	 * @returns none
 	 * 
 	 * @throws If an input or output exception occurred
-	 * 
-	 * 
+	 *  
 	 */
 	
 	public void newPuzzle() throws IOException {
@@ -337,13 +330,12 @@ public class Game {
 	 * 	 
 	 * This method resets users money upon landing on bankrupt section of
 	 * the wheel, by setting the player's balance to 0. The player who's
-	 * balance will be reset will depedn on the whosTurn instance variable,
+	 * balance will be reset will depend on the whosTurn instance variable,
 	 * as they are the person who landed on it 
-	 * 
+	 *
 	 * @param none
 	 * 
 	 * @returns none
-	 * 
 	 * 
 	 */
 	
@@ -382,11 +374,17 @@ public class Game {
 	
 	/**
 	 * 	 
-	 * This method sets the turn, and is used when...
+	 * This method sets the turn. This method is primarily used 
+	 * in the FXML GUI. The first purpose is for when we are first
+	 * initializing a game, this will be set to 0, meaning Player 1's turn. 
+	 * It will also be used when setting two player mode, wherein 
+	 * if the count reaches 2, meaning Player 3's turn which should not be valid,
+	 * the count will reset back 0, Player 1's turn.
 	 * 
 	 * 
 	 * 
-	 * @param none
+	 * 
+	 * @param int turn
 	 * 
 	 * @returns none
 	 * 
@@ -440,12 +438,11 @@ public class Game {
 	 * 
 	 * @param strToCompare the String that's being compared
 	 * 
-	 * @param list 
+	 * @param list
 	 * 
 	 * @returns boolean, whether the user has guessed the answer correctly or
 	 * not 
-	 * 
-	 * 
+	 *  
 	 */
 	
 	public boolean containsCaseInsensitive(String strToCompare, ArrayList<String>list) {
@@ -460,18 +457,16 @@ public class Game {
 	
 	/**
 	 * 	 
-	 * This method is used to retrieve the current string.
+	 * This method is used to retrieve the current puzzle string.
 	 * A for loop is run to retrieve the contents of the current
 	 * Array List and placed inside a String variable which will
 	 * be returned.
 	 *
-	 * 
 	 * @param none
 	 * 
 	 * @returns String
 	 * 
 	 * @throws If an input or output exception occurred
-	 * 
 	 * 
 	 */
 	
@@ -489,13 +484,11 @@ public class Game {
 	 * A for loop is run to retrieve the contents of the String array
 	 * which is then placed inside the String variable toReturn.
 	 *
-	 * 
 	 * @param none
 	 * 
 	 * @returns String
 	 * 
 	 * @throws If an input or output exception occurred
-	 * 
 	 * 
 	 */
 	
@@ -518,13 +511,11 @@ public class Game {
 	 * current spoke value is only updated if the index lands on a
 	 * number, i.e. the money value.
 	 *
-	 * 
 	 * @param none
 	 * 
-	 * @returns String
+	 * @returns String. Whatever random String is in wheel.txt
 	 * 
 	 * @throws If an input or output exception occurred
-	 * 
 	 * 
 	 */
 	
@@ -547,13 +538,11 @@ public class Game {
 	 * the guessed (the user input) and current (the current puzzle)
 	 * Array Lists are cleared. 
 	 *
-	 * 
-	 * @param s
+	 * @param String a
 	 * 
 	 * @returns boolean
 	 * 
 	 * @throws If an input or output exception occurred
-	 * 
 	 * 
 	 */
 	
@@ -570,15 +559,12 @@ public class Game {
 	 * 	 
 	 * This method is used to check the current guessed input.
 	 * 
-	 *
-	 * 
-	 * @param a
+	 * @param String a
 	 * 
 	 * @returns boolean
 	 * 
 	 * @throws If an input or output exception occurred
-	 * 
-	 * 
+	 *  
 	 */
 	
 	public boolean checkGuess(String a) throws IOException {
@@ -598,12 +584,10 @@ public class Game {
 	 * ever equal to 2 (player 3) we reset back to 0 (player 1)
 	 * otherwise we increment by 1.  
 	 *
-	 * 
 	 * @param none
 	 * 
 	 * @returns none
-	 * 
-	 * 
+	 *  
 	 */
 	
 	public void changeTurn(){
@@ -623,12 +607,13 @@ public class Game {
 	/**
 	 * 	 
 	 * This method is used to return whosTurn, i.e.
-	 * which player's turn is it to 'play'.
+	 * which player's turn is it to 'play'. This 
+	 * method will be called in the GUI not only to
+	 * run the game but to save and load game states.
 	 *
-	 * 
 	 * @param none
 	 * 
-	 * @returns int
+	 * @returns int. Who's turn it is.
 	 * 
 	 * 
 	 */
@@ -652,12 +637,11 @@ public class Game {
 	 * If there are no more '*' we clear the guessed Array List and prompt
 	 * the user that they have completed the puzzle.
 	 * 
-	 * @param a
+	 * @param char. The inputed character. 
 	 * 
 	 * @returns String
 	 * 
 	 * @throws If an input or output exception occurred
-	 * 
 	 * 
 	 */
 	
@@ -695,8 +679,12 @@ public class Game {
 	/**
 	 * 	 
 	 * This method is used to set the the win counter.
+	 * Once a player reaches three puzzles completed, they 
+	 * will win the game. This is not a constant as it may
+	 * be preferable to make it so that one puzzle completed 
+	 * is enough to win or 5 or ad infinitum.
 	 * 
-	 * @param zero
+	 * @param int zero
 	 * 
 	 * @returns none
 	 * 
@@ -711,12 +699,9 @@ public class Game {
 	 * 	 
 	 * This method is used to update the puzzle counter.
 	 * 
-	 *
-	 * 
 	 * @param none
 	 * 
 	 * @returns none
-	 * 
 	 * 
 	 */
 	
@@ -734,18 +719,15 @@ public class Game {
 	}
 	
 	/**
-	 * 	 
-	 * 
+	 * 	  
 	 * This method is used to determine who won. 
 	 * If a given player's numberOfPuzzles they have
 	 * completed is greater than or equal to the numberOfPuzzlesToWin
 	 * a boolean value of true is returned.
 	 *
-	 * 
 	 * @param none
 	 * 
 	 * @returns boolean
-	 * 
 	 * 
 	 */
 	
@@ -759,7 +741,7 @@ public class Game {
 	/**
 	 * 	 
 	 * 
-	 * This method is used to determine of the user has completed 
+	 * This method is used to determine if the user has completed 
 	 * the puzzle. If there are no '*' left, the guessed Array List
 	 * is cleared and a boolean vale of true is returned.
 	 *
@@ -784,14 +766,16 @@ public class Game {
 	/**
 	 * 	 
 	 * This method is used to save the previous game.
+	 * A file is opened/created with the desired saveName, 
+	 * which is inputed by the user. The method writes
+	 * to the file each player's balance, the current puzzle,
+	 * the current guessed input, which player's turn it is,
+	 * the current spoke value for the wheel and the amount of
+	 * players playing.
 	 * 
-	 *
-	 *
-	 * 
-	 * @param saveName
+	 * @param String saveName. The save name chosen by the user. 
 	 * 
 	 * @returns none
-	 * 
 	 * 
 	 */
 	
@@ -822,15 +806,16 @@ public class Game {
 	
 	/**
 	 * 	 
-	 * 
-	 *This method is used to load a previously saved game.
+	 * This method is used to load a previously saved game.
+	 * A previously created file is loaded based on the chosen 
+	 * save name. The balances are checked and added
+	 * to their respective player along with the puzzle, answer,
+	 * player turn and the spoke value for the wheel. 
 	 *
-	 * 
-	 * @param saveName
+	 * @param saveName. The save name chosen by the user.
 	 * 
 	 * @returns none
-	 * 
-	 * 
+	 *  
 	 */
 	public void loadGame(String saveName) {
 		try {
@@ -874,14 +859,13 @@ public class Game {
 	}
 	/**
 	 * 	 
-	 * 
-	 *This method is used to get the names of all game saves.
-	 *
+	 * This method is used to get the names of all game saves.
+	 * The method will search in the game saves folder and return
+	 * the names of the game saves.
 	 * 
 	 * @param none
 	 * 
 	 * @returns ArrayList<String>
-	 * 
 	 * 
 	 */
 	public ArrayList<String> getGameSaveNames() {
