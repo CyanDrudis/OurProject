@@ -1,0 +1,12 @@
+By definition, an Abstract Class is a class that cannot be instantiated, while it’s child classes can be instantiated. 
+Furthermore, abstract methods (of the parent) cannot be implemented, while it is expected that they be implemented in the child classes.
+Looking at our Class Diagram, png file in src/application folder, using an Abstract Class would make no sense.
+Game is the main engine of the program so to speak and would obviously be the prime candidate for being made an abstract class, 
+but none of the child classes or associations of Game share a method or even share functionality.
+Player class is used to handle aspects of the individual player, such as their balance.
+While the Puzzle class is used to handle file input and output. 
+Both of them are child classes or associations of Game but act in a completely foreign manner relative to each other.
+At the time of our text demo it was only necessary to create objects and instantiations of Game in order to run the program, 
+this would not be possible if Game had been an abstract class. 
+The majority of the implementation of methods in the program is done in Game, which again, defeats the entire purpose of using abstract classes.
+
