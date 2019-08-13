@@ -443,8 +443,11 @@ public class FXMLDocumentController {
     /**
 	 * 	 
 	 * This method is used to refresh the entire screen every time something of significance happens.
-	 * (activated by multiple processes). 
+	 * (activated by multiple processes). The method retrieves information about the game such as
+	 * balance or who's turn it is. If the turns aren't compatible, the old players turn is not their
+	 * turn, it is set to the correct active player.
 	 * 
+	 * Try-catch block is used catch IO and Null Pointer exceptions. 
 	 * @param none
 	 * 
 	 * @returns none
