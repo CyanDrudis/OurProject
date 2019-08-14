@@ -67,4 +67,6 @@ https://www.objectaid.com/download
 After that it is just a matter of pressing "Ctrl+N" to create a diagram and dargging whatever classes the user wants to observe to the
 blank diagram. The plugin will automatically create inheritance, association and dependancy arrows. 
 
+Finally, there is also a justification for a lack of abstract classes and abstract methods in the project. It can be found on GitHUb
+under "LackofAbstractJustification".
 
