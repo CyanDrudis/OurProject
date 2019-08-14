@@ -99,7 +99,6 @@ public class Puzzle {
 	
 	/**
 	 * 	 
-	 * 
 	 * This method is used to import the answers from the answer.txt file. Then make a smaller array 
 	 * from those answers and return a random one. Searches for the file where the class is, then passes
 	 * that file to the file reader and then passes the file reader to the BufferedReader which then searches 
@@ -112,7 +111,6 @@ public class Puzzle {
 	 * @returns String. Representing an answer string from answer.txt
 	 * 
 	 * @throws If an input or output exception occurred
-	 * 
 	 * 
 	 */
 	
@@ -140,13 +138,11 @@ public class Puzzle {
 	 * to the BufferedReader which will then search through that file and add each line to the array 
 	 * until there is nothing left and then closes the buffered reader.
 	 *
-	 * 
 	 * @param none
 	 * 
 	 * @returns ArrayList<String>
 	 * 
 	 * @throws If an input or output exception occurred
-	 * 
 	 * 
 	 */
 	

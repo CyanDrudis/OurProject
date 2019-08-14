@@ -19,17 +19,14 @@ public class Player extends Game{
 	private double money;
         //Player's current round account balance
 	
-	/**
-	 * 	 
+	/** 
 	 * 
 	 * This method is used to return the money instance variable.
 	 * This is equivalent to the player's account balance.
 	 *
-	 * 
 	 * @param none
 	 * 
 	 * @returns double. The amount in the player's account.
-	 * 
 	 * 
 	 */
 	
@@ -37,18 +34,15 @@ public class Player extends Game{
 		return money;
 	}
 	
-	/**
-	 * 	 
+	/** 
 	 * 
 	 * This method is used to set the money instance variable. 
 	 * A double is passed in and the instance variable money is
 	 * updated with this passed in value.
 	 *
-	 * 
 	 * @param double money
 	 * 
 	 * @returns none
-	 * 
 	 * 
 	 */
 	
@@ -66,7 +60,6 @@ public class Player extends Game{
 	 * 
 	 * @returns none
 	 * 
-	 * 
 	 */
 	
 	public void deposit(double amount) {
@@ -83,12 +76,9 @@ public class Player extends Game{
 	 * Note: Wheel of Fortune allows for negative balances. Thus, it
 	 * is not accounted for here.  
 	 *
-	 *
-	 * 
 	 * @param double amount. The amount to be withdrawn.
 	 * 
 	 * @returns none
-	 * 
 	 * 
 	 */
 	

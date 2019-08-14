@@ -615,7 +615,6 @@ public class Game {
 	 * 
 	 * @returns int. Who's turn it is.
 	 * 
-	 * 
 	 */
 	
 	public int whosTurn()	{
@@ -688,7 +687,6 @@ public class Game {
 	 * 
 	 * @returns none
 	 * 
-	 * 
 	 */
 	
 	public void setWinPuzzleCounter(int zero) {
@@ -744,12 +742,10 @@ public class Game {
 	 * This method is used to determine if the user has completed 
 	 * the puzzle. If there are no '*' left, the guessed Array List
 	 * is cleared and a boolean vale of true is returned.
-	 *
 	 * 
 	 * @param none
 	 * 
 	 * @returns boolean
-	 * 
 	 * 
 	 */
 	

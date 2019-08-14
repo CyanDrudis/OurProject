@@ -48,7 +48,6 @@ public class Main extends Application {
 	 * 	 
 	 * This method is used to actually start the game by
 	 * creating the GUI. Creates the 'stage' where the player will interact with the program.
-	 *
 	 * 
 	 * @param Stage
 	 * 
