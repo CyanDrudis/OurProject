@@ -44,13 +44,13 @@ public class FXMLDocumentController {
 	 *******************************************************************************************************************/
 
 	Game g = new Game();
-	String spoke = "";
+	private String spoke = "";
     private final int degreesPerSpoke = 15;
     private boolean spinInput = false;
     private boolean gameInitialized = false;
     private int oldSpokeIndex = 0;
     private int oldPlayersTurn = -1;
-    ObservableList<String> viewList = FXCollections.<String>observableArrayList();//source: https://examples.javacodegeeks.com/desktop-java/javafx/listview-javafx/javafx-listview-example/
+    private ObservableList<String> viewList = FXCollections.<String>observableArrayList();//source: https://examples.javacodegeeks.com/desktop-java/javafx/listview-javafx/javafx-listview-example/
 
     @FXML
     private Label player1Label;
@@ -381,6 +381,7 @@ public class FXMLDocumentController {
 			twoPlayerButton.setVisible(true);
 			threePlayerButton.setVisible(true);
 			threePlayerButton.setDisable(true);
+			spinClick.setDisable(false);
 			refresh();
 			gameInitialized = true;
 		} catch (IOException e) {
