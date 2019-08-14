@@ -60,6 +60,11 @@ of all the sources we've used.
 There is also a TestDocument file which details how the JUnit tests were designed, including
 the purpose and procedure. 
 
+There is a PNG of the Class Diagram avaliable in the src folder, however, if a prospective user wants to see how the different classes 
+(i.e the test classes)not put on the diagram relate to each other they can download the ObjectAid plugin into eclipse.
+https://www.objectaid.com/download
 
+After that it is just a matter of pressing "Ctrl+N" to create a diagram and dargging whatever classes the user wants to observe to the
+blank diagram. The plugin will automatically create inheritance, association and dependancy arrows. 
 
 
