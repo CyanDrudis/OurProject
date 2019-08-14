@@ -382,6 +382,7 @@ public class FXMLDocumentController {
 			threePlayerButton.setVisible(true);
 			threePlayerButton.setDisable(true);
 			spinClick.setDisable(false);
+			g.setWinPuzzleCounter(0);
 			refresh();
 			gameInitialized = true;
 		} catch (IOException e) {
