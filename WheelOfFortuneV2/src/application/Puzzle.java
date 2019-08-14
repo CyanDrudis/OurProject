@@ -25,8 +25,6 @@ import java.util.Random;
  * 
  * randomIntForAnswer:int : a variable that is to be assigned a randomly generated number within the indexes of the answer array
  * 
- *                    
- * NOTES: 
  *********************************************************************************************************************/
 
 

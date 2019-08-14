@@ -28,7 +28,7 @@ public class Player extends Game{
 	 * 
 	 * @param none
 	 * 
-	 * @returns double
+	 * @returns double. The amount in the player's account.
 	 * 
 	 * 
 	 */
@@ -45,7 +45,7 @@ public class Player extends Game{
 	 * updated with this passed in value.
 	 *
 	 * 
-	 * @param money
+	 * @param double money
 	 * 
 	 * @returns none
 	 * 
@@ -56,14 +56,13 @@ public class Player extends Game{
 		this.money = money;
 	}
 	
-	
 	/**
 	 * 
 	 * This method is used to update the player's balance
 	 * by a deposited value. As long as the deposited value is greater
 	 * than or equal to zero, the player's balance is then updated.
 	 * 
-	 * @param amount
+	 * @param double amount. The amount to be deposited.
 	 * 
 	 * @returns none
 	 * 
@@ -86,7 +85,7 @@ public class Player extends Game{
 	 *
 	 *
 	 * 
-	 * @param amount
+	 * @param double amount. The amount to be withdrawn.
 	 * 
 	 * @returns none
 	 * 
@@ -99,5 +98,4 @@ public class Player extends Game{
 		}
 	}
 	
-
 }

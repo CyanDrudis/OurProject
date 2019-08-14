@@ -28,7 +28,9 @@ import javafx.fxml.FXMLLoader;
  * 
  * PURPOSE: This class is used to run the GUI. Along providing an in-game method through which the player can exit the game.
  * 
- * PRIVATE VARIABLES: Stage variable. 
+ * PRIVATE VARIABLES: -Stage mainStage 
+ * 					  -int requestOnExitX
+ * 					  -int requeastOnExitY
  * sources:
  * https://stackoverflow.com/questions/10275841/how-to-change-the-icon-on-the-title-bar-of-a-stage-in-java-fx-2-0-of-my-applicat
  * https://stackoverflow.com/questions/31540500/alert-box-for-when-user-attempts-to-close-application-using-setoncloserequest-in0
@@ -45,7 +47,7 @@ public class Main extends Application {
 	/**
 	 * 	 
 	 * This method is used to actually start the game by
-	 * creating the GUI. 
+	 * creating the GUI. Creates the 'stage' where the player will interact with the program.
 	 *
 	 * 
 	 * @param Stage
